@@ -56,5 +56,5 @@ to all Systems?
 Goo--Bad Question, no they are not an object that is only meant to be seen should not be operated on by a sound
 system.
 
-Hopefull looking at this code gives you good ideas of your own.
+Hopefully looking at this code gives you good ideas of your own.
 
