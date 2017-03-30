@@ -1,31 +1,60 @@
-# Intrigue
-Lightweight 3D Entity Component System for game dev -- built ontop of Libgdx and bullet.
+Intrigue2 
 
-    Why look at Intrigue?
+Entity Component Systems.  A more data oriented approach to games.  You will find a strategy like this under the hood of 
+most modern game engines.  
 
-In game development there are certain "boiler plate" pieces of functionality that all games must define that are relatively 
-standard.  For example many games use chase cameras, and many games use standard functions that take time to code but require 
-only surface level knowledge to write (trivial).  Intrigue seeks to totally abstract away all the default boilerplate stuff a 
-game requires while still leaving the programmer ways to make complete and custom 3D games.
+Remove the traditional OOP idea of objects and think of a general game object -- an entity.  A game object (entity )that performs 
+no calculations (has no non getter setter methods) it simply holds data to be mutated. This data is partitioned into components.
 
-    Short Description of Entity Component System and how Intrigue implements it.
+In normal OOP game programming you might have:
 
-Intrigue seeks to accomplish its goals with Entity Component Systems programming.  The way this works is that intrigue defines 
-what objects a game might need, such as: Ragdolls (Complex Physical Shapes), Simple Atomic Physical Shapes (Rectangles/Static 
-Collision Shapes), 3D graphical Models (.g3dj, .obj, .g3db), Animations; then it makes them accessible through its class 
-Gobject.  Intrigue then defines "Default Systems" that act upon certain attributes of these 'Gobjects'.  For instance the 
-"DefaultGraphicSys" class acts only on Gobjects 3D model and does not worry about its physical attributes, those are modified by 
-other Systems like "DefaultCollisionSys" and "DefaultAnimationSys".  However, I digress if you would like more information on 
-Entity Component Systems see your local library.
+       Character jack = new Character();
+       ..
+       ...
+       render() {
+       	jack.move(1); //move jack one unit.
+       }
+
+In ECS (Entity Component Systems) equivalently you have:
+	
+	   Entity e = new Entity(new GraphicalComponent(), new PhysicalComponent());
+	   PhysicsSystem p = new PhysicsSystem();
+	   p.register(e);
+	   ..
+	   ...
+	   render() {
+	   	p.update();
+	   }
+	   
+	   PhysicsSystem.update() {
+	   		if(p.needsMoveForward()) {
+	   			p.move(1)
+	   		}
+	   }
+	   
+but what?? ECS looks way more complicated?  Okay I will admit the initial overhead looks like a bit much but the benefits are
+in the design.  Using this approach to design a game puts all the features of a game in the system and the components that make
+up the data a system manipulates.  
 
 
-    Q&A with myself.
-    
-"But a game is a specific piece of software so I can't program it using these default systems alone.  So do you really expect me 
-to parse all the Default Code to see what I need and what I don't? why use Intrigue at all if it's going to force time consuming 
-analysis of code that isn't mine?"
+Intrigue2:
 
-We here you man.  In order to write a game though you need to have structure or you will eventually choke to death on your 
-spaghetti code.  Programming to with Intrigue ECS (Entity Component Systems is easier than you think)  see the wiki.
+In Intrigue every System has a corresponding component and it is for all intents and purposes one to one relationship.
+The physics system only manipulates the physical part of the object.  The graphics only render the graphical component of 
+the object and so on.  
 
+This allows for incredibly feature rich games.  Want a new feature make a System add it to the main loop and add a component to 
+the relevant objects.  You are off and running.
+  
+
+In Intrigue2 (and in fact in the older version) Game Objects are stored in a global Array of GameObjects. 
+Each Intrigue*System has an internal array of integer index's that can be used to access relevant game objects from the global array
+(kind of like accessing things in a database via the primary key).  Except the primary key in this case is an array index and the 
+database is a dead simple array of Game Objects (Gobject.java).  What is a relevant object you say?  arent all objects relevant
+to all Systems?  
+
+Goo--Bad Question, no they are not an object that is only meant to be seen should not be operated on by a sound
+system.
+
+Hopefull looking at this code gives you good ideas of your own.
 
