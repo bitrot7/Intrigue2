@@ -1,0 +1,332 @@
+# Blender MTL File: 'None'
+# Material Count: 29
+
+newmtl Ceiling_green_1.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.578841 0.640000 0.556670
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/wallpaper nor.jpg
+
+newmtl Ceiling_white_2.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.637817 0.604499
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/wallpaper nor.jpg
+
+newmtl Door_Frame.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.208951 0.208951 0.208951
+Ks 0.201515 0.201515 0.201515
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/Future_Door_01_Ao.jpg
+map_Bump /textures/Future_Door_01_Nor.jpg
+refl /textures/Reflexion.jpg
+
+newmtl Door_Frame.001_Future_Door_02_Ao.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.208951 0.208951 0.208951
+Ks 0.201515 0.201515 0.201515
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/Future_Door_02_Ao.jpg
+map_Bump /textures/Future_Door_01_Nor.jpg
+refl /textures/Reflexion.jpg
+
+newmtl FLoor_white.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.337298 0.304818 0.313449
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /C:/Users/the3dpc/Desktop/Futuristic Apartment Buildung/BGE_Building60/textures/builing_col.jpg
+map_Bump /textures/Building_Nor.jpg
+
+newmtl FLoor_white.001_NONE
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.337298 0.304818 0.313449
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/Building_Nor.jpg
+
+newmtl Glas.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.409600 0.409600 0.409600
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 0.500000
+illum 2
+map_Kd /textures/Glas_Nor.jpg
+map_Bump /textures/Glas_Nor.jpg
+refl /textures/REF 1.jpg
+
+newmtl Glas.001_Glas_Nor.002
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.409600 0.409600 0.409600
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 0.500000
+illum 2
+map_Kd /textures/Glas_AO.jpg
+map_Bump /textures/Glas_Nor.jpg
+refl /textures/REF 1.jpg
+
+newmtl Inside_Floor_green.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.193954 0.206161 0.181747
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/Building_Nor.jpg
+
+newmtl Inside_Floor_green_2.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.337298 0.333816 0.265406
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/Building_Nor.jpg
+
+newmtl Inside_Wood.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.181787 0.177828 0.150402
+Ks 0.012199 0.011082 0.010286
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/wooden floor nor.jpg
+
+newmtl Inside_wall_green.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.515578 0.640000 0.442782
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/wallpaper nor.jpg
+
+newmtl Inside_wall_green_2.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.591250 0.640000 0.503755
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/wallpaper nor.jpg
+
+newmtl Inside_wall_white_2.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.620946 0.563781
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/wallpaper nor.jpg
+
+newmtl Inside_wall_yellow.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.585218 0.420871
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/wallpaper nor.jpg
+
+newmtl Inside_wall_yellow_2.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.621322 0.510590
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/wallpaper nor.jpg
+
+newmtl Lamps_Frames.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.060086 0.060086 0.060086
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /C:/Users/the3dpc/Desktop/Futuristic Apartment Buildung/BGE_Building60/textures/builing_col.jpg
+map_Bump /textures/Building_Nor.jpg
+refl /textures/Reflexion.jpg
+
+newmtl Lampswitches.002
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.060086 0.060086 0.060086
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /C:/Users/the3dpc/Desktop/Futuristic Apartment Buildung/BGE_Building60/textures/builing_col.jpg
+map_Bump /textures/Building_Nor.jpg
+refl /textures/Reflexion.jpg
+
+newmtl Lights.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /C:/Users/the3dpc/Desktop/Futuristic Apartment Buildung/BGE_Building60/textures/builing_col.jpg
+map_Bump /textures/Building_Nor.jpg
+refl /textures/Reflexion.jpg
+
+newmtl Material.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.409600 0.409600 0.409600
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 0.276995
+illum 2
+map_Kd /textures/Future_Door_02_Ao.jpg
+
+newmtl Metal_1.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.060086 0.060086 0.060086
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/Building_Nor.jpg
+refl /textures/Reflexion.jpg
+
+newmtl Metal_1.001_NONE
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.060086 0.060086 0.060086
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/AussenWand_C.jpg
+map_Bump /textures/Building_Nor.jpg
+refl /textures/Reflexion.jpg
+
+newmtl Metal_1.001_building_col.003
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.060086 0.060086 0.060086
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/Building_Nor.jpg
+refl /textures/Reflexion.jpg
+
+newmtl Metal_1.001_col_2.003
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.060086 0.060086 0.060086
+Ks 1.000000 1.000000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /C:/Users/the3dpc/Desktop/Futuristic Apartment Buildung/BGE_Building60/textures/builing_col.jpg
+map_Bump /textures/Building_Nor.jpg
+refl /textures/Reflexion.jpg
+
+newmtl Metal_2
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.409600 0.409600 0.409600
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /C:/Users/the3dpc/Desktop/Futuristic Apartment Buildung/BGE_Building60/textures/builing_col.jpg
+
+newmtl Tiles_outside_1.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.578373 0.594749
+Ks 0.229730 0.229730 0.229730
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/WCtiles_N.jpg
+refl /textures/Reflexion.jpg
+
+newmtl Walls_outside.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.337298 0.337298 0.337298
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /C:/Users/the3dpc/Desktop/Futuristic Apartment Buildung/BGE_Building60/textures/builing_col.jpg
+map_Bump /textures/Building_Nor.jpg
+refl /textures/Reflexion.jpg
+
+newmtl Wood_Foor.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.337298 0.304818 0.313449
+Ks 0.055130 0.055130 0.055130
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /C:/Users/the3dpc/Desktop/Futuristic Apartment Buildung/BGE_Building60/textures/builing_col.jpg
+map_Bump /textures/Building_Nor.jpg
+
+newmtl ceiling_white_1.001
+Ns 90.196078
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.617576 0.576954
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /textures/building_col_3.JPG
+map_Bump /textures/wallpaper nor.jpg
