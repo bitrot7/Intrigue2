@@ -1,5 +1,8 @@
-//@author Matt Keating
-//Started: Tuesday, July 19th 2017
+/**
+ * @author Matt Keating
+ * Started: Tuesday, July 19th 2017
+ * 
+ */
 package com.mk.intrigue;
 
 
