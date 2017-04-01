@@ -17,6 +17,7 @@ public class DrifterObject extends Gobject { //extend Gobject
 	private DrifterCharacterActionsComponent characterActionsComponent;
 	private DrifterAIComponent aiComponent;
 	private DrifterTargetingComponent targetingComponent;
+	private DrifterCharacterSoundComponent characterSoundComponent;
 	public static final AssetManager assetManager = new AssetManager();
 	public static final ModelBuilder modelBuilder = new ModelBuilder();
 	private DrifterObject(DrifterObjectBuilder dob) {
@@ -27,6 +28,7 @@ public class DrifterObject extends Gobject { //extend Gobject
 		this.characterActionsComponent = dob.characterActionsComponent;
 		this.aiComponent = dob.aiComponent;
 		this.targetingComponent = dob.targetingComponent;
+		this.characterSoundComponent = dob.characterSoundComponent;
 	}
 	/*
 	*	This has got to go.
@@ -50,6 +52,9 @@ public class DrifterObject extends Gobject { //extend Gobject
 	public DrifterTargetingComponent getTargetingComponent() {
 		return this.targetingComponent;
 	}
+	public DrifterCharacterSoundComponent getCharacterSoundComponent() {
+		return this.characterSoundComponent;
+	}
 	/*
 	*	extend the builder as well. keep the design pattern.  it is nice.
 	*/
@@ -60,6 +65,7 @@ public class DrifterObject extends Gobject { //extend Gobject
 		private DrifterCharacterActionsComponent characterActionsComponent;
 		private DrifterAIComponent aiComponent;
 		private DrifterTargetingComponent targetingComponent;
+		private DrifterCharacterSoundComponent characterSoundComponent;
 		public DrifterObjectBuilder(int guid) {
 			super(guid);
 		}
@@ -111,6 +117,10 @@ public class DrifterObject extends Gobject { //extend Gobject
 		}
 		public DrifterObjectBuilder ShootingSoldierAI() {
 			aiComponent = new DrifterAIComponent();
+			return this;
+		}
+		public DrifterObjectBuilder CharacterSoundComponent(String walk_sound, String shoot_sound) {
+			this.characterSoundComponent = new DrifterCharacterSoundComponent(walk_sound, shoot_sound);
 			return this;
 		}
 		public DrifterObject Build() {

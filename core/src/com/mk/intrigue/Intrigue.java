@@ -22,6 +22,7 @@ import com.gamedev.drifter.DrifterAiSys;
 import com.gamedev.drifter.DrifterAimingSystem;
 import com.gamedev.drifter.DrifterAnimationSystem;
 import com.gamedev.drifter.DrifterBulletCollisionSystem;
+import com.gamedev.drifter.DrifterCharacterSoundSystem;
 import com.gamedev.drifter.DrifterControllerSystem;
 import com.gamedev.drifter.DrifterMotionSystem;
 import com.gamedev.drifter.DrifterObject;
@@ -42,6 +43,7 @@ public class Intrigue extends ApplicationAdapter {
 	private DrifterAimingSystem IntrigueAimingSystem;
 	private DrifterBulletCollisionSystem IntrigueBulletCollisionSystem;
 	private DrifterTargetingAISystem IntrigueTargetingAISystem;
+	private DrifterCharacterSoundSystem DrifterCharacterSoundSys;
 	private Stage stage;
 	private Table table;
 	private Label text;
@@ -68,6 +70,7 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueAimingSystem = new DrifterAimingSystem();
 		IntrigueBulletCollisionSystem = new DrifterBulletCollisionSystem();
 		IntrigueTargetingAISystem = new DrifterTargetingAISystem();
+		DrifterCharacterSoundSys = new DrifterCharacterSoundSystem();
 		
 		final int team1 = 1;
 		final int team2 = 2;
@@ -125,7 +128,9 @@ public class Intrigue extends ApplicationAdapter {
 					.Build()).CharacterActionsComponent()
 					.AnimationController()
 					.Fireable(path_to_crosshair)
-					.TargetingAI(team1).Build());
+					.TargetingAI(team1)
+					.CharacterSoundComponent("", "SoundEffects/guns/M4A1.mp3")
+					.Build());
 		mamaDukes.get(player_guid).getPhysicalComponent()
 					.getPhysicsBody().getRigidBody()
 					.setAngularFactor(new Vector3(0,0,0));
@@ -245,6 +250,7 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueAimingSystem.register(player_guid);
 		IntrigueBulletCollisionSystem.register(player_guid); //snow terrain
 		IntrigueTargetingAISystem.register(player_guid);
+		DrifterCharacterSoundSys.register(player_guid);
 		
 		IntrigueGraphicSys.register(1);
 		IntrigueTotalPhysicsSys.register(1);
@@ -306,6 +312,7 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueAimingSystem.update(deltaTime);
 		IntrigueBulletCollisionSystem.update(deltaTime);
 		IntrigueTargetingAISystem.update(deltaTime);
+		DrifterCharacterSoundSys.update(deltaTime);
 		stage.act(deltaTime);
 		text.setText("FPS: " + Gdx.graphics.getFramesPerSecond());
 		stage.draw();
