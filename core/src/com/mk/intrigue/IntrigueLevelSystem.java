@@ -6,7 +6,6 @@ public class IntrigueLevelSystem implements GameSys {
 	private final Array<Integer> internal = new Array<Integer>();
 	@Override
 	public void register(int guid) {
-
 		internal.add(guid);
 	}
 
