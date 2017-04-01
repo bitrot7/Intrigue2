@@ -23,6 +23,7 @@ public class IntrigueThirdPersonCameraViewSystem implements GameSys {
 	private final Vector3 tmp3 = new Vector3();
 	private final Vector3 tmp2 = new Vector3();
 	private final Vector3 tmp = new Vector3();
+	private final Matrix4 xxx = new Matrix4();
 	protected final PerspectiveCamera cam;
 	
 	public IntrigueThirdPersonCameraViewSystem() {
@@ -42,18 +43,16 @@ public class IntrigueThirdPersonCameraViewSystem implements GameSys {
 	public void update(float delta) {
 		for(Integer i : internal) {
 			Gobject q = Intrigue.mamaDukes.get(i);
-			this.tmp3.set(0,100,0);
-			Matrix4 xxx = new Matrix4();
 			q.getPhysicalComponent().getPhysicsBody().getMotionState().getWorldTransform(xxx);
 			xxx.getTranslation(this.tmp);
-			this.tmp3.set(this.tmp);
+			//this.tmp3.set(this.tmp);
 			//Vector3 tmp4 = new Vector3();
 			this.tmp2.set(0,350,-500);
 			q.getPhysicalComponent().getPhysicsBody().getRigidBody().getOrientation().transform(this.tmp2);
 			this.tmp2.add(this.tmp);
 			cam.position.set(this.tmp2);
 			cam.up.set(0,1,0);
-			this.tmp3.add(0,100,0);
+			//this.tmp3.add(0,100,0);
 			cam.update();
 		}
 	}
