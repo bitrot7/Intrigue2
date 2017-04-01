@@ -18,12 +18,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.gamedev.drifter.DrifterAiSys;
+import com.gamedev.drifter.DrifterAimingSystem;
+import com.gamedev.drifter.DrifterAnimationSystem;
+import com.gamedev.drifter.DrifterBulletCollisionSystem;
+import com.gamedev.drifter.DrifterControllerSystem;
+import com.gamedev.drifter.DrifterMotionSystem;
+import com.gamedev.drifter.DrifterObject;
+import com.gamedev.drifter.DrifterParticleSys;
+import com.gamedev.drifter.DrifterTargetingAISystem;
 
 public class Intrigue extends ApplicationAdapter {
 	public static Array<DrifterObject> mamaDukes = new Array<DrifterObject>();
 	private IntrigueGraphicSystem IntrigueGraphicSys;
 	private IntrigueTotalPhysicsSystem IntrigueTotalPhysicsSys;
 	private IntrigueThirdPersonCameraViewSystem IntrigueCamSys;
+	private IntrigueLevelSystem IntrigueLevelSys;
 	private DrifterMotionSystem IntrigueMotionSys;
 	private DrifterAnimationSystem IntrigueAnimSys;
 	private DrifterControllerSystem IntrigueControllerSys;
@@ -48,6 +58,7 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueGraphicSys = new IntrigueGraphicSystem();
 		IntrigueTotalPhysicsSys = new IntrigueTotalPhysicsSystem();
 		IntrigueCamSys = new IntrigueThirdPersonCameraViewSystem();
+		IntrigueLevelSys = new IntrigueLevelSystem();
 		
 		IntrigueAnimSys = new DrifterAnimationSystem();
 		IntrigueControllerSys = new DrifterControllerSystem();
@@ -107,37 +118,122 @@ public class Intrigue extends ApplicationAdapter {
 		Vector3 halfExtents = new Vector3(30f,90f,25f);
 		btBoxShape person_shape = new btBoxShape(halfExtents);
 		
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(player_guid).BaseObject(new Gobject.Builder(player_guid).IntrigueModelComponent(path_to_char).IntrigueControllerComponent(1).IntriguePhysicalComponent(person_shape, 200f, trans).Build()).CharacterActionsComponent().AnimationController().Fireable(path_to_crosshair).TargetingAI(team1).Build());
-		mamaDukes.get(player_guid).getPhysicalComponent().getPhysicsBody().getRigidBody().setAngularFactor(new Vector3(0,0,0));
-		mamaDukes.get(player_guid).getPhysicalComponent().getPhysicsBody().getRigidBody().applyGravity();
+		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(player_guid)
+					.BaseObject(new Gobject.Builder(player_guid)
+					.IntrigueModelComponent(path_to_char).IntrigueControllerComponent(1)
+					.IntriguePhysicalComponent(person_shape, 200f, trans)
+					.Build()).CharacterActionsComponent()
+					.AnimationController()
+					.Fireable(path_to_crosshair)
+					.TargetingAI(team1).Build());
+		mamaDukes.get(player_guid).getPhysicalComponent()
+					.getPhysicsBody().getRigidBody()
+					.setAngularFactor(new Vector3(0,0,0));
+		mamaDukes.get(player_guid).getPhysicalComponent()
+					.getPhysicsBody().getRigidBody().applyGravity();
 		
-		mamaDukes.get(player_guid).getPhysicalComponent().getPhysicsBody().getRigidBody().setActivationState(Collision.DISABLE_DEACTIVATION);
+		mamaDukes.get(player_guid).getPhysicalComponent()
+					.getPhysicsBody().getRigidBody()
+					.setActivationState(Collision.DISABLE_DEACTIVATION);
 
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(1).BaseObject(new Gobject.Builder(1).IntrigueModelComponent(path_to_snow_terrain).IntriguePhysicalComponent(iceMass, iceTrans).Build()).ParticleComponent("Blizzard","3DParticles/blizzard.pfx",new Vector3(1000,1000, -2500), new Vector3(3000, 1000,2000 )).Build());
+		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(1)
+					.BaseObject(new Gobject.Builder(1)
+					.IntrigueModelComponent(path_to_snow_terrain)
+					.IntriguePhysicalComponent(iceMass, iceTrans)
+					.Build())
+					.ParticleComponent("Blizzard",
+							"3DParticles/blizzard.pfx",new Vector3(1000,1000, -2500),
+							new Vector3(3000, 1000,2000 ))
+					.Build());
 		trans2.translate(-1000,1000,1500);
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(2).BaseObject(new Gobject.Builder(2).IntrigueModelComponent(path_to_char).IntriguePhysicalComponent(person_shape, 200f, trans2).Build()).CharacterActionsComponent().AnimationController().Fireable().ShootingSoldierAI().TargetingAI(team2).Build());
-		mamaDukes.get(2).getPhysicalComponent().getPhysicsBody().getRigidBody().setAngularFactor(new Vector3(0,0,0));
-		mamaDukes.get(2).getPhysicalComponent().getPhysicsBody().getRigidBody().setActivationState(Collision.DISABLE_DEACTIVATION);
-		mamaDukes.get(2).getPhysicalComponent().getPhysicsBody().getRigidBody().setUserIndex(2);
+		
+		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(2)
+					.BaseObject(new Gobject.Builder(2)
+					.IntrigueModelComponent(path_to_char)
+					.IntriguePhysicalComponent(person_shape, 200f, trans2)
+					.Build())
+					.CharacterActionsComponent()
+					.AnimationController()
+					.Fireable()
+					.ShootingSoldierAI()
+					.TargetingAI(team2)
+					.Build());
+		
+		mamaDukes.get(2).getPhysicalComponent()
+					.getPhysicsBody()
+					.getRigidBody()
+					.setAngularFactor(new Vector3(0,0,0));
+		mamaDukes.get(2).getPhysicalComponent()
+					.getPhysicsBody()
+					.getRigidBody()
+					.setActivationState(Collision.DISABLE_DEACTIVATION);
+		
+		mamaDukes.get(2).getPhysicalComponent()
+					.getPhysicsBody().getRigidBody()
+					.setUserIndex(2);
 		
 		trans3.translate(-1000, 1000, 2000);
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(3).BaseObject(new Gobject.Builder(3).IntrigueModelComponent(path_to_char).IntriguePhysicalComponent(person_shape, 200f, trans3).Build()).CharacterActionsComponent().AnimationController().Fireable().ShootingSoldierAI().TargetingAI(team2).Build());
-		mamaDukes.get(3).getPhysicalComponent().getPhysicsBody().getRigidBody().setAngularFactor(new Vector3(0,0,0));
-		mamaDukes.get(3).getPhysicalComponent().getPhysicsBody().getRigidBody().setActivationState(Collision.DISABLE_DEACTIVATION);
-		mamaDukes.get(3).getPhysicalComponent().getPhysicsBody().getRigidBody().setUserIndex(3);
+		
+		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(3)
+					.BaseObject(new Gobject.Builder(3).IntrigueModelComponent(path_to_char)
+					.IntriguePhysicalComponent(person_shape, 200f, trans3)
+					.Build()).CharacterActionsComponent().AnimationController().Fireable()
+					.ShootingSoldierAI().TargetingAI(team2)
+					.Build());
+		
+		mamaDukes.get(3).getPhysicalComponent()
+					.getPhysicsBody().getRigidBody()
+					.setAngularFactor(new Vector3(0,0,0));
+		mamaDukes.get(3).getPhysicalComponent()
+					.getPhysicsBody().getRigidBody()
+					.setActivationState(Collision.DISABLE_DEACTIVATION);
+		mamaDukes.get(3).getPhysicalComponent()
+					.getPhysicsBody().getRigidBody().setUserIndex(3);
 		
 		Vector3 rpos = new Vector3();
-		mamaDukes.get(1).getModelComponent().getModel().transform.getTranslation(rpos);
+		
+		mamaDukes.get(1).getModelComponent().getModel()
+					.transform.getTranslation(rpos);
+		
 		iceTrans2.translate(0, 0, 6185.332f);
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(4).BaseObject(new Gobject.Builder(4).IntrigueModelComponent(path_to_snow_terrain).IntriguePhysicalComponent(iceMass, iceTrans2).Build()).ParticleComponent("Blizzard","3DParticles/blizzard.pfx",new Vector3(0, 0, 6185.332f), new Vector3(3000, 1000,2000 )).Build());
+		
+		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(4)
+					.BaseObject(new Gobject.Builder(4)
+					.IntrigueModelComponent(path_to_snow_terrain)
+					.IntriguePhysicalComponent(iceMass, iceTrans2)
+					.IntrigueLevelComponent("SoundEffects/stages/snow stage/wind1.mp3")
+					.Build())
+					.ParticleComponent("Blizzard","3DParticles/blizzard.pfx",
+							new Vector3(0, 0, 6185.332f),
+							new Vector3(3000, 1000,2000 ))
+					.Build());
+		
 		mamaDukes.get(4).getModelComponent().getModel().transform.translate(new Vector3(0, 0, 6185.332f)); //btStaticMeshShapes do not update their motionStates.  The model Translation must be set manually in these cases.
 		iceTrans3.translate(-6149.6568f, 0, 6185.332f);
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(5).BaseObject(new Gobject.Builder(5).IntrigueModelComponent(path_to_snow_terrain).IntriguePhysicalComponent(iceMass, iceTrans3).Build()).ParticleComponent("Blizzard","3DParticles/blizzard.pfx",new Vector3(-6149.6568f, 0, 6185.332f), new Vector3(3000, 1000,2000 )).Build());
-		mamaDukes.get(5).getModelComponent().getModel().transform.translate(new Vector3(-6149.6568f, 0, 6185.332f)); //btStaticMeshShapes do not update their motionStates.  The model Translation must be set manually in these cases.
+		
+		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(5)
+					.BaseObject(new Gobject.Builder(5)
+					.IntrigueModelComponent(path_to_snow_terrain)
+					.IntriguePhysicalComponent(iceMass, iceTrans3)
+					.Build())
+					.ParticleComponent("Blizzard","3DParticles/blizzard.pfx",
+							new Vector3(-6149.6568f, 0, 6185.332f),
+							new Vector3(3000, 1000,2000 ))
+					.Build());
+		/**
+		 * btStaticMeshShapes do not update their motionStates.  The model Translation must be set manually in these cases.
+		 */
+		mamaDukes.get(5).getModelComponent().getModel().transform.translate(new Vector3(-6149.6568f, 0, 6185.332f)); 
 		
 		iceTrans4.translate(-6149.6568f, 0, 0);
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(6).BaseObject(new Gobject.Builder(6).IntrigueModelComponent(path_to_snow_terrain).IntriguePhysicalComponent(iceMass, iceTrans4).Build()).ParticleComponent("Blizzard","3DParticles/blizzard.pfx",new Vector3(-6149.6568f, 0, 0), new Vector3(3000, 1000,2000 )).Build());
-		mamaDukes.get(6).getModelComponent().getModel().transform.translate(new Vector3(-6149.6568f, 0, 0)); //btStaticMeshShapes do not update their motionStates.  The model Translation must be set manually in these cases.
+		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(6)
+					.BaseObject(new Gobject.Builder(6)
+					.IntrigueModelComponent(path_to_snow_terrain)
+					.IntriguePhysicalComponent(iceMass, iceTrans4)
+					.Build()).ParticleComponent("Blizzard","3DParticles/blizzard.pfx",
+							new Vector3(-6149.6568f, 0, 0), new Vector3(3000, 1000,2000 ))
+					.Build());
+		mamaDukes.get(6).getModelComponent().getModel().transform.translate(new Vector3(-6149.6568f, 0, 0)); 
 		
 		//register objects to respective systems
 		IntrigueCamSys.register(player_guid);
@@ -173,6 +269,7 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueGraphicSys.register(4);
 		IntrigueTotalPhysicsSys.register(4);
 		IntrigueParticleSys.register(4);
+		IntrigueLevelSys.register(4);
 		IntrigueGraphicSys.register(5);
 		IntrigueTotalPhysicsSys.register(5);
 		IntrigueParticleSys.register(5); //snow terrain
@@ -194,6 +291,7 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueGraphicSys.update(deltaTime);
 		IntrigueCamSys.update(deltaTime);
 		IntrigueAnimSys.update(deltaTime);
+		IntrigueLevelSys.update(deltaTime);
 		//}
 		
 		//physics System {

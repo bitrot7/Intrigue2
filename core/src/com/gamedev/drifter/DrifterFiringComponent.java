@@ -1,5 +1,5 @@
 //A Firing Component for drifter objects that can shoot.
-package com.mk.intrigue;
+package com.gamedev.drifter;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -22,7 +22,7 @@ public class DrifterFiringComponent {
 		
 	}
 	public DrifterFiringComponent() {
-		
+		//Audio.newSound();
 	}
 	public DrifterFiringComponent(String path) {
 		TextureRegion t = new TextureRegion(new Texture(Gdx.files.internal(path)));

@@ -1,11 +1,14 @@
-package com.mk.intrigue;
+package com.gamedev.drifter;
 
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleSystem;
 import com.badlogic.gdx.graphics.g3d.particles.batches.PointSpriteParticleBatch;
-
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.mk.intrigue.GameSys;
+import com.mk.intrigue.Intrigue;
+import com.mk.intrigue.IntrigueGraphicSystem;
+import com.mk.intrigue.ParticleObject;
 
 public class DrifterParticleSys implements GameSys {
 	/*

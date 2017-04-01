@@ -1,4 +1,4 @@
-package com.mk.intrigue;
+package com.gamedev.drifter;
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.math.Vector3;
@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.badlogic.gdx.graphics.g3d.decals.CameraGroupStrategy;
 import com.badlogic.gdx.Gdx;
+import com.mk.intrigue.GameSys;
+import com.mk.intrigue.Intrigue;
+import com.mk.intrigue.IntrigueGraphicSystem;
 
 /*
 *	System requirments for entity:

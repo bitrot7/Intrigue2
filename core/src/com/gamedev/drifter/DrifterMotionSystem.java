@@ -1,6 +1,9 @@
-package com.mk.intrigue;
+package com.gamedev.drifter;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.math.Vector3;
+import com.mk.intrigue.AtomicPhysicalObject;
+import com.mk.intrigue.GameSys;
+import com.mk.intrigue.Intrigue;
 /*
 *	System requirements for entity:'
 *		-DrifterObject

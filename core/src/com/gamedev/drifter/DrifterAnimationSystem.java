@@ -1,7 +1,10 @@
-package com.mk.intrigue;
+package com.gamedev.drifter;
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
+import com.mk.intrigue.GameSys;
+import com.mk.intrigue.Intrigue;
+import com.mk.intrigue.MyAnimationListener;
 /*
 	*	Animation names:
 	*		Run_Forwards

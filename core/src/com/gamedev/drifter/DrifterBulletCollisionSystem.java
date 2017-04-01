@@ -1,8 +1,12 @@
-package com.mk.intrigue;
+package com.gamedev.drifter;
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.bullet.collision.ClosestRayResultCallback;
+import com.mk.intrigue.GameSys;
+import com.mk.intrigue.Intrigue;
+import com.mk.intrigue.IntrigueGraphicalDebugger;
+import com.mk.intrigue.IntrigueTotalPhysicsSystem;
 /*
 *	System requirements for entity:
 *		-DrifterObject

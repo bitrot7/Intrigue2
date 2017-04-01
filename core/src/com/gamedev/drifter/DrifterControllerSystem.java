@@ -1,6 +1,8 @@
-package com.mk.intrigue;
+package com.gamedev.drifter;
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.utils.Array;
+import com.mk.intrigue.GameSys;
+import com.mk.intrigue.Intrigue;
 /*
 *	System requirments for entity:
 *		-DrifterObject

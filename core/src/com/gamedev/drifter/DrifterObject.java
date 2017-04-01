@@ -1,4 +1,4 @@
-package com.mk.intrigue;
+package com.gamedev.drifter;
 //DrifterObject.java
 
 
@@ -7,6 +7,8 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
+import com.mk.intrigue.Gobject;
+import com.mk.intrigue.Gobject.Builder;
 
 public class DrifterObject extends Gobject { //extend Gobject
 	private AnimationController animation3d;
@@ -67,6 +69,7 @@ public class DrifterObject extends Gobject { //extend Gobject
 			super.modelComponent = g.getModelComponent();
 			super.physicalComponent = g.getPhysicalComponent();
 			super.controllerComponent = g.getControllerComponent();
+			super.levelComponent = g.getLevelComponent();
 			return this;
 		}
 		

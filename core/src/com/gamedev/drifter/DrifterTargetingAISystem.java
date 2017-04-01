@@ -1,8 +1,10 @@
 //DrifterTargetingAISystem
-package com.mk.intrigue;
+package com.gamedev.drifter;
 
 
 import com.badlogic.gdx.utils.Array;
+import com.mk.intrigue.GameSys;
+import com.mk.intrigue.Intrigue;
 
 public class DrifterTargetingAISystem implements GameSys {
 	private Array<Integer> internal = new Array<Integer>();

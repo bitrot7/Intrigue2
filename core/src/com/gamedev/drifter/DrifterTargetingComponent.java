@@ -1,4 +1,4 @@
-package com.mk.intrigue;
+package com.gamedev.drifter;
 
 public class DrifterTargetingComponent {
 	int team_number = 0;

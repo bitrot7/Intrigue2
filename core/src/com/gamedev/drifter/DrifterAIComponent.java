@@ -1,4 +1,6 @@
-package com.mk.intrigue;
+package com.gamedev.drifter;
+
+import com.mk.intrigue.IntriguePhysicalComponent;
 
 public class DrifterAIComponent {
 	private IntriguePhysicalComponent m_adversary_positional_info;

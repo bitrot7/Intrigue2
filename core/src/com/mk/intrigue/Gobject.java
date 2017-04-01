@@ -12,11 +12,13 @@ public class Gobject {
 	protected IntrigueModelComponent modelComponent;// the component in entity component.
 	protected IntriguePhysicalComponent physicalComponent;
 	protected IntrigueControllerComponent controllerComponent;
+	protected IntrigueLevelComponent levelComponent;
 	protected Gobject(Builder builder) {
 		this.guid = builder.guid;
 		this.modelComponent = builder.modelComponent;
 		this.physicalComponent = builder.physicalComponent;
 		this.controllerComponent = builder.controllerComponent;
+		this.levelComponent = builder.levelComponent;
 	}
 	/*
 	*	general accessors
@@ -29,6 +31,9 @@ public class Gobject {
 	}
 	public IntrigueControllerComponent getControllerComponent() {
 		return this.controllerComponent; //return component with controller data.
+	}
+	public IntrigueLevelComponent getLevelComponent() {
+		return this.levelComponent;
 	}
 	/*
 	*	end general accessors
@@ -48,7 +53,7 @@ public class Gobject {
 		protected IntrigueModelComponent modelComponent;
 		protected IntriguePhysicalComponent physicalComponent;
 		protected IntrigueControllerComponent controllerComponent;
-	
+		protected IntrigueLevelComponent levelComponent;
 		
 		public Builder(int g) {
 			guid = g;
@@ -86,6 +91,10 @@ public class Gobject {
 			
 			this.physicalComponent = new IntriguePhysicalComponent(this.modelComponent.getModel(), mass, transform);
 			this.physicalComponent.getPhysicsBody().getRigidBody().setUserIndex(this.guid);
+			return this;
+		}
+		public Builder IntrigueLevelComponent(String sound_file) {
+			this.levelComponent = new IntrigueLevelComponent(sound_file);
 			return this;
 		}
 

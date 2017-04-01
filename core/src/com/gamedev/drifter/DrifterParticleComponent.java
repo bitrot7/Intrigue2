@@ -1,9 +1,10 @@
 //DrifterParticleComponent
-package com.mk.intrigue;
+package com.gamedev.drifter;
 
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.math.Vector3;
+import com.mk.intrigue.ParticleObject;
 /*
 *	Utilizes map.
 */
