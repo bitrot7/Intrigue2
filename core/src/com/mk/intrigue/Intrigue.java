@@ -129,7 +129,7 @@ public class Intrigue extends ApplicationAdapter {
 					.AnimationController()
 					.Fireable(path_to_crosshair)
 					.TargetingAI(team1)
-					.CharacterSoundComponent("", "SoundEffects/guns/M4A1.mp3")
+					.CharacterSoundComponent("SoundEffects/Character/walking/step-spur.mp3", "SoundEffects/guns/M4A1.mp3")
 					.Build());
 		mamaDukes.get(player_guid).getPhysicalComponent()
 					.getPhysicsBody().getRigidBody()
