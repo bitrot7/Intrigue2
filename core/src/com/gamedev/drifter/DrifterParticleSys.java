@@ -26,8 +26,6 @@ public class DrifterParticleSys implements GameSys {
 		pointSpriteBatch = new PointSpriteParticleBatch();
 		pointSpriteBatch.setCamera(IntrigueGraphicSystem.cam);
 		particleSystem.add(pointSpriteBatch);
-		//particleSystem.setBatch(pointSpriteBatch);
-		//System.out.println("batches + " + particleSystem.getBatches());
 		
 
 		//particleSystem.add(effect);

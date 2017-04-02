@@ -11,6 +11,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.bullet.collision.Collision;
 import com.badlogic.gdx.physics.bullet.collision.btBoxShape;
+import com.badlogic.gdx.physics.bullet.collision.btCapsuleShape;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -119,7 +120,7 @@ public class Intrigue extends ApplicationAdapter {
 		//btCollisionShape iceShape = null;
 		trans.translate(0,1000,-2500);
 		Vector3 halfExtents = new Vector3(30f,90f,25f);
-		btBoxShape person_shape = new btBoxShape(halfExtents);
+		btCapsuleShape person_shape = new btCapsuleShape(30f, 90f);
 		
 		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(player_guid)
 					.BaseObject(new Gobject.Builder(player_guid)
@@ -159,6 +160,7 @@ public class Intrigue extends ApplicationAdapter {
 					.Build())
 					.CharacterActionsComponent()
 					.AnimationController()
+					.ParticleComponent("Blood", "3DParticles/Character/Blood.pfx", new Vector3(), new Vector3(1f,1f,1f))
 					.Fireable()
 					.ShootingSoldierAI()
 					.TargetingAI(team2)
