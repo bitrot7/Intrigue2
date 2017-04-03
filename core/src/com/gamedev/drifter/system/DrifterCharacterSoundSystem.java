@@ -34,10 +34,10 @@ public class DrifterCharacterSoundSystem extends GameSys {
 			}
 			DrifterCharacterActionsComponent dca = d.getCharacterActionsComponent();
 			if(dca.isForward() || dca.isBackward()) {
-				if(this.last_time > this.shortest_time_between_steps) {
+				//if(this.last_time > this.shortest_time_between_steps) {
 					d.getCharacterSoundComponent().getWalkingSound().play(.5f);
-					this.last_time = 0;
-				}
+					//this.last_time = 0;
+				//}
 			}
 			else if(dca.isLeft() || dca.isRight()) {
 				if(this.last_time > this.shortest_time_between_steps_sideways) {

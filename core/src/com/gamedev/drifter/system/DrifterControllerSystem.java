@@ -13,7 +13,10 @@ import com.mk.intrigue.system.GameSys;
 */
 public class DrifterControllerSystem extends GameSys { 
 	private Array<Integer> internal = new Array<Integer>();
-	
+	private float last_time = 0f;
+	private final float shortest_time_between_shots = .11f;
+	private final float shortest_time_between_steps = .53f;
+	private final float shortest_time_between_steps_sideways = .38f;
 	public void register(int guid) {
 		DrifterObject d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getControllerComponent(), this, d);
@@ -23,8 +26,16 @@ public class DrifterControllerSystem extends GameSys {
 	public void deregister(int guid) {
 		internal.removeValue(guid,true);
 	}
+	private boolean stagger(float length) {
+		if(this.last_time > length) {
+			this.last_time = 0;
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public void update(float delta) {
+		this.last_time += delta;
 		for(Integer i : internal) {
 			DrifterObject g = Intrigue.mamaDukes.get(i);
 			Controller c = g.getControllerComponent().getController();
@@ -64,15 +75,21 @@ public class DrifterControllerSystem extends GameSys {
 				//System.out.println("Axis 1: " + val2);
 				//soldier.setRunningBackward(true);
 				//soldier.setIdle(false);
-				s.setIdle(false);
-				s.setBackward(true);
+				
+				if(this.stagger(this.shortest_time_between_steps)) {
+					s.setIdle(false);
+					s.setBackward(true);
+				}
 			}
 			else if(val2 < -0.5f) {
 				//System.out.println("Axis 1: " + val2);
 				//soldier.setRunningForward(true);
 				//soldier.setIdle(false);
-				s.setIdle(false);
-				s.setForward(true);
+				
+				if(this.stagger(this.shortest_time_between_steps)) {
+					s.setIdle(false);
+					s.setForward(true);
+				}
 			}
 			if(val4 > 0.5f) {
 				//soldier.setRotateRight(true);//Forward(true);

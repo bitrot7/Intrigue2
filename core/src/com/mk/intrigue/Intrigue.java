@@ -153,7 +153,7 @@ public class Intrigue extends ApplicationAdapter {
 					.IntriguePhysicalComponent(iceMass, iceTrans)
 					.Build())
 					.ParticleComponent("Blizzard",
-							"3DParticles/blizzard.pfx",new Vector3(1000,1000, -2500),
+							"3DParticles/blizzard.pfx",new Vector3(1000,1000, -2500), /*perhaps create a Weather Object in level*/
 							new Vector3(3000, 1000,2000 ))
 					.Build());
 		trans2.translate(-1000,1000,1500);
