@@ -43,6 +43,7 @@ public class DrifterParticleSys extends GameSys {
 		internal.removeValue(guid, true);
 	}
 	public void update(float delta) {
+		super.update(delta);
 		pointSpriteBatch.begin();
 		for(Integer i : internal) {
 			//System.out.println(Intrigue.mamaDukes.get(i).getParticleComponent());

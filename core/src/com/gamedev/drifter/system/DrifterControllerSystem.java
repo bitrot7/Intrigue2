@@ -26,13 +26,7 @@ public class DrifterControllerSystem extends GameSys {
 	public void deregister(int guid) {
 		internal.removeValue(guid,true);
 	}
-	private boolean stagger(float length) {
-		if(this.last_time > length) {
-			this.last_time = 0;
-			return true;
-		}
-		return false;
-	}
+	
 	@Override
 	public void update(float delta) {
 		this.last_time += delta;
@@ -134,7 +128,9 @@ public class DrifterControllerSystem extends GameSys {
 				//soldier.setShooting(true);
 			//	s.setIdle(false);
 				//s.setAiming(false);
-				s.setFiring(true);
+				if(this.stagger(this.shortest_time_between_shots)) {
+					s.setFiring(true);
+				}
 				//System.out.println("RT: " + rt);
 			}
 			if(lt > .5f) {

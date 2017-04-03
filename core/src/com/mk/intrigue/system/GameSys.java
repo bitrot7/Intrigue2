@@ -6,8 +6,11 @@ import com.mk.intrigue.exception.ComponentMissingException;
 
 
 public abstract class GameSys {
+	private float last_time;
 	public abstract void register(int x);
-	public abstract  void update(float delta);
+	public void update(float delta) {
+		this.last_time += delta;
+	}
 	public abstract void deregister(int x);
 	/**
 	 * @throws ComponentMissingException if Component not Found
@@ -16,5 +19,13 @@ public abstract class GameSys {
 		if(c == null) {
 			throw new ComponentMissingException("Component",s.getClass().getName(), g.getGUID());
 		}
+	}
+	protected boolean stagger(float length) {
+		
+		if(this.last_time > length) {
+			this.last_time = 0;
+			return true;
+		}
+		return false;
 	}
 }
