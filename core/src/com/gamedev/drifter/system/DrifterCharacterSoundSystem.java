@@ -8,7 +8,6 @@ import com.mk.intrigue.system.GameSys;
 
 public class DrifterCharacterSoundSystem extends GameSys {
 	private final Array<Integer> internal = new Array<Integer>();
-	private final float shortest_time_between_shots = .11f;
 	private final float shortest_time_between_steps = .53f;
 	private final float shortest_time_between_steps_sideways = .38f;
 	@Override
@@ -25,24 +24,20 @@ public class DrifterCharacterSoundSystem extends GameSys {
 		for(Integer i : internal) {
 			DrifterObject d = Intrigue.mamaDukes.get(i);
 			if(d.getCharacterActionsComponent().isFiring()) {
-				//System.out.println(delta);
-				//if(this.last_time > this.shortest_time_between_shots) {
+				
 					d.getCharacterSoundComponent().getShootingSound().play();
-					//this.last_time = 0;
-				//}
+				
 			}
 			DrifterCharacterActionsComponent dca = d.getCharacterActionsComponent();
 			if(dca.isForward() || dca.isBackward()) {
-				//if(this.last_time > this.shortest_time_between_steps) {
+				if(this.stagger(this.shortest_time_between_steps)) {
 					d.getCharacterSoundComponent().getWalkingSound().play(.5f);
-					//this.last_time = 0;
-				//}
+				}
 			}
 			else if(dca.isLeft() || dca.isRight()) {
-				//if(this.last_time > this.shortest_time_between_steps_sideways) {
+				if(this.stagger(this.shortest_time_between_steps_sideways)) {
 					d.getCharacterSoundComponent().getWalkingSound().play(.5f);
-					//this.last_time = 0;
-				//}
+				}
 			}
 		}
 

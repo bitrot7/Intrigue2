@@ -14,7 +14,6 @@ import com.gamedev.drifter.entity.component.DrifterFiringComponent;
 import com.gamedev.drifter.entity.component.DrifterParticleComponent;
 import com.gamedev.drifter.entity.component.DrifterTargetingComponent;
 import com.mk.intrigue.entity.Gobject;
-import com.mk.intrigue.entity.Gobject.Builder;
 
 public class DrifterObject extends Gobject { //extend Gobject
 	private AnimationController animation3d;

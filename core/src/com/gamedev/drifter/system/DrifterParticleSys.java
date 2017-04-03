@@ -6,11 +6,8 @@ import com.badlogic.gdx.graphics.g3d.particles.ParticleSystem;
 import com.badlogic.gdx.graphics.g3d.particles.batches.PointSpriteParticleBatch;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.gamedev.drifter.entity.DrifterObject;
-import com.gamedev.drifter.entity.component.DrifterParticleComponent;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.ParticleObject;
-import com.mk.intrigue.entity.Gobject;
-import com.mk.intrigue.exception.ComponentMissingException;
 import com.mk.intrigue.system.GameSys;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 
@@ -31,8 +28,6 @@ public class DrifterParticleSys extends GameSys {
 		pointSpriteBatch.setCamera(IntrigueGraphicSystem.cam);
 		particleSystem.add(pointSpriteBatch);
 		
-
-		//particleSystem.add(effect);
 	}
 	public void register(int guid) {
 		internal.add(guid);

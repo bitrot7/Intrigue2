@@ -6,17 +6,13 @@ import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.GameSys;
 /*
-*	System requirments for entity:
+*	System requirements for entity:
 *		-DrifterObject
 *		-IntrigueControllerComponent
 *		-DrifterCharacterActionsComponent
 */
 public class DrifterControllerSystem extends GameSys { 
 	private Array<Integer> internal = new Array<Integer>();
-	private float last_time = 0f;
-	private final float shortest_time_between_shots = .11f;
-	private final float shortest_time_between_steps = .53f;
-	private final float shortest_time_between_steps_sideways = .38f;
 	public void register(int guid) {
 		DrifterObject d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getControllerComponent(), this, d);
@@ -29,7 +25,7 @@ public class DrifterControllerSystem extends GameSys {
 	
 	@Override
 	public void update(float delta) {
-		this.last_time += delta;
+		super.update(delta);
 		for(Integer i : internal) {
 			DrifterObject g = Intrigue.mamaDukes.get(i);
 			Controller c = g.getControllerComponent().getController();
@@ -70,20 +66,16 @@ public class DrifterControllerSystem extends GameSys {
 				//soldier.setRunningBackward(true);
 				//soldier.setIdle(false);
 				
-				if(this.stagger(this.shortest_time_between_steps)) {
-					s.setIdle(false);
-					s.setBackward(true);
-				}
+				s.setIdle(false);
+				s.setBackward(true);
 			}
 			else if(val2 < -0.5f) {
 				//System.out.println("Axis 1: " + val2);
 				//soldier.setRunningForward(true);
 				//soldier.setIdle(false);
 				
-				if(this.stagger(this.shortest_time_between_steps)) {
-					s.setIdle(false);
-					s.setForward(true);
-				}
+				s.setIdle(false);
+				s.setForward(true);
 			}
 			if(val4 > 0.5f) {
 				//soldier.setRotateRight(true);//Forward(true);
@@ -128,9 +120,7 @@ public class DrifterControllerSystem extends GameSys {
 				//soldier.setShooting(true);
 			//	s.setIdle(false);
 				//s.setAiming(false);
-				if(this.stagger(this.shortest_time_between_shots)) {
-					s.setFiring(true);
-				}
+				s.setFiring(true);
 				//System.out.println("RT: " + rt);
 			}
 			if(lt > .5f) {
