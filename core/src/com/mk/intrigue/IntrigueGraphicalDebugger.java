@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.graphics.Color;
+import com.mk.intrigue.system.IntrigueGraphicSystem;
 public final class IntrigueGraphicalDebugger {
 	private static ShapeRenderer shapeRenderer;
 	private IntrigueGraphicalDebugger() {

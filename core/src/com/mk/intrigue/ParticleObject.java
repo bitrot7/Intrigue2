@@ -5,8 +5,8 @@ package com.mk.intrigue;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffectLoader;
 import com.badlogic.gdx.math.Vector3;
-import com.gamedev.drifter.DrifterObject;
-import com.gamedev.drifter.DrifterParticleSys;
+import com.gamedev.drifter.entity.DrifterObject;
+import com.gamedev.drifter.system.DrifterParticleSys;
 
 public class ParticleObject {
 	private String name;
