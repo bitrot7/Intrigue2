@@ -10,6 +10,7 @@ public class DrifterCharacterSoundSystem extends GameSys {
 	private final Array<Integer> internal = new Array<Integer>();
 	private final float shortest_time_between_steps = .53f;
 	private final float shortest_time_between_steps_sideways = .38f;
+	private final float shortest_time_between_shots = .11f;
 	@Override
 	public void register(int x) {
 		DrifterObject d = Intrigue.mamaDukes.get(x);
@@ -24,8 +25,9 @@ public class DrifterCharacterSoundSystem extends GameSys {
 		for(Integer i : internal) {
 			DrifterObject d = Intrigue.mamaDukes.get(i);
 			if(d.getCharacterActionsComponent().isFiring()) {
-				
+				if(this.stagger(this.shortest_time_between_shots)) {
 					d.getCharacterSoundComponent().getShootingSound().play();
+				}
 				
 			}
 			DrifterCharacterActionsComponent dca = d.getCharacterActionsComponent();

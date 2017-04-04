@@ -60,7 +60,7 @@ public class DrifterObject extends Gobject { //extend Gobject
 	public DrifterCharacterSoundComponent getCharacterSoundComponent() {
 		return this.characterSoundComponent;
 	}
-	/*
+	/**
 	*	extend the builder as well. keep the design pattern.  it is nice.
 	*/
 	public static class DrifterObjectBuilder extends Gobject.Builder {
@@ -71,6 +71,7 @@ public class DrifterObject extends Gobject { //extend Gobject
 		private DrifterAIComponent aiComponent;
 		private DrifterTargetingComponent targetingComponent;
 		private DrifterCharacterSoundComponent characterSoundComponent;
+		
 		public DrifterObjectBuilder(int guid) {
 			super(guid);
 		}
