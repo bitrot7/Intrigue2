@@ -5,13 +5,26 @@ import com.mk.intrigue.entity.component.IComponent;
 import com.mk.intrigue.exception.ComponentMissingException;
 
 
-public abstract class GameSys {
+public abstract class GameSys implements ISystem {
 	private float last_time;
-	public abstract void register(int x);
+	private ISystem upstream_system;
+	
+	public GameSys(ISystem ups) {
+		this.upstream_system = ups;
+	}
+	@Override
+	public void register(int guid) {
+		this.upstream_system.register(guid);
+	}
+	@Override
 	public void update(float delta) {
 		this.last_time += delta;
+		this.upstream_system.update(delta);
 	}
-	public abstract void deregister(int x);
+	@Override
+	public void deregister(int guid) {
+		this.upstream_system.deregister(guid);
+	}
 	/**
 	 * @throws ComponentMissingException if Component not Found
 	 */

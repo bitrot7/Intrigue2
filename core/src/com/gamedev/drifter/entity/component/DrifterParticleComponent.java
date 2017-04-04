@@ -16,6 +16,9 @@ public class DrifterParticleComponent implements IComponent {
 		//map.put(name, new ParticleObject(name, path));
 		pobjs.add(new ParticleObject(name, path,pos,scale));
 	}
+	public DrifterParticleComponent(ParticleObject p) {
+		this.pobjs.add(p);
+	}
 	public DrifterParticleComponent(Array<String> names, Array<String> paths) {
 		if(names.size != paths.size) {
 			System.out.println("ASSERTION FAILED: Particle path array and particle name array do not match");
