@@ -1,0 +1,1 @@
+All actual manipulations of game objects happen here.
