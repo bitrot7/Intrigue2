@@ -52,7 +52,7 @@ public class Intrigue extends ApplicationAdapter {
 	private DrifterBulletCollisionSystem IntrigueBulletCollisionSystem;
 	private DrifterTargetingAISystem IntrigueTargetingAISystem;
 	private DrifterCharacterSoundSystem DrifterCharacterSoundSys;
-	private final IntrigueLevelFactory<Gobject> level_factory = new IntrigueLevelFactory<Gobject>();
+	private final IntrigueLevelFactory<DrifterObject> level_factory = new IntrigueLevelFactory<DrifterObject>();
 	private Stage stage;
 	private Table table;
 	private Label text;
@@ -212,9 +212,9 @@ public class Intrigue extends ApplicationAdapter {
 		
 		iceTrans2.translate(0, 0, 6185.332f);
 		
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(4).BaseObject(level_factory.createLevel(path_to_snow_terrain,
+		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
 				"SoundEffects/stages/snow stage/wind1.mp3",
-				"3DParticles/blizzard.pfx", iceTrans2, Gobject.class)).Build());
+				"3DParticles/blizzard.pfx", iceTrans2, DrifterObject.class));
 		
 					/*new DrifterObject.DrifterObjectBuilder(4)
 					.BaseObject(new Gobject.Builder(4)
@@ -288,7 +288,7 @@ public class Intrigue extends ApplicationAdapter {
 		
 		IntrigueGraphicSys.register(4);
 		IntrigueTotalPhysicsSys.register(4);
-		IntrigueParticleSys.register(4);
+		//IntrigueParticleSys.register(4);
 		IntrigueLevelSys.register(4);
 		IntrigueGraphicSys.register(5);
 		IntrigueTotalPhysicsSys.register(5);

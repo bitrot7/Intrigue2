@@ -82,6 +82,7 @@ public class DrifterObject extends Gobject { //extend Gobject
 			super.physicalComponent = g.getPhysicalComponent();
 			super.controllerComponent = g.getControllerComponent();
 			super.levelComponent = g.getLevelComponent();
+			//this.particleComponent = this.ParticleComponent(g.getLevelComponent().getWeather().getWeatherGraphics());
 			return this;
 		}
 		

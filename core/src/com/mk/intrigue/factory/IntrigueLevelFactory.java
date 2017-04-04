@@ -1,22 +1,25 @@
 package com.mk.intrigue.factory;
 import com.badlogic.gdx.math.Matrix4;
+import com.gamedev.drifter.entity.DrifterObject;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Gobject;
 import com.mk.intrigue.entity.component.IntrigueLevelComponent;
 
-public class IntrigueLevelFactory<T extends Gobject> {
+public class IntrigueLevelFactory<T extends DrifterObject> {
 	public T createLevel(String path_to_model,String path_to_music,
 			String path_to_weather_fx, Matrix4 m_trans, Class<T> type) {
 		int guid = Intrigue.mamaDukes.size;
 		
-		return type.cast(new T.Builder(guid)
-		.IntrigueModelComponent(path_to_model)
-		.IntriguePhysicalComponent(0, m_trans)
-		.IntrigueLevelComponent(
+		return type.cast(new T.DrifterObjectBuilder(guid)
+		.BaseObject(new Gobject.Builder(guid)
+			.IntrigueModelComponent(path_to_model)
+			.IntriguePhysicalComponent(0, m_trans)
+			.IntrigueLevelComponent(
 				new IntrigueLevelComponent.Builder()
 				.music(path_to_music)
 				.weather(path_to_weather_fx, m_trans)
 				.build())
+			.Build())
 		.Build());
 		 
 		//.ParticleComponent("Blizzard",
