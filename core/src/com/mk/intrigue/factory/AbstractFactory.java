@@ -1,5 +1,10 @@
 package com.mk.intrigue.factory;
 
-public abstract class AbstractFactory {
+import com.gamedev.drifter.entity.DrifterObject;
+import com.mk.intrigue.entity.Gobject;
+
+public abstract class AbstractFactory<T extends Gobject> {
+
+	public abstract	T createLevel();
 
 }

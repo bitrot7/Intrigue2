@@ -30,6 +30,8 @@ import com.gamedev.drifter.system.DrifterMotionSystem;
 import com.gamedev.drifter.system.DrifterParticleSys;
 import com.gamedev.drifter.system.DrifterTargetingAISystem;
 import com.mk.intrigue.entity.Gobject;
+import com.mk.intrigue.factory.AbstractFactory;
+import com.mk.intrigue.factory.IntrigueLevelFactory;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 import com.mk.intrigue.system.IntrigueLevelSystem;
 import com.mk.intrigue.system.IntrigueThirdPersonCameraViewSystem;
@@ -50,6 +52,7 @@ public class Intrigue extends ApplicationAdapter {
 	private DrifterBulletCollisionSystem IntrigueBulletCollisionSystem;
 	private DrifterTargetingAISystem IntrigueTargetingAISystem;
 	private DrifterCharacterSoundSystem DrifterCharacterSoundSys;
+	private final IntrigueLevelFactory<Gobject> level_factory = new IntrigueLevelFactory<Gobject>();
 	private Stage stage;
 	private Table table;
 	private Label text;
@@ -209,7 +212,11 @@ public class Intrigue extends ApplicationAdapter {
 		
 		iceTrans2.translate(0, 0, 6185.332f);
 		
-		mamaDukes.add(/**new DrifterObject.DrifterObjectBuilder(4)
+		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(4).BaseObject(level_factory.createLevel(path_to_snow_terrain,
+				"SoundEffects/stages/snow stage/wind1.mp3",
+				"3DParticles/blizzard.pfx", iceTrans2, Gobject.class)).Build());
+		
+					/*new DrifterObject.DrifterObjectBuilder(4)
 					.BaseObject(new Gobject.Builder(4)
 					.IntrigueModelComponent(path_to_snow_terrain)
 					.IntriguePhysicalComponent(iceMass, iceTrans2)

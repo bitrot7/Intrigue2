@@ -4,11 +4,12 @@ import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Gobject;
 import com.mk.intrigue.entity.component.IntrigueLevelComponent;
 
-public class IntrigueLevelFactory<T extends Gobject> extends AbstractFactory {
+public class IntrigueLevelFactory<T extends Gobject> {
 	public T createLevel(String path_to_model,String path_to_music,
 			String path_to_weather_fx, Matrix4 m_trans, Class<T> type) {
 		int guid = Intrigue.mamaDukes.size;
-		 return type.cast(new Gobject.Builder(guid)
+		
+		return type.cast(new T.Builder(guid)
 		.IntrigueModelComponent(path_to_model)
 		.IntriguePhysicalComponent(0, m_trans)
 		.IntrigueLevelComponent(
