@@ -97,8 +97,8 @@ public class Gobject {
 			this.physicalComponent.getPhysicsBody().getRigidBody().setUserIndex(this.guid);
 			return this;
 		}
-		public Builder IntrigueLevelComponent(String sound_file) {
-			this.levelComponent = new IntrigueLevelComponent(sound_file);
+		public Builder IntrigueLevelComponent(IntrigueLevelComponent ilc) {
+			this.levelComponent = ilc;
 			return this;
 		}
 

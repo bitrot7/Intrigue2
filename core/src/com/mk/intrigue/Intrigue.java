@@ -209,7 +209,7 @@ public class Intrigue extends ApplicationAdapter {
 		
 		iceTrans2.translate(0, 0, 6185.332f);
 		
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(4)
+		mamaDukes.add(/**new DrifterObject.DrifterObjectBuilder(4)
 					.BaseObject(new Gobject.Builder(4)
 					.IntrigueModelComponent(path_to_snow_terrain)
 					.IntriguePhysicalComponent(iceMass, iceTrans2)
@@ -218,7 +218,7 @@ public class Intrigue extends ApplicationAdapter {
 					.ParticleComponent("Blizzard","3DParticles/blizzard.pfx",
 							new Vector3(0, 0, 6185.332f),
 							new Vector3(3000, 1000,2000 ))
-					.Build());
+					.Build());*/
 		
 		mamaDukes.get(4).getModelComponent().getModel().transform.translate(new Vector3(0, 0, 6185.332f)); //btStaticMeshShapes do not update their motionStates.  The model Translation must be set manually in these cases.
 		iceTrans3.translate(-6149.6568f, 0, 6185.332f);
