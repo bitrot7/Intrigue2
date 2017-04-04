@@ -20,6 +20,7 @@ public abstract class GameSys implements ISystem {
 	public void update(float delta) {
 		this.last_time += delta;
 		this.upstream_system.update(delta);
+		this.stagger(100000000f); //reset last_time variable when it gets very long
 	}
 	@Override
 	public void deregister(int guid) {

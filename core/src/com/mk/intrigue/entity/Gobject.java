@@ -3,9 +3,11 @@ package com.mk.intrigue.entity;
 
 import com.badlogic.gdx.physics.bullet.collision.btCollisionShape;
 import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector3;
 import com.mk.intrigue.entity.component.IntrigueControllerComponent;
 import com.mk.intrigue.entity.component.IntrigueLevelComponent;
 import com.mk.intrigue.entity.component.IntrigueModelComponent;
+import com.mk.intrigue.entity.component.IntrigueParticleComponent;
 import com.mk.intrigue.entity.component.IntriguePhysicalComponent;
 
 
@@ -17,12 +19,14 @@ public class Gobject {
 	protected IntriguePhysicalComponent physicalComponent;
 	protected IntrigueControllerComponent controllerComponent;
 	protected IntrigueLevelComponent levelComponent;
+	protected IntrigueParticleComponent particleComponent;
 	protected Gobject(Builder builder) {
 		this.guid = builder.guid;
 		this.modelComponent = builder.modelComponent;
 		this.physicalComponent = builder.physicalComponent;
 		this.controllerComponent = builder.controllerComponent;
 		this.levelComponent = builder.levelComponent;
+		this.particleComponent = builder.particleComponent;
 	}
 	/*
 	*	general accessors
@@ -38,6 +42,9 @@ public class Gobject {
 	}
 	public IntrigueLevelComponent getLevelComponent() {
 		return this.levelComponent;
+	}
+	public IntrigueParticleComponent getParticleComponent() {
+		return this.particleComponent;
 	}
 	/*
 	*	end general accessors
@@ -58,7 +65,7 @@ public class Gobject {
 		protected IntriguePhysicalComponent physicalComponent;
 		protected IntrigueControllerComponent controllerComponent;
 		protected IntrigueLevelComponent levelComponent;
-		
+		protected IntrigueParticleComponent particleComponent;
 		public Builder(int g) {
 			guid = g;
 			System.out.println("Building Game Object " + guid);
@@ -101,7 +108,10 @@ public class Gobject {
 			this.levelComponent = ilc;
 			return this;
 		}
-
+		public Builder ParticleComponent(String name, String path, Vector3 pos, Vector3 scale) {
+			particleComponent = new IntrigueParticleComponent(name, path, pos, scale);
+			return this;
+		}
 		public Gobject Build(){
 			System.out.println("Finished building GameObject" + guid);
 			return new Gobject(this);

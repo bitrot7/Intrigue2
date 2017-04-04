@@ -28,18 +28,22 @@ public class IntrigueThirdPersonCameraViewSystem extends GameSys {
 	private final Matrix4 xxx = new Matrix4();
 	protected final PerspectiveCamera cam;
 	
-	public IntrigueThirdPersonCameraViewSystem() {
+	public IntrigueThirdPersonCameraViewSystem(ISystem upstream) {
+		super(upstream);
 		cam = IntrigueGraphicSystem.cam;
 	}
 	public void register(int guid) {
+		super.register(guid);
 		Gobject q = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(q.getPhysicalComponent(), this, q);
 		internal.add(guid);
 	}
 	public void deregister(int guid) {
+		super.deregister(guid);
 		internal.removeValue(guid, false);
 	}
 	public void update(float delta) {
+		super.update(delta);
 		for(Integer i : internal) {
 			Gobject q = Intrigue.mamaDukes.get(i);
 			q.getPhysicalComponent().getPhysicsBody().getMotionState().getWorldTransform(xxx);

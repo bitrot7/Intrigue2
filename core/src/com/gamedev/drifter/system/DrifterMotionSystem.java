@@ -6,6 +6,7 @@ import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.mk.intrigue.AtomicPhysicalObject;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.GameSys;
+import com.mk.intrigue.system.ISystem;
 /*
 *	System requirements for entity:'
 *		-DrifterObject
@@ -23,19 +24,24 @@ public class DrifterMotionSystem extends GameSys {
 	protected Vector3 angularImpulse = new Vector3();
 	protected Vector3 tmp = new Vector3();
 	
-	
+	public DrifterMotionSystem(ISystem upstream) {
+		super(upstream);
+	}
 	public void register(int guid) {
+		super.register(guid);
 		DrifterObject d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		this.requireComponent(d.getPhysicalComponent(), this, d);
 		internal.add(guid);
 	}
 	public void deregister(int guid) {
+		super.deregister(guid);
 		internal.removeValue(guid,true);
 	}
 	
 	@Override
 	public void update(float delta) {
+		super.update(delta);
 		for(Integer i : internal) {
 			DrifterObject g = Intrigue.mamaDukes.get(i);
 			DrifterCharacterActionsComponent s = g.getCharacterActionsComponent();

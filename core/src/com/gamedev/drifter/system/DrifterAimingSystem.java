@@ -14,6 +14,7 @@ import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.component.IntriguePhysicalComponent;
 import com.mk.intrigue.exception.ComponentMissingException;
 import com.mk.intrigue.system.GameSys;
+import com.mk.intrigue.system.ISystem;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 
 /*
@@ -37,11 +38,13 @@ public class DrifterAimingSystem extends GameSys {
 	private int dy = -100;
 	private int dz = 100;
 	private int dx = 0;
-	public DrifterAimingSystem() {
+	public DrifterAimingSystem(ISystem upstream) {
+		super(upstream);
 		Gdx.gl.glDepthRangef(0f, 1.0f); //0 beeing the near plane and 1 being the far plane
 		decalBatch = new DecalBatch(new CameraGroupStrategy(IntrigueGraphicSystem.cam));
 	}
 	public void register(int guid) {
+		super.register(guid);
 		DrifterObject d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getPhysicalComponent(), this, d);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
@@ -49,9 +52,11 @@ public class DrifterAimingSystem extends GameSys {
 		internal.add(guid);
 	}
 	public void deregister(int guid) {
+		super.deregister(guid);
 		internal.removeValue(guid,true);
 	}
 	public void update(float delta) {
+		super.update(delta);
 		for(Integer i : internal) {
 			
 			DrifterObject d = Intrigue.mamaDukes.get(i);

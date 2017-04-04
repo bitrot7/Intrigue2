@@ -7,6 +7,7 @@ import com.gamedev.drifter.entity.DrifterObject;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.IntrigueGraphicalDebugger;
 import com.mk.intrigue.system.GameSys;
+import com.mk.intrigue.system.ISystem;
 import com.mk.intrigue.system.IntrigueTotalPhysicsSystem;
 /*
 *	System requirements for entity:
@@ -23,16 +24,18 @@ public class DrifterBulletCollisionSystem extends GameSys {
 	private static final ClosestRayResultCallback callback = new ClosestRayResultCallback(rayFrom, rayTo);
 	private final float shortest_time_between_shots = .11f;
 	
-	public DrifterBulletCollisionSystem() {
-	
+	public DrifterBulletCollisionSystem(ISystem upstream) {
+		super(upstream);
 	}
 	public void register(int guid) {
+		super.register(guid);
 		DrifterObject d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getFiringComponent(),this, d);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		internal.add(guid);
 	}
 	public void deregister(int guid) {
+		super.deregister(guid);
 		internal.removeValue(guid, false);
 	}
 	public void update(float delta) {

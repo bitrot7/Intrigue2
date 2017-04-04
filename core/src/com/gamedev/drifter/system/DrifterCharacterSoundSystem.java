@@ -5,18 +5,23 @@ import com.gamedev.drifter.entity.DrifterObject;
 import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.GameSys;
+import com.mk.intrigue.system.ISystem;
 
 public class DrifterCharacterSoundSystem extends GameSys {
 	private final Array<Integer> internal = new Array<Integer>();
 	private final float shortest_time_between_steps = .53f;
 	private final float shortest_time_between_steps_sideways = .38f;
 	private final float shortest_time_between_shots = .11f;
+	public DrifterCharacterSoundSystem(ISystem upstream) {
+		super(upstream);
+	}
 	@Override
-	public void register(int x) {
-		DrifterObject d = Intrigue.mamaDukes.get(x);
+	public void register(int guid) {
+		super.register(guid);
+		DrifterObject d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		this.requireComponent(d.getCharacterSoundComponent(), this, d);
-		internal.add(x);
+		internal.add(guid);
 	}
 
 	@Override
@@ -46,9 +51,9 @@ public class DrifterCharacterSoundSystem extends GameSys {
 	}
 
 	@Override
-	public void deregister(int x) {
-		// TODO Auto-generated method stub
-		internal.removeValue(x, false);
+	public void deregister(int guid) {
+		super.deregister(guid);
+		internal.removeValue(guid, false);
 	}
 
 }

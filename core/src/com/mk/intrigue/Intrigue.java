@@ -27,11 +27,12 @@ import com.gamedev.drifter.system.DrifterBulletCollisionSystem;
 import com.gamedev.drifter.system.DrifterCharacterSoundSystem;
 import com.gamedev.drifter.system.DrifterControllerSystem;
 import com.gamedev.drifter.system.DrifterMotionSystem;
-import com.gamedev.drifter.system.DrifterParticleSys;
 import com.gamedev.drifter.system.DrifterTargetingAISystem;
 import com.mk.intrigue.entity.Gobject;
 import com.mk.intrigue.factory.AbstractFactory;
 import com.mk.intrigue.factory.IntrigueLevelFactory;
+import com.mk.intrigue.system.BaseSystem;
+import com.mk.intrigue.system.IntrigueParticleSystem;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 import com.mk.intrigue.system.IntrigueLevelSystem;
 import com.mk.intrigue.system.IntrigueThirdPersonCameraViewSystem;
@@ -47,7 +48,7 @@ public class Intrigue extends ApplicationAdapter {
 	private DrifterAnimationSystem IntrigueAnimSys;
 	private DrifterControllerSystem IntrigueControllerSys;
 	private DrifterAiSys IntrigueAiSys;
-	private DrifterParticleSys IntrigueParticleSys;
+	private IntrigueParticleSystem IntrigueParticleSys;
 	private DrifterAimingSystem IntrigueAimingSystem;
 	private DrifterBulletCollisionSystem IntrigueBulletCollisionSystem;
 	private DrifterTargetingAISystem IntrigueTargetingAISystem;
@@ -66,20 +67,21 @@ public class Intrigue extends ApplicationAdapter {
 	@Override
 	public void create () {
 		IntrigueGraphicalDebugger.enable();
-		IntrigueGraphicSys = new IntrigueGraphicSystem();
-		IntrigueTotalPhysicsSys = new IntrigueTotalPhysicsSystem();
-		IntrigueCamSys = new IntrigueThirdPersonCameraViewSystem();
-		IntrigueLevelSys = new IntrigueLevelSystem();
+		BaseSystem base = new BaseSystem();
+		IntrigueGraphicSys = new IntrigueGraphicSystem(base);
+		IntrigueTotalPhysicsSys = new IntrigueTotalPhysicsSystem(base);
+		IntrigueCamSys = new IntrigueThirdPersonCameraViewSystem(base);
+		IntrigueLevelSys = new IntrigueLevelSystem(base);
 		
-		IntrigueAnimSys = new DrifterAnimationSystem();
-		IntrigueControllerSys = new DrifterControllerSystem();
-		IntrigueMotionSys = new DrifterMotionSystem();
-		IntrigueAiSys = new DrifterAiSys();
-        IntrigueParticleSys = new DrifterParticleSys();
-		IntrigueAimingSystem = new DrifterAimingSystem();
-		IntrigueBulletCollisionSystem = new DrifterBulletCollisionSystem();
-		IntrigueTargetingAISystem = new DrifterTargetingAISystem();
-		DrifterCharacterSoundSys = new DrifterCharacterSoundSystem();
+		IntrigueAnimSys = new DrifterAnimationSystem(base);
+		IntrigueControllerSys = new DrifterControllerSystem(base);
+		IntrigueMotionSys = new DrifterMotionSystem(base);
+		IntrigueAiSys = new DrifterAiSys(base);
+        IntrigueParticleSys = new IntrigueParticleSystem(base);
+		IntrigueAimingSystem = new DrifterAimingSystem(base);
+		IntrigueBulletCollisionSystem = new DrifterBulletCollisionSystem(base);
+		IntrigueTargetingAISystem = new DrifterTargetingAISystem(base);
+		DrifterCharacterSoundSys = new DrifterCharacterSoundSystem(base);
 		
 		final int team1 = 1;
 		final int team2 = 2;
@@ -154,10 +156,10 @@ public class Intrigue extends ApplicationAdapter {
 					.BaseObject(new Gobject.Builder(1)
 					.IntrigueModelComponent(path_to_snow_terrain)
 					.IntriguePhysicalComponent(iceMass, iceTrans)
-					.Build())
 					.ParticleComponent("Blizzard",
 							"3DParticles/blizzard.pfx",new Vector3(1000,1000, -2500), /*perhaps create a Weather Object in level*/
 							new Vector3(3000, 1000,2000 ))
+					.Build())
 					.Build());
 		trans2.translate(-1000,1000,1500);
 		
@@ -165,10 +167,11 @@ public class Intrigue extends ApplicationAdapter {
 					.BaseObject(new Gobject.Builder(2)
 					.IntrigueModelComponent(path_to_char)
 					.IntriguePhysicalComponent(person_shape, 200f, trans2)
+					.ParticleComponent("Blood", "3DParticles/Character/Blood.pfx", new Vector3(), new Vector3(1f,1f,1f))
 					.Build())
 					.CharacterActionsComponent()
 					.AnimationController()
-					.ParticleComponent("Blood", "3DParticles/Character/Blood.pfx", new Vector3(), new Vector3(1f,1f,1f))
+					
 					.Fireable()
 					.ShootingSoldierAI()
 					.TargetingAI(team2)
@@ -234,10 +237,11 @@ public class Intrigue extends ApplicationAdapter {
 					.BaseObject(new Gobject.Builder(5)
 					.IntrigueModelComponent(path_to_snow_terrain)
 					.IntriguePhysicalComponent(iceMass, iceTrans3)
-					.Build())
 					.ParticleComponent("Blizzard","3DParticles/blizzard.pfx",
 							new Vector3(-6149.6568f, 0, 6185.332f),
 							new Vector3(3000, 1000,2000 ))
+					.Build())
+					
 					.Build());
 		/**
 		 * btStaticMeshShapes do not update their motionStates.  The model Translation must be set manually in these cases.
@@ -249,8 +253,9 @@ public class Intrigue extends ApplicationAdapter {
 					.BaseObject(new Gobject.Builder(6)
 					.IntrigueModelComponent(path_to_snow_terrain)
 					.IntriguePhysicalComponent(iceMass, iceTrans4)
-					.Build()).ParticleComponent("Blizzard","3DParticles/blizzard.pfx",
+					.ParticleComponent("Blizzard","3DParticles/blizzard.pfx",
 							new Vector3(-6149.6568f, 0, 0), new Vector3(3000, 1000,2000 ))
+					.Build())
 					.Build());
 		mamaDukes.get(6).getModelComponent().getModel().transform.translate(new Vector3(-6149.6568f, 0, 0)); 
 		

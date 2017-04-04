@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g3d.particles.ParticleEffectLoader;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.gamedev.drifter.entity.DrifterObject;
-import com.gamedev.drifter.system.DrifterParticleSys;
+import com.mk.intrigue.system.IntrigueParticleSystem;
 
 public class ParticleObject {
 	private String name;
@@ -20,7 +20,7 @@ public class ParticleObject {
 	public ParticleObject(String name, String path) {
 		this.name = name;
 		if(!DrifterObject.assetManager.isLoaded(path)) {
-			ParticleEffectLoader.ParticleEffectLoadParameter loadParam = new ParticleEffectLoader.ParticleEffectLoadParameter(DrifterParticleSys.particleSystem.getBatches());
+			ParticleEffectLoader.ParticleEffectLoadParameter loadParam = new ParticleEffectLoader.ParticleEffectLoadParameter(IntrigueParticleSystem.particleSystem.getBatches());
 			DrifterObject.assetManager.load(path, ParticleEffect.class, loadParam);
 			DrifterObject.assetManager.finishLoading();
 		}

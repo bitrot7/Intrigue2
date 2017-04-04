@@ -5,6 +5,7 @@ import com.gamedev.drifter.entity.DrifterObject;
 import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.GameSys;
+import com.mk.intrigue.system.ISystem;
 /*
 *	System requirements for entity:
 *		-DrifterObject
@@ -13,13 +14,18 @@ import com.mk.intrigue.system.GameSys;
 */
 public class DrifterControllerSystem extends GameSys { 
 	private Array<Integer> internal = new Array<Integer>();
+	public DrifterControllerSystem(ISystem upstream) {
+		super(upstream);
+	}
 	public void register(int guid) {
+		super.register(guid);
 		DrifterObject d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getControllerComponent(), this, d);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		internal.add(guid);
 	}
 	public void deregister(int guid) {
+		super.deregister(guid);
 		internal.removeValue(guid,true);
 	}
 	

@@ -29,8 +29,8 @@ public class IntrigueGraphicSystem extends GameSys{
     private CameraInputController camController;
 	private Environment environment;
 	protected final Array<Integer> internal = new Array<Integer>();
-	public IntrigueGraphicSystem() {
-		
+	public IntrigueGraphicSystem(ISystem upstream) {
+		super(upstream);
 		cam = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		cam.near = .1f;
 		cam.far = 10000;
@@ -50,12 +50,14 @@ public class IntrigueGraphicSystem extends GameSys{
 		Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 	public void register(int guid) {
+		super.register(guid);
 		Gobject g  = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(g.getModelComponent(), this, g);
 		
 		internal.add(guid);
 	}
 	public void deregister(int guid) {
+		super.deregister(guid);
 		internal.removeValue(guid, false);
 	}
 	public void destroy() {
@@ -76,7 +78,7 @@ public class IntrigueGraphicSystem extends GameSys{
 	}*/
 	public void update(float delta) {
 		//handleInput();
-		
+		super.update(delta);
 		camController.update();
 		
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);

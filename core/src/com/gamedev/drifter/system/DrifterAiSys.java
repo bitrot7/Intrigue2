@@ -10,6 +10,7 @@ import com.gamedev.drifter.entity.component.DrifterTargetingComponent;
 import com.mk.intrigue.AtomicPhysicalObject;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.GameSys;
+import com.mk.intrigue.system.ISystem;
 public class DrifterAiSys extends GameSys {
 	/*
 	*	System requirements for entity:
@@ -21,10 +22,14 @@ public class DrifterAiSys extends GameSys {
 	*/
 	private Array<Integer> internal = new Array<Integer>();
 	private final Vector3 tmp = new Vector3();
+	public DrifterAiSys(ISystem upstream) {
+		super(upstream);
+	}
 	/**
 	 * requires components to function
 	 */
 	public void register(int guid) {
+		super.register(guid);
 		DrifterObject d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		this.requireComponent(d.getTargetingComponent(), this, d);
@@ -32,9 +37,11 @@ public class DrifterAiSys extends GameSys {
 		internal.add(guid);
 	}
 	public void deregister(int guid) {
+		super.deregister(guid);
 		internal.removeValue(guid, false);
 	}
 	public void update(float delta) {
+		super.update(delta);
 		for(Integer i : internal) {
 		
 			tmp.set(1,0,0);

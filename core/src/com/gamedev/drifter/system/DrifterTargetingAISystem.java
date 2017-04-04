@@ -6,12 +6,17 @@ import com.badlogic.gdx.utils.Array;
 import com.gamedev.drifter.entity.DrifterObject;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.GameSys;
+import com.mk.intrigue.system.ISystem;
 
 public class DrifterTargetingAISystem extends GameSys {
 	private Array<Integer> internal = new Array<Integer>();
 	private Array<Integer> team1 = new Array<Integer>();
 	private Array<Integer> team2 = new Array<Integer>();
+	public DrifterTargetingAISystem(ISystem upstream) {
+		super(upstream);
+	}
 	public void register(int guid) {
+		super.register(guid);
 		internal.add(guid);
 		DrifterObject d = Intrigue.mamaDukes.get(guid);
 		//this.requireComponent(d.getAIComponent(), this, d);
@@ -24,11 +29,13 @@ public class DrifterTargetingAISystem extends GameSys {
 		}
 	}	
 	public void deregister(int guid) {
+		super.deregister(guid);
 		internal.removeValue(guid,true);
 		team1.removeValue(guid,true);
 		team2.removeValue(guid, true);
 	}
 	public void update(float delta) {
+		super.update(delta);
 		for(Integer i : internal) {
 			DrifterObject d = Intrigue.mamaDukes.get(i);
 			if(d.getAIComponent() != null) {

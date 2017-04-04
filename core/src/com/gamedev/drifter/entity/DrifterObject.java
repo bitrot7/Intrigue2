@@ -5,20 +5,17 @@ package com.gamedev.drifter.entity;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.gamedev.drifter.entity.component.DrifterAIComponent;
 import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.gamedev.drifter.entity.component.DrifterCharacterSoundComponent;
 import com.gamedev.drifter.entity.component.DrifterFiringComponent;
-import com.gamedev.drifter.entity.component.DrifterParticleComponent;
 import com.gamedev.drifter.entity.component.DrifterTargetingComponent;
 import com.mk.intrigue.entity.Gobject;
 
 public class DrifterObject extends Gobject { //extend Gobject
 	private AnimationController animation3d;
 	private DrifterFiringComponent firingComponent;
-	private DrifterParticleComponent particleComponent;
 	private DrifterCharacterActionsComponent characterActionsComponent;
 	private DrifterAIComponent aiComponent;
 	private DrifterTargetingComponent targetingComponent;
@@ -28,7 +25,6 @@ public class DrifterObject extends Gobject { //extend Gobject
 	private DrifterObject(DrifterObjectBuilder dob) {
 		super(dob);
 		this.animation3d = dob.animation3d;
-		this.particleComponent = dob.particleComponent;
 		this.firingComponent = dob.firingComponent;
 		this.characterActionsComponent = dob.characterActionsComponent;
 		this.aiComponent = dob.aiComponent;
@@ -44,9 +40,6 @@ public class DrifterObject extends Gobject { //extend Gobject
 
 	public DrifterFiringComponent getFiringComponent() {
 		return firingComponent;
-	}
-	public DrifterParticleComponent getParticleComponent() {
-		return this.particleComponent;
 	}
 	public DrifterCharacterActionsComponent getCharacterActionsComponent() {
 		return this.characterActionsComponent;
@@ -66,7 +59,6 @@ public class DrifterObject extends Gobject { //extend Gobject
 	public static class DrifterObjectBuilder extends Gobject.Builder {
 		private AnimationController animation3d;
 		private DrifterFiringComponent firingComponent;
-		private DrifterParticleComponent particleComponent;
 		private DrifterCharacterActionsComponent characterActionsComponent;
 		private DrifterAIComponent aiComponent;
 		private DrifterTargetingComponent targetingComponent;
@@ -82,7 +74,7 @@ public class DrifterObject extends Gobject { //extend Gobject
 			super.physicalComponent = g.getPhysicalComponent();
 			super.controllerComponent = g.getControllerComponent();
 			super.levelComponent = g.getLevelComponent();
-			//this.particleComponent = this.ParticleComponent(g.getLevelComponent().getWeather().getWeatherGraphics());
+			super.particleComponent = g.getParticleComponent();
 			return this;
 		}
 		
@@ -97,10 +89,6 @@ public class DrifterObject extends Gobject { //extend Gobject
 		}
 		public DrifterObjectBuilder CharacterActionsComponent() {
 			characterActionsComponent = new DrifterCharacterActionsComponent();
-			return this;
-		}
-		public DrifterObjectBuilder ParticleComponent(String name, String path, Vector3 pos, Vector3 scale) {
-			particleComponent = new DrifterParticleComponent(name, path, pos, scale);
 			return this;
 		}
 	

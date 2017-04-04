@@ -7,6 +7,7 @@ import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.MyAnimationListener;
 import com.mk.intrigue.system.GameSys;
+import com.mk.intrigue.system.ISystem;
 /*
 	*	Animation names:
 	*		Run_Forwards
@@ -39,18 +40,23 @@ public class DrifterAnimationSystem extends GameSys {
 	
 	private MyAnimationListener garbage = new MyAnimationListener();
 	private Array<Integer> internal = new Array<Integer>();
-	
+	public DrifterAnimationSystem(ISystem upstream) {
+		super(upstream);
+	}
 	public void register(int guid) {
+		super.register(guid);
 		DrifterObject d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		this.requireComponent(d.getModelComponent(), this, d);
 		internal.add(guid);
 	}
 	public void deregister(int guid) {
+		super.deregister(guid);
 		internal.removeValue(guid,true);
 	}
 	
 	public void update(float delta) {
+		super.update(delta);
 		for(Integer i : internal) {
 			DrifterObject g = Intrigue.mamaDukes.get(i);
 			DrifterCharacterActionsComponent s = g.getCharacterActionsComponent();

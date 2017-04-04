@@ -25,7 +25,8 @@ public class IntrigueTotalPhysicsSystem extends GameSys {
 	private btCollisionDispatcher dispatcher;
 	private btSequentialImpulseConstraintSolver solver;
 	public static btDiscreteDynamicsWorld dynamicsWorld;
-	public IntrigueTotalPhysicsSystem() {
+	public IntrigueTotalPhysicsSystem(ISystem upstream) {
+		super(upstream);
 		Bullet.init();
 		broadphase = new btDbvtBroadphase();
 		collisionConfiguration = new btDefaultCollisionConfiguration();
@@ -40,6 +41,7 @@ public class IntrigueTotalPhysicsSystem extends GameSys {
         collisionConfiguration.dispose();
 	}
 	public void register(int guid) {
+		super.register(guid);
 		if(Intrigue.mamaDukes.size <= guid) {
 			System.out.println("Bad guid passed to mamadukes, are you messing with me?");
 			return;
@@ -59,10 +61,11 @@ public class IntrigueTotalPhysicsSystem extends GameSys {
 	}
 	
 	public void deregister(int guid) {
+		super.deregister(guid);
 		internal.removeValue(guid, false);
 	}
 	public void update(float delta) {
-		
+		super.update(delta);
 		final float sdelta = Math.min(1f / 30f, delta);
 
         dynamicsWorld.stepSimulation(sdelta, 10, 1f/60f);
