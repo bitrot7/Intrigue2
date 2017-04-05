@@ -97,7 +97,7 @@ public class IntrigueGraphicSystem extends GameSys{
 						modelBatch.render(m, environment);
 					//}
 		}
-		//modelBatch.flush();
+		modelBatch.flush();
 		modelBatch.end();
 	}
 	

@@ -4,6 +4,7 @@ package com.mk.intrigue.entity;
 import com.badlogic.gdx.physics.bullet.collision.btCollisionShape;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
+import com.mk.intrigue.ParticleObject;
 import com.mk.intrigue.entity.component.IntrigueControllerComponent;
 import com.mk.intrigue.entity.component.IntrigueLevelComponent;
 import com.mk.intrigue.entity.component.IntrigueModelComponent;
@@ -14,9 +15,9 @@ import com.mk.intrigue.entity.component.IntriguePhysicalComponent;
 //general Purpose Game Object (entity)
 //has base components
 public class Gobject {
-	protected int guid;
-	protected IntrigueModelComponent modelComponent;// the component in entity component.
-	protected IntriguePhysicalComponent physicalComponent;
+    protected int guid;
+	transient protected IntrigueModelComponent modelComponent;// the component in entity component.
+    protected IntriguePhysicalComponent physicalComponent;
 	protected IntrigueControllerComponent controllerComponent;
 	protected IntrigueLevelComponent levelComponent;
 	protected IntrigueParticleComponent particleComponent;
@@ -28,7 +29,7 @@ public class Gobject {
 		this.levelComponent = builder.levelComponent;
 		this.particleComponent = builder.particleComponent;
 	}
-	/*
+	/**
 	*	general accessors
 	*/
 	public IntriguePhysicalComponent getPhysicalComponent() {
@@ -66,6 +67,25 @@ public class Gobject {
 		protected IntrigueControllerComponent controllerComponent;
 		protected IntrigueLevelComponent levelComponent;
 		protected IntrigueParticleComponent particleComponent;
+		
+		public int getGuid() {
+			return guid;
+		}
+		public IntrigueModelComponent getModelComponent() {
+			return modelComponent;
+		}
+		public IntriguePhysicalComponent getPhysicalComponent() {
+			return physicalComponent;
+		}
+		public IntrigueControllerComponent getControllerComponent() {
+			return controllerComponent;
+		}
+		public IntrigueLevelComponent getLevelComponent() {
+			return levelComponent;
+		}
+		public IntrigueParticleComponent getParticleComponent() {
+			return particleComponent;
+		}
 		public Builder(int g) {
 			guid = g;
 			System.out.println("Building Game Object " + guid);
@@ -110,6 +130,10 @@ public class Gobject {
 		}
 		public Builder ParticleComponent(String name, String path, Vector3 pos, Vector3 scale) {
 			particleComponent = new IntrigueParticleComponent(name, path, pos, scale);
+			return this;
+		}
+		public Builder ParticleComponent(ParticleObject p) {
+			particleComponent = new IntrigueParticleComponent(p);
 			return this;
 		}
 		public Gobject Build(){

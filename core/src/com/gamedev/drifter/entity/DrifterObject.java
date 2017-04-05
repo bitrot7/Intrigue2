@@ -13,15 +13,18 @@ import com.gamedev.drifter.entity.component.DrifterFiringComponent;
 import com.gamedev.drifter.entity.component.DrifterTargetingComponent;
 import com.mk.intrigue.entity.Gobject;
 
-public class DrifterObject extends Gobject { //extend Gobject
-	private AnimationController animation3d;
+public class DrifterObject extends Gobject {
+	/**
+	 * anything with models must be marked transient.
+	 */
+	transient private AnimationController animation3d;
 	private DrifterFiringComponent firingComponent;
 	private DrifterCharacterActionsComponent characterActionsComponent;
 	private DrifterAIComponent aiComponent;
 	private DrifterTargetingComponent targetingComponent;
 	private DrifterCharacterSoundComponent characterSoundComponent;
-	public static final AssetManager assetManager = new AssetManager();
-	public static final ModelBuilder modelBuilder = new ModelBuilder();
+	transient public static final AssetManager assetManager = new AssetManager();
+	transient public static final ModelBuilder modelBuilder = new ModelBuilder();
 	private DrifterObject(DrifterObjectBuilder dob) {
 		super(dob);
 		this.animation3d = dob.animation3d;
@@ -63,7 +66,38 @@ public class DrifterObject extends Gobject { //extend Gobject
 		private DrifterAIComponent aiComponent;
 		private DrifterTargetingComponent targetingComponent;
 		private DrifterCharacterSoundComponent characterSoundComponent;
-		
+		/**
+		 * A getter for object modification during build process.
+		 * 
+		 * @return
+		 */
+		public AnimationController getAnimation3d() {
+			return animation3d;
+		}
+		/**
+		 * 
+		 * @return
+		 */
+		public DrifterFiringComponent getFiringComponent() {
+			return firingComponent;
+		}
+
+		public DrifterCharacterActionsComponent getCharacterActionsComponent() {
+			return characterActionsComponent;
+		}
+
+		public DrifterAIComponent getAiComponent() {
+			return aiComponent;
+		}
+
+		public DrifterTargetingComponent getTargetingComponent() {
+			return targetingComponent;
+		}
+
+		public DrifterCharacterSoundComponent getCharacterSoundComponent() {
+			return characterSoundComponent;
+		}
+
 		public DrifterObjectBuilder(int guid) {
 			super(guid);
 		}
@@ -92,14 +126,14 @@ public class DrifterObject extends Gobject { //extend Gobject
 			return this;
 		}
 	
-		/*
+		/**
 		*	Pew. Pew.. Builds a component for this object allowing it to shoot.
 		*/
 		public DrifterObjectBuilder Fireable() {
 			firingComponent = new DrifterFiringComponent();
 			return this;
 		}
-		/*
+		/**
 		*	Pew. Pew.. Builds a component for this object allowing it to shoot. with a graphical crosshair
 		*/
 		public DrifterObjectBuilder Fireable(String path) {

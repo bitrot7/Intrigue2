@@ -7,6 +7,7 @@ package com.mk.intrigue;
 
 
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.bullet.collision.Collision;
@@ -71,7 +72,6 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueGraphicSys = new IntrigueGraphicSystem(base);
 		IntrigueTotalPhysicsSys = new IntrigueTotalPhysicsSystem(base);
 		IntrigueCamSys = new IntrigueThirdPersonCameraViewSystem(base);
-		IntrigueLevelSys = new IntrigueLevelSystem(base);
 		
 		IntrigueAnimSys = new DrifterAnimationSystem(base);
 		IntrigueControllerSys = new DrifterControllerSystem(base);
@@ -82,6 +82,7 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueBulletCollisionSystem = new DrifterBulletCollisionSystem(base);
 		IntrigueTargetingAISystem = new DrifterTargetingAISystem(base);
 		DrifterCharacterSoundSys = new DrifterCharacterSoundSystem(base);
+		IntrigueLevelSys = new IntrigueLevelSystem(base);
 		
 		final int team1 = 1;
 		final int team2 = 2;
@@ -142,6 +143,10 @@ public class Intrigue extends ApplicationAdapter {
 					.TargetingAI(team1)
 					.CharacterSoundComponent("SoundEffects/Character/walking/step-spur.mp3", "SoundEffects/guns/M4A1.mp3")
 					.Build());
+		Json json_test = new Json(); 
+		DrifterObject d = mamaDukes.get(player_guid);
+		System.out.println(json_test.prettyPrint(d));
+		
 		mamaDukes.get(player_guid).getPhysicalComponent()
 					.getPhysicsBody().getRigidBody()
 					.setAngularFactor(new Vector3(0,0,0));
@@ -152,15 +157,18 @@ public class Intrigue extends ApplicationAdapter {
 					.getPhysicsBody().getRigidBody()
 					.setActivationState(Collision.DISABLE_DEACTIVATION);
 
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(1)
+		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
+				"3DParticles/blizzard.pfx", iceTrans, DrifterObject.class));
+				/*
+				new DrifterObject.DrifterObjectBuilder(1)
 					.BaseObject(new Gobject.Builder(1)
 					.IntrigueModelComponent(path_to_snow_terrain)
 					.IntriguePhysicalComponent(iceMass, iceTrans)
 					.ParticleComponent("Blizzard",
-							"3DParticles/blizzard.pfx",new Vector3(1000,1000, -2500), /*perhaps create a Weather Object in level*/
+							"3DParticles/blizzard.pfx",new Vector3(1000,1000, -2500), 
 							new Vector3(3000, 1000,2000 ))
 					.Build())
-					.Build());
+					.Build());*/
 		trans2.translate(-1000,1000,1500);
 		
 		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(2)
@@ -233,30 +241,25 @@ public class Intrigue extends ApplicationAdapter {
 		mamaDukes.get(4).getModelComponent().getModel().transform.translate(new Vector3(0, 0, 6185.332f)); //btStaticMeshShapes do not update their motionStates.  The model Translation must be set manually in these cases.
 		iceTrans3.translate(-6149.6568f, 0, 6185.332f);
 		
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(5)
-					.BaseObject(new Gobject.Builder(5)
-					.IntrigueModelComponent(path_to_snow_terrain)
-					.IntriguePhysicalComponent(iceMass, iceTrans3)
-					.ParticleComponent("Blizzard","3DParticles/blizzard.pfx",
-							new Vector3(-6149.6568f, 0, 6185.332f),
-							new Vector3(3000, 1000,2000 ))
-					.Build())
-					
-					.Build());
+		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
+				"3DParticles/blizzard.pfx" , iceTrans3, DrifterObject.class));
+		
 		/**
 		 * btStaticMeshShapes do not update their motionStates.  The model Translation must be set manually in these cases.
 		 */
 		mamaDukes.get(5).getModelComponent().getModel().transform.translate(new Vector3(-6149.6568f, 0, 6185.332f)); 
 		
 		iceTrans4.translate(-6149.6568f, 0, 0);
-		mamaDukes.add(new DrifterObject.DrifterObjectBuilder(6)
+		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
+				"3DParticles/blizzard.pfx" , iceTrans4, DrifterObject.class));
+					/**new DrifterObject.DrifterObjectBuilder(6)
 					.BaseObject(new Gobject.Builder(6)
 					.IntrigueModelComponent(path_to_snow_terrain)
 					.IntriguePhysicalComponent(iceMass, iceTrans4)
 					.ParticleComponent("Blizzard","3DParticles/blizzard.pfx",
 							new Vector3(-6149.6568f, 0, 0), new Vector3(3000, 1000,2000 ))
 					.Build())
-					.Build());
+					.Build());*/
 		mamaDukes.get(6).getModelComponent().getModel().transform.translate(new Vector3(-6149.6568f, 0, 0)); 
 		
 		//register objects to respective systems
