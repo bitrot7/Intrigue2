@@ -8,14 +8,14 @@ ECS is a poplar architecture for Game Development because of the ease in which n
 It also has a few other benefits that make it a good candidate for the choice of any game developer.
 
 
-First, Entities in ECS are objects but they are essentially container objects 
+First,Entities in ECS are objects but they are essentially container objects 
 they perform no calculations (only getter-setter methods) it simply holds data to be mutated [Entity](core/src/com/mk/intrigue/entity/Gobject.java) . 
 
-Second Systems store relatively little information (have a small amount of fields)
+Second, Systems store relatively little information (have a small amount of fields)
 They simply manipulate the data stored in the entites they have access to.  
 
-Intrigue performs an API for creating and rendering Game Objects using Systems and
-an Entity.
+Intrigue is an API for creating and manipulating 3D Game Objects using Systems and
+Entities.
 
 Go look at the `system` package to start getting a better idea of ECS in the Intrigue API.  [Link to System Doc](core/src/com/mk/intrigue/system/)
 
