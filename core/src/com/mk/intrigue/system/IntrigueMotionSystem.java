@@ -16,8 +16,8 @@ public class IntrigueMotionSystem extends SystemDecorator {
 	
 	private Array<Integer> internal = new Array<Integer>();
 	
-	protected static float universal_push = 5100f; //naruto copout
-	protected static float universal_rotate = 10500f;
+	protected static float universal_push = 4100f; //naruto copout
+	protected static float universal_rotate = 8500f;
 	protected Vector3 impulse = new Vector3();
 	protected Vector3 angularImpulse = new Vector3();
 	protected Vector3 tmp = new Vector3();
