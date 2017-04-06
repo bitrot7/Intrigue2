@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.mk.intrigue.entity.component.IntrigueAIComponent;
 import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
-import com.mk.intrigue.entity.component.IntrigueCharacterSoundComponent;
+import com.mk.intrigue.entity.component.IntrigueSoundEffectComponent;
 import com.mk.intrigue.entity.component.IntrigueFiringComponent;
 import com.mk.intrigue.entity.component.IntrigueTargetingComponent;
 
@@ -21,7 +21,7 @@ public class Entity2 extends Entity {
 	private IntrigueCharacterActionsComponent characterActionsComponent;
 	private IntrigueAIComponent aiComponent;
 	private IntrigueTargetingComponent targetingComponent;
-	private IntrigueCharacterSoundComponent characterSoundComponent;
+	private IntrigueSoundEffectComponent characterSoundComponent;
 	transient public static final AssetManager assetManager = new AssetManager();
 	transient public static final ModelBuilder modelBuilder = new ModelBuilder();
 	private Entity2(DrifterObjectBuilder dob) {
@@ -52,7 +52,7 @@ public class Entity2 extends Entity {
 	public IntrigueTargetingComponent getTargetingComponent() {
 		return this.targetingComponent;
 	}
-	public IntrigueCharacterSoundComponent getCharacterSoundComponent() {
+	public IntrigueSoundEffectComponent getCharacterSoundComponent() {
 		return this.characterSoundComponent;
 	}
 	/**
@@ -64,7 +64,7 @@ public class Entity2 extends Entity {
 		private IntrigueCharacterActionsComponent characterActionsComponent;
 		private IntrigueAIComponent aiComponent;
 		private IntrigueTargetingComponent targetingComponent;
-		private IntrigueCharacterSoundComponent characterSoundComponent;
+		private IntrigueSoundEffectComponent characterSoundComponent;
 		/**
 		 * A getter for object modification during build process.
 		 * 
@@ -93,7 +93,7 @@ public class Entity2 extends Entity {
 			return targetingComponent;
 		}
 
-		public IntrigueCharacterSoundComponent getCharacterSoundComponent() {
+		public IntrigueSoundEffectComponent getCharacterSoundComponent() {
 			return characterSoundComponent;
 		}
 
@@ -106,7 +106,7 @@ public class Entity2 extends Entity {
 			super.modelComponent = g.getModelComponent();
 			super.physicalComponent = g.getPhysicalComponent();
 			super.controllerComponent = g.getControllerComponent();
-			super.levelComponent = g.getLevelComponent();
+			super.musicComponent = g.getMusicComponent();
 			super.particleComponent = g.getParticleComponent();
 			return this;
 		}
@@ -148,7 +148,7 @@ public class Entity2 extends Entity {
 			return this;
 		}
 		public DrifterObjectBuilder CharacterSoundComponent(String walk_sound, String shoot_sound) {
-			this.characterSoundComponent = new IntrigueCharacterSoundComponent(walk_sound, shoot_sound);
+			this.characterSoundComponent = new IntrigueSoundEffectComponent(walk_sound, shoot_sound);
 			return this;
 		}
 		public Entity2 Build() {

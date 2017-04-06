@@ -6,7 +6,6 @@ import com.badlogic.gdx.utils.Json;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
 import com.mk.intrigue.entity.Entity;
-import com.mk.intrigue.entity.component.IntrigueLevelComponent;
 import com.mk.intrigue.object.ParticleObject;
 
 public class IntrigueLevelFactory<T extends Entity2> {
@@ -21,10 +20,7 @@ public class IntrigueLevelFactory<T extends Entity2> {
 		.BaseObject(new Entity.Builder(guid)
 			.IntrigueModelComponent(path_to_model)
 			.IntriguePhysicalComponent(0, m_trans)
-			.IntrigueLevelComponent(
-				new IntrigueLevelComponent.Builder()
-				.music(path_to_music)
-				.build())
+			.IntrigueMusicComponent(path_to_music)
 			.ParticleComponent(p)
 			.Build())
 		.Build());
@@ -42,9 +38,6 @@ public class IntrigueLevelFactory<T extends Entity2> {
 		.BaseObject(new Entity.Builder(guid)
 			.IntrigueModelComponent(path_to_model)
 			.IntriguePhysicalComponent(0, m_trans)
-			.IntrigueLevelComponent(
-				new IntrigueLevelComponent.Builder()
-				.build())
 			.ParticleComponent(p)
 			.Build())
 		.Build());

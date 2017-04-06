@@ -27,14 +27,14 @@ import com.mk.intrigue.system.IntrigueAiSys;
 import com.mk.intrigue.system.IntrigueAimingSystem;
 import com.mk.intrigue.system.IntrigueAnimationSystem;
 import com.mk.intrigue.system.IntrigueBulletCollisionSystem;
-import com.mk.intrigue.system.IntrigueCharacterSoundSystem;
+import com.mk.intrigue.system.IntrigueSoundEffectSystem;
 import com.mk.intrigue.system.IntrigueControllerSystem;
 import com.mk.intrigue.system.IntrigueMotionSystem;
 import com.mk.intrigue.system.IntrigueTargetingAISystem;
 import com.mk.intrigue.system.ISystem;
 import com.mk.intrigue.system.IntrigueParticleSystem;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
-import com.mk.intrigue.system.IntrigueLevelSystem;
+import com.mk.intrigue.system.IntrigueMusicSystem;
 import com.mk.intrigue.system.IntrigueThirdPersonCameraViewSystem;
 import com.mk.intrigue.system.IntrigueTotalPhysicsSystem;
 
@@ -43,7 +43,7 @@ public class Intrigue extends ApplicationAdapter {
 	private IntrigueGraphicSystem IntrigueGraphicSys;
 	private IntrigueTotalPhysicsSystem IntrigueTotalPhysicsSys;
 	private IntrigueThirdPersonCameraViewSystem IntrigueCamSys;
-	private IntrigueLevelSystem IntrigueLevelSys;
+	private IntrigueMusicSystem IntrigueLevelSys;
 	private IntrigueMotionSystem IntrigueMotionSys;
 	private IntrigueAnimationSystem IntrigueAnimSys;
 	private IntrigueControllerSystem IntrigueControllerSys;
@@ -52,7 +52,7 @@ public class Intrigue extends ApplicationAdapter {
 	private IntrigueAimingSystem IntrigueAimingSystem;
 	private IntrigueBulletCollisionSystem IntrigueBulletCollisionSystem;
 	private IntrigueTargetingAISystem IntrigueTargetingAISystem;
-	private IntrigueCharacterSoundSystem DrifterCharacterSoundSys;
+	private IntrigueSoundEffectSystem DrifterCharacterSoundSys;
 	private final IntrigueLevelFactory<Entity2> level_factory = new IntrigueLevelFactory<Entity2>();
 	private Stage stage;
 	private Table table;
@@ -71,7 +71,6 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueGraphicSys = new IntrigueGraphicSystem(base);
 		IntrigueTotalPhysicsSys = new IntrigueTotalPhysicsSystem(base);
 		IntrigueCamSys = new IntrigueThirdPersonCameraViewSystem(base);
-		
 		IntrigueAnimSys = new IntrigueAnimationSystem(base);
 		IntrigueControllerSys = new IntrigueControllerSystem(base);
 		IntrigueMotionSys = new IntrigueMotionSystem(base);
@@ -80,8 +79,8 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueAimingSystem = new IntrigueAimingSystem(base);
 		IntrigueBulletCollisionSystem = new IntrigueBulletCollisionSystem(base);
 		IntrigueTargetingAISystem = new IntrigueTargetingAISystem(base);
-		DrifterCharacterSoundSys = new IntrigueCharacterSoundSystem(base);
-		IntrigueLevelSys = new IntrigueLevelSystem(base);
+		DrifterCharacterSoundSys = new IntrigueSoundEffectSystem(base);
+		IntrigueLevelSys = new IntrigueMusicSystem(base);
 		final int team1 = 1;
 		final int team2 = 2;
 		

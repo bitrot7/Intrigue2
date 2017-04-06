@@ -36,7 +36,7 @@ public class IntrigueGraphicSystem extends SystemDecorator{
 		super(upstream);
 		cam = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		cam.near = .1f;
-		cam.far = 10000;
+		cam.far = 5000;
         cam.update();
 		
 		modelBatch = new ModelBatch();

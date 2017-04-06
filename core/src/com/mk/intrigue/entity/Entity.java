@@ -5,7 +5,7 @@ import com.badlogic.gdx.physics.bullet.collision.btCollisionShape;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.mk.intrigue.entity.component.IntrigueControllerComponent;
-import com.mk.intrigue.entity.component.IntrigueLevelComponent;
+import com.mk.intrigue.entity.component.IntrigueMusicComponent;
 import com.mk.intrigue.entity.component.IntrigueModelComponent;
 import com.mk.intrigue.entity.component.IntrigueParticleComponent;
 import com.mk.intrigue.entity.component.IntriguePhysicalComponent;
@@ -19,14 +19,14 @@ public class Entity {
 	transient protected IntrigueModelComponent modelComponent;// the component in entity component.
     protected IntriguePhysicalComponent physicalComponent;
 	protected IntrigueControllerComponent controllerComponent;
-	protected IntrigueLevelComponent levelComponent;
+	protected IntrigueMusicComponent musicComponent;
 	protected IntrigueParticleComponent particleComponent;
 	protected Entity(Builder builder) {
 		this.guid = builder.guid;
 		this.modelComponent = builder.modelComponent;
 		this.physicalComponent = builder.physicalComponent;
 		this.controllerComponent = builder.controllerComponent;
-		this.levelComponent = builder.levelComponent;
+		this.musicComponent = builder.musicComponent;
 		this.particleComponent = builder.particleComponent;
 	}
 	/**
@@ -41,8 +41,8 @@ public class Entity {
 	public IntrigueControllerComponent getControllerComponent() {
 		return this.controllerComponent; //return component with controller data.
 	}
-	public IntrigueLevelComponent getLevelComponent() {
-		return this.levelComponent;
+	public IntrigueMusicComponent getMusicComponent() {
+		return this.musicComponent;
 	}
 	public IntrigueParticleComponent getParticleComponent() {
 		return this.particleComponent;
@@ -65,7 +65,7 @@ public class Entity {
 		protected IntrigueModelComponent modelComponent;
 		protected IntriguePhysicalComponent physicalComponent;
 		protected IntrigueControllerComponent controllerComponent;
-		protected IntrigueLevelComponent levelComponent;
+		protected IntrigueMusicComponent musicComponent;
 		protected IntrigueParticleComponent particleComponent;
 		
 		public int getGuid() {
@@ -80,8 +80,8 @@ public class Entity {
 		public IntrigueControllerComponent getControllerComponent() {
 			return controllerComponent;
 		}
-		public IntrigueLevelComponent getLevelComponent() {
-			return levelComponent;
+		public IntrigueMusicComponent getMusicComponent() {
+			return musicComponent;
 		}
 		public IntrigueParticleComponent getParticleComponent() {
 			return particleComponent;
@@ -124,8 +124,8 @@ public class Entity {
 			this.physicalComponent.getPhysicsBody().getRigidBody().setUserIndex(this.guid);
 			return this;
 		}
-		public Builder IntrigueLevelComponent(IntrigueLevelComponent ilc) {
-			this.levelComponent = ilc;
+		public Builder IntrigueMusicComponent(String path) {
+			this.musicComponent = new IntrigueMusicComponent(path);
 			return this;
 		}
 		public Builder ParticleComponent(String name, String path, Vector3 pos, Vector3 scale) {
