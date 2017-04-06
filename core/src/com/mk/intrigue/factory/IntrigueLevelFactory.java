@@ -3,13 +3,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Json;
-import com.gamedev.drifter.entity.DrifterEntity;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.ParticleObject;
+import com.mk.intrigue.entity.Entity2;
 import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.entity.component.IntrigueLevelComponent;
+import com.mk.intrigue.object.ParticleObject;
 
-public class IntrigueLevelFactory<T extends DrifterEntity> {
+public class IntrigueLevelFactory<T extends Entity2> {
 	private final Json serializer = new Json();
 	public T createLevel(String path_to_model,String path_to_music,
 			String path_to_weather_fx, Matrix4 m_trans, Class<T> type) {

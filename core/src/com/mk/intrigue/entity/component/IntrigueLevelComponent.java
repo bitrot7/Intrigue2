@@ -3,7 +3,7 @@ package com.mk.intrigue.entity.component;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.Gdx;
-import com.mk.intrigue.Weather;
+import com.mk.intrigue.object.Weather;
 
 public class IntrigueLevelComponent implements IComponent {
 	private Music level_sound_effect;

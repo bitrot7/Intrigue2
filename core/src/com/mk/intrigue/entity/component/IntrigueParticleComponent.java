@@ -4,7 +4,7 @@ package com.mk.intrigue.entity.component;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.math.Vector3;
-import com.mk.intrigue.ParticleObject;
+import com.mk.intrigue.object.ParticleObject;
 /*
 *	Utilizes map.
 */

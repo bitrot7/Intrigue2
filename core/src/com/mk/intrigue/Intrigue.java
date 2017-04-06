@@ -19,18 +19,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.gamedev.drifter.entity.DrifterEntity;
-import com.gamedev.drifter.system.DrifterAiSys;
-import com.gamedev.drifter.system.DrifterAimingSystem;
-import com.gamedev.drifter.system.DrifterAnimationSystem;
-import com.gamedev.drifter.system.DrifterBulletCollisionSystem;
-import com.gamedev.drifter.system.DrifterCharacterSoundSystem;
-import com.gamedev.drifter.system.DrifterControllerSystem;
-import com.gamedev.drifter.system.DrifterMotionSystem;
-import com.gamedev.drifter.system.DrifterTargetingAISystem;
+import com.mk.intrigue.entity.Entity2;
 import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.factory.IntrigueLevelFactory;
 import com.mk.intrigue.system.BaseSystem;
+import com.mk.intrigue.system.IntrigueAiSys;
+import com.mk.intrigue.system.IntrigueAimingSystem;
+import com.mk.intrigue.system.IntrigueAnimationSystem;
+import com.mk.intrigue.system.IntrigueBulletCollisionSystem;
+import com.mk.intrigue.system.IntrigueCharacterSoundSystem;
+import com.mk.intrigue.system.IntrigueControllerSystem;
+import com.mk.intrigue.system.IntrigueMotionSystem;
+import com.mk.intrigue.system.IntrigueTargetingAISystem;
 import com.mk.intrigue.system.ISystem;
 import com.mk.intrigue.system.IntrigueParticleSystem;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
@@ -39,21 +39,21 @@ import com.mk.intrigue.system.IntrigueThirdPersonCameraViewSystem;
 import com.mk.intrigue.system.IntrigueTotalPhysicsSystem;
 
 public class Intrigue extends ApplicationAdapter {
-	public static Array<DrifterEntity> mamaDukes = new Array<DrifterEntity>();
+	public static Array<Entity2> mamaDukes = new Array<Entity2>();
 	private IntrigueGraphicSystem IntrigueGraphicSys;
 	private IntrigueTotalPhysicsSystem IntrigueTotalPhysicsSys;
 	private IntrigueThirdPersonCameraViewSystem IntrigueCamSys;
 	private IntrigueLevelSystem IntrigueLevelSys;
-	private DrifterMotionSystem IntrigueMotionSys;
-	private DrifterAnimationSystem IntrigueAnimSys;
-	private DrifterControllerSystem IntrigueControllerSys;
-	private DrifterAiSys IntrigueAiSys;
+	private IntrigueMotionSystem IntrigueMotionSys;
+	private IntrigueAnimationSystem IntrigueAnimSys;
+	private IntrigueControllerSystem IntrigueControllerSys;
+	private IntrigueAiSys IntrigueAiSys;
 	private IntrigueParticleSystem IntrigueParticleSys;
-	private DrifterAimingSystem IntrigueAimingSystem;
-	private DrifterBulletCollisionSystem IntrigueBulletCollisionSystem;
-	private DrifterTargetingAISystem IntrigueTargetingAISystem;
-	private DrifterCharacterSoundSystem DrifterCharacterSoundSys;
-	private final IntrigueLevelFactory<DrifterEntity> level_factory = new IntrigueLevelFactory<DrifterEntity>();
+	private IntrigueAimingSystem IntrigueAimingSystem;
+	private IntrigueBulletCollisionSystem IntrigueBulletCollisionSystem;
+	private IntrigueTargetingAISystem IntrigueTargetingAISystem;
+	private IntrigueCharacterSoundSystem DrifterCharacterSoundSys;
+	private final IntrigueLevelFactory<Entity2> level_factory = new IntrigueLevelFactory<Entity2>();
 	private Stage stage;
 	private Table table;
 	private Label text;
@@ -72,15 +72,15 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueTotalPhysicsSys = new IntrigueTotalPhysicsSystem(base);
 		IntrigueCamSys = new IntrigueThirdPersonCameraViewSystem(base);
 		
-		IntrigueAnimSys = new DrifterAnimationSystem(base);
-		IntrigueControllerSys = new DrifterControllerSystem(base);
-		IntrigueMotionSys = new DrifterMotionSystem(base);
-		IntrigueAiSys = new DrifterAiSys(base);
+		IntrigueAnimSys = new IntrigueAnimationSystem(base);
+		IntrigueControllerSys = new IntrigueControllerSystem(base);
+		IntrigueMotionSys = new IntrigueMotionSystem(base);
+		IntrigueAiSys = new IntrigueAiSys(base);
         IntrigueParticleSys = new IntrigueParticleSystem(base);
-		IntrigueAimingSystem = new DrifterAimingSystem(base);
-		IntrigueBulletCollisionSystem = new DrifterBulletCollisionSystem(base);
-		IntrigueTargetingAISystem = new DrifterTargetingAISystem(base);
-		DrifterCharacterSoundSys = new DrifterCharacterSoundSystem(base);
+		IntrigueAimingSystem = new IntrigueAimingSystem(base);
+		IntrigueBulletCollisionSystem = new IntrigueBulletCollisionSystem(base);
+		IntrigueTargetingAISystem = new IntrigueTargetingAISystem(base);
+		DrifterCharacterSoundSys = new IntrigueCharacterSoundSystem(base);
 		IntrigueLevelSys = new IntrigueLevelSystem(base);
 		final int team1 = 1;
 		final int team2 = 2;
@@ -131,7 +131,7 @@ public class Intrigue extends ApplicationAdapter {
 		Vector3 halfExtents = new Vector3(30f,90f,25f);
 		btCapsuleShape person_shape = new btCapsuleShape(30f, 90f);
 		
-		mamaDukes.add(new DrifterEntity.DrifterObjectBuilder(player_guid)
+		mamaDukes.add(new Entity2.DrifterObjectBuilder(player_guid)
 					.BaseObject(new Entity.Builder(player_guid)
 					.IntrigueModelComponent(path_to_char).IntrigueControllerComponent(1)
 					.IntriguePhysicalComponent(person_shape, 200f, trans)
@@ -142,7 +142,7 @@ public class Intrigue extends ApplicationAdapter {
 					.CharacterSoundComponent("SoundEffects/Character/walking/step-spur.mp3", "SoundEffects/guns/M4A1.mp3")
 					.Build());
 		Json json_test = new Json(); 
-		DrifterEntity d = mamaDukes.get(player_guid);
+		Entity2 d = mamaDukes.get(player_guid);
 		System.out.println(json_test.prettyPrint(d));
 		
 		mamaDukes.get(player_guid).getPhysicalComponent()
@@ -156,7 +156,7 @@ public class Intrigue extends ApplicationAdapter {
 					.setActivationState(Collision.DISABLE_DEACTIVATION);
 
 		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
-				"3DParticles/blizzard.pfx", iceTrans, DrifterEntity.class));
+				"3DParticles/blizzard.pfx", iceTrans, Entity2.class));
 				/*
 				new DrifterObject.DrifterObjectBuilder(1)
 					.BaseObject(new Gobject.Builder(1)
@@ -169,7 +169,7 @@ public class Intrigue extends ApplicationAdapter {
 					.Build());*/
 		trans2.translate(-1000,1000,1500);
 		
-		mamaDukes.add(new DrifterEntity.DrifterObjectBuilder(2)
+		mamaDukes.add(new Entity2.DrifterObjectBuilder(2)
 					.BaseObject(new Entity.Builder(2)
 					.IntrigueModelComponent(path_to_char)
 					.IntriguePhysicalComponent(person_shape, 200f, trans2)
@@ -198,7 +198,7 @@ public class Intrigue extends ApplicationAdapter {
 		
 		trans3.translate(-1000, 1000, 2000);
 		
-		mamaDukes.add(new DrifterEntity.DrifterObjectBuilder(3)
+		mamaDukes.add(new Entity2.DrifterObjectBuilder(3)
 					.BaseObject(new Entity.Builder(3).IntrigueModelComponent(path_to_char)
 					.IntriguePhysicalComponent(person_shape, 200f, trans3)
 					.Build()).CharacterActionsComponent().AnimationController().Fireable()
@@ -223,7 +223,7 @@ public class Intrigue extends ApplicationAdapter {
 		
 		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
 				"SoundEffects/stages/snow stage/wind1.mp3",
-				"3DParticles/blizzard.pfx", iceTrans2, DrifterEntity.class));
+				"3DParticles/blizzard.pfx", iceTrans2, Entity2.class));
 		
 					/*new DrifterObject.DrifterObjectBuilder(4)
 					.BaseObject(new Gobject.Builder(4)
@@ -240,7 +240,7 @@ public class Intrigue extends ApplicationAdapter {
 		iceTrans3.translate(-6149.6568f, 0, 6185.332f);
 		
 		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
-				"3DParticles/blizzard.pfx" , iceTrans3, DrifterEntity.class));
+				"3DParticles/blizzard.pfx" , iceTrans3, Entity2.class));
 		
 		/**
 		 * btStaticMeshShapes do not update their motionStates.  The model Translation must be set manually in these cases.
@@ -249,7 +249,7 @@ public class Intrigue extends ApplicationAdapter {
 		
 		iceTrans4.translate(-6149.6568f, 0, 0);
 		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
-				"3DParticles/blizzard.pfx" , iceTrans4, DrifterEntity.class));
+				"3DParticles/blizzard.pfx" , iceTrans4, Entity2.class));
 					/**new DrifterObject.DrifterObjectBuilder(6)
 					.BaseObject(new Gobject.Builder(6)
 					.IntrigueModelComponent(path_to_snow_terrain)

@@ -4,12 +4,12 @@ package com.mk.intrigue.entity;
 import com.badlogic.gdx.physics.bullet.collision.btCollisionShape;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
-import com.mk.intrigue.ParticleObject;
 import com.mk.intrigue.entity.component.IntrigueControllerComponent;
 import com.mk.intrigue.entity.component.IntrigueLevelComponent;
 import com.mk.intrigue.entity.component.IntrigueModelComponent;
 import com.mk.intrigue.entity.component.IntrigueParticleComponent;
 import com.mk.intrigue.entity.component.IntriguePhysicalComponent;
+import com.mk.intrigue.object.ParticleObject;
 
 
 //general Purpose Game Object (entity)

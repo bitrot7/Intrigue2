@@ -11,12 +11,15 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.math.collision.BoundingBox;
 
 /*
 *	System requirements for entity:
@@ -63,7 +66,7 @@ public class IntrigueGraphicSystem extends GameSys{
 	public void destroy() {
 		modelBatch.dispose();
 	}
-	/*private boolean isVisible(Camera cam, ModelInstance m) {
+	private boolean isVisible(Camera cam, ModelInstance m) {
 		Vector3 position = new Vector3();
 		m.transform.getTranslation(position);
 		BoundingBox bounds = new BoundingBox();
@@ -73,9 +76,9 @@ public class IntrigueGraphicSystem extends GameSys{
 		bounds.getCenter(out);
 		position.add(out);
 		bounds.getDimensions(out2);
-		out2.scl(4.5f);
+		out2.scl(1.5f);
         return cam.frustum.boundsInFrustum(position, out2);
-	}*/
+	}
 	public void update(float delta) {
 		//handleInput();
 		super.update(delta);
@@ -93,9 +96,9 @@ public class IntrigueGraphicSystem extends GameSys{
 						modelBatch.end();
 						return;
 					}
-					//if(isVisible(cam, m)) {
+					if(isVisible(cam, m)) {
 						modelBatch.render(m, environment);
-					//}
+					}
 		}
 		modelBatch.flush();
 		modelBatch.end();

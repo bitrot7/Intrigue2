@@ -5,9 +5,9 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleSystem;
 import com.badlogic.gdx.graphics.g3d.particles.batches.PointSpriteParticleBatch;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
-import com.gamedev.drifter.entity.DrifterEntity;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.ParticleObject;
+import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.object.ParticleObject;
 
 public class IntrigueParticleSystem extends GameSys {
 	/*
@@ -31,7 +31,7 @@ public class IntrigueParticleSystem extends GameSys {
 	public void register(int guid) {
 		super.register(guid);
 		internal.add(guid);
-		DrifterEntity g  = Intrigue.mamaDukes.get(guid);
+		Entity2 g  = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(g.getParticleComponent(), this, g);
 	}
 	public void deregister(int guid) {
