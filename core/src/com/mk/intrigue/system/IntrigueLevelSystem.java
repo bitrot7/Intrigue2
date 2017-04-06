@@ -4,7 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity;
 
-public class IntrigueLevelSystem extends GameSys {
+public class IntrigueLevelSystem extends SystemDecorator {
 	private final Array<Integer> internal = new Array<Integer>();
 	//private final DrifterParticleSys particleSys = new DrifterParticleSys();
 	public IntrigueLevelSystem(ISystem upstream) {

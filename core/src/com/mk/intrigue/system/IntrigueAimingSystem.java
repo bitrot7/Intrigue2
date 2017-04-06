@@ -26,7 +26,7 @@ import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
 *		(active ray) and one for determining collisions.
 *		Essentially one system (this) for ray creation, another (not yet implemented) for ray activation, and another for active ray collisions (DrifterBulletCollisionSystem)
 */
-public class IntrigueAimingSystem extends GameSys {
+public class IntrigueAimingSystem extends SystemDecorator {
 	private Array<Integer> internal = new Array<Integer>();
 	private DecalBatch decalBatch;
 	private int dy = -100;

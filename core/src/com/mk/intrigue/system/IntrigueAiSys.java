@@ -4,12 +4,12 @@ package com.mk.intrigue.system;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Matrix4;
-import com.mk.intrigue.AtomicPhysicalObject;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
 import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
 import com.mk.intrigue.entity.component.IntrigueTargetingComponent;
-public class IntrigueAiSys extends GameSys {
+import com.mk.intrigue.object.AtomicPhysicalObject;
+public class IntrigueAiSys extends SystemDecorator {
 	/*
 	*	System requirements for entity:
 	*		-DrifterObject

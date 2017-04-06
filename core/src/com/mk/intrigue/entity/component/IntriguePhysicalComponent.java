@@ -1,9 +1,8 @@
 //Intrigue Physical Component
 
 package com.mk.intrigue.entity.component;
-import com.mk.intrigue.AtomicPhysicalObject;
-import com.mk.intrigue.DefaultKinematicRagdoll;
-
+import com.mk.intrigue.object.AtomicPhysicalObject;
+import com.mk.intrigue.object.DefaultKinematicRagdoll;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Matrix4;

@@ -26,7 +26,7 @@ import com.badlogic.gdx.math.collision.BoundingBox;
 *		-Gobject
 *		-IntrigueModelComponent
 */
-public class IntrigueGraphicSystem extends GameSys{
+public class IntrigueGraphicSystem extends SystemDecorator{
 	public static ModelBatch modelBatch;
 	public static PerspectiveCamera cam;
     private CameraInputController camController;

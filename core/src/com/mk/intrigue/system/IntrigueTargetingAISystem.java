@@ -6,7 +6,7 @@ import com.badlogic.gdx.utils.Array;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
 
-public class IntrigueTargetingAISystem extends GameSys {
+public class IntrigueTargetingAISystem extends SystemDecorator {
 	private Array<Integer> internal = new Array<Integer>();
 	private Array<Integer> team1 = new Array<Integer>();
 	private Array<Integer> team2 = new Array<Integer>();

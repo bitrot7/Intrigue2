@@ -5,7 +5,7 @@ import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
 import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
 
-public class IntrigueCharacterSoundSystem extends GameSys {
+public class IntrigueCharacterSoundSystem extends SystemDecorator {
 	private final Array<Integer> internal = new Array<Integer>();
 	private final float shortest_time_between_steps = .53f;
 	private final float shortest_time_between_steps_sideways = .38f;

@@ -17,7 +17,7 @@ import com.mk.intrigue.entity.Entity;
 *	System requirments for entity:
 *		-IntriguePhysicalComponent
 */
-public class IntrigueTotalPhysicsSystem extends GameSys {
+public class IntrigueTotalPhysicsSystem extends SystemDecorator {
 	
 	private Array<Integer> internal = new Array<Integer>();
 	private btBroadphaseInterface broadphase;

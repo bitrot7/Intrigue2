@@ -9,7 +9,7 @@ import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
 import com.mk.intrigue.object.ParticleObject;
 
-public class IntrigueParticleSystem extends GameSys {
+public class IntrigueParticleSystem extends SystemDecorator {
 	/*
 	*	System requirements for entity:
 	*		-DrifterObject

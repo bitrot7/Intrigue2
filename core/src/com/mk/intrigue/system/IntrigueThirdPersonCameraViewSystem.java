@@ -20,7 +20,7 @@ import com.mk.intrigue.entity.Entity;
 *		
 *	This system is a little different.
 */
-public class IntrigueThirdPersonCameraViewSystem extends GameSys {
+public class IntrigueThirdPersonCameraViewSystem extends SystemDecorator {
 	protected final Array<Integer> internal = new Array<Integer>();
 	private final Vector3 tmp3 = new Vector3();
 	private final Vector3 tmp2 = new Vector3();

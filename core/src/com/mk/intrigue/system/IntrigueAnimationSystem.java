@@ -3,9 +3,9 @@ package com.mk.intrigue.system;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.MyAnimationListener;
 import com.mk.intrigue.entity.Entity2;
 import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
+import com.mk.intrigue.object.MyAnimationListener;
 /*
 	*	Animation names:
 	*		Run_Forwards
@@ -34,7 +34,7 @@ import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
 *		-DrifterObject
 *		
 */
-public class IntrigueAnimationSystem extends GameSys {
+public class IntrigueAnimationSystem extends SystemDecorator {
 	
 	private MyAnimationListener garbage = new MyAnimationListener();
 	private Array<Integer> internal = new Array<Integer>();

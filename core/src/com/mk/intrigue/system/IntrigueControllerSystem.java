@@ -10,7 +10,7 @@ import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
 *		-IntrigueControllerComponent
 *		-DrifterCharacterActionsComponent
 */
-public class IntrigueControllerSystem extends GameSys { 
+public class IntrigueControllerSystem extends SystemDecorator { 
 	private Array<Integer> internal = new Array<Integer>();
 	public IntrigueControllerSystem(ISystem upstream) {
 		super(upstream);

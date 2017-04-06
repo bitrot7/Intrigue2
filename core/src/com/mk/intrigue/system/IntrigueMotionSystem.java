@@ -1,10 +1,10 @@
 package com.mk.intrigue.system;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.math.Vector3;
-import com.mk.intrigue.AtomicPhysicalObject;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
 import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
+import com.mk.intrigue.object.AtomicPhysicalObject;
 /*
 *	System requirements for entity:'
 *		-DrifterObject
@@ -12,7 +12,7 @@ import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
 *		-DrifterCharacterActionsComponent
 *
 */
-public class IntrigueMotionSystem extends GameSys {
+public class IntrigueMotionSystem extends SystemDecorator {
 	
 	private Array<Integer> internal = new Array<Integer>();
 	

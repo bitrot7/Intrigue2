@@ -13,7 +13,7 @@ import com.mk.intrigue.entity.Entity2;
 *		-Drifter States
 *		
 */
-public class IntrigueBulletCollisionSystem extends GameSys {
+public class IntrigueBulletCollisionSystem extends SystemDecorator {
 	private Array<Integer> internal = new Array<Integer>();
 	private static Vector3 rayFrom = new Vector3();
 	private static Vector3 rayTo = new Vector3();
