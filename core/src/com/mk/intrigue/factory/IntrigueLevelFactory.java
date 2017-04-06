@@ -3,13 +3,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Json;
-import com.gamedev.drifter.entity.DrifterObject;
+import com.gamedev.drifter.entity.DrifterEntity;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.ParticleObject;
-import com.mk.intrigue.entity.Gobject;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.entity.component.IntrigueLevelComponent;
 
-public class IntrigueLevelFactory<T extends DrifterObject> {
+public class IntrigueLevelFactory<T extends DrifterEntity> {
 	private final Json serializer = new Json();
 	public T createLevel(String path_to_model,String path_to_music,
 			String path_to_weather_fx, Matrix4 m_trans, Class<T> type) {
@@ -18,7 +18,7 @@ public class IntrigueLevelFactory<T extends DrifterObject> {
 		ParticleObject p = new ParticleObject("dummy", path_to_weather_fx, m_trans);
 		//p.getParticleEffect().scale(1000f, 1000f, 1000f);
 		return type.cast(new T.DrifterObjectBuilder(guid)
-		.BaseObject(new Gobject.Builder(guid)
+		.BaseObject(new Entity.Builder(guid)
 			.IntrigueModelComponent(path_to_model)
 			.IntriguePhysicalComponent(0, m_trans)
 			.IntrigueLevelComponent(
@@ -39,7 +39,7 @@ public class IntrigueLevelFactory<T extends DrifterObject> {
 		int guid = Intrigue.mamaDukes.size;
 		
 		return type.cast(new T.DrifterObjectBuilder(guid)
-		.BaseObject(new Gobject.Builder(guid)
+		.BaseObject(new Entity.Builder(guid)
 			.IntrigueModelComponent(path_to_model)
 			.IntriguePhysicalComponent(0, m_trans)
 			.IntrigueLevelComponent(

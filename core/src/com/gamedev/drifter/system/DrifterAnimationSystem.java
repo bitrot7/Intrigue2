@@ -2,7 +2,7 @@ package com.gamedev.drifter.system;
 
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
-import com.gamedev.drifter.entity.DrifterObject;
+import com.gamedev.drifter.entity.DrifterEntity;
 import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.MyAnimationListener;
@@ -45,7 +45,7 @@ public class DrifterAnimationSystem extends GameSys {
 	}
 	public void register(int guid) {
 		super.register(guid);
-		DrifterObject d = Intrigue.mamaDukes.get(guid);
+		DrifterEntity d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		this.requireComponent(d.getModelComponent(), this, d);
 		internal.add(guid);
@@ -58,7 +58,7 @@ public class DrifterAnimationSystem extends GameSys {
 	public void update(float delta) {
 		super.update(delta);
 		for(Integer i : internal) {
-			DrifterObject g = Intrigue.mamaDukes.get(i);
+			DrifterEntity g = Intrigue.mamaDukes.get(i);
 			DrifterCharacterActionsComponent s = g.getCharacterActionsComponent();
 			AnimationController c = g.getAnimationController();
 			if(s.isFiring()) {

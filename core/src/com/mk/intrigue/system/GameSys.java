@@ -1,6 +1,6 @@
 package com.mk.intrigue.system;
 
-import com.mk.intrigue.entity.Gobject;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.entity.component.IComponent;
 import com.mk.intrigue.exception.ComponentMissingException;
 
@@ -29,7 +29,7 @@ public abstract class GameSys implements ISystem {
 	/**
 	 * @throws ComponentMissingException if Component not Found
 	 */
-	public void requireComponent(IComponent c, GameSys s, Gobject g) {
+	public void requireComponent(IComponent c, GameSys s, Entity g) {
 		if(c == null) {
 			throw new ComponentMissingException("Component",s.getClass().getName(), g.getGUID());
 		}

@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.bullet.collision.btDefaultCollisionConfiguration
 import com.badlogic.gdx.physics.bullet.collision.btCollisionDispatcher;
 import com.badlogic.gdx.physics.bullet.dynamics.btSequentialImpulseConstraintSolver;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Gobject;
+import com.mk.intrigue.entity.Entity;
 
 //Default CollisionSYs
 /*
@@ -46,7 +46,7 @@ public class IntrigueTotalPhysicsSystem extends GameSys {
 			System.out.println("Bad guid passed to mamadukes, are you messing with me?");
 			return;
 		}
-		Gobject g = Intrigue.mamaDukes.get(guid);
+		Entity g = Intrigue.mamaDukes.get(guid);
 		if(g.getPhysicalComponent().getPhysicsBody() != null) {
 			dynamicsWorld.addRigidBody(g.getPhysicalComponent().getPhysicsBody().getRigidBody());
 			internal.add(guid);

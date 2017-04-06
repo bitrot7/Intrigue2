@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
 import com.badlogic.gdx.graphics.g3d.decals.CameraGroupStrategy;
 import com.badlogic.gdx.Gdx;
-import com.gamedev.drifter.entity.DrifterObject;
+import com.gamedev.drifter.entity.DrifterEntity;
 import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.GameSys;
@@ -42,7 +42,7 @@ public class DrifterAimingSystem extends GameSys {
 	}
 	public void register(int guid) {
 		super.register(guid);
-		DrifterObject d = Intrigue.mamaDukes.get(guid);
+		DrifterEntity d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getPhysicalComponent(), this, d);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		this.requireComponent(d.getFiringComponent(), this, d);
@@ -56,7 +56,7 @@ public class DrifterAimingSystem extends GameSys {
 		super.update(delta);
 		for(Integer i : internal) {
 			
-			DrifterObject d = Intrigue.mamaDukes.get(i);
+			DrifterEntity d = Intrigue.mamaDukes.get(i);
 			DrifterCharacterActionsComponent s = d.getCharacterActionsComponent();
 			
 			Vector3 m_crosshair_pos = new Vector3();

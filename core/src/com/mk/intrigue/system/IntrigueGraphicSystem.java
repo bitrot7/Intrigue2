@@ -6,7 +6,7 @@ package com.mk.intrigue.system;
 import com.mk.intrigue.Intrigue;
 
 
-import com.mk.intrigue.entity.Gobject;
+import com.mk.intrigue.entity.Entity;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g3d.ModelBatch;
@@ -51,7 +51,7 @@ public class IntrigueGraphicSystem extends GameSys{
 	}
 	public void register(int guid) {
 		super.register(guid);
-		Gobject g  = Intrigue.mamaDukes.get(guid);
+		Entity g  = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(g.getModelComponent(), this, g);
 		
 		internal.add(guid);
@@ -85,7 +85,7 @@ public class IntrigueGraphicSystem extends GameSys{
 		modelBatch.begin(cam);
 		for(Integer i : internal) {
 			
-				Gobject q = Intrigue.mamaDukes.get(i);
+				Entity q = Intrigue.mamaDukes.get(i);
 				ModelInstance m = q.getModelComponent().getModel();
 				
 					if(m == null) {

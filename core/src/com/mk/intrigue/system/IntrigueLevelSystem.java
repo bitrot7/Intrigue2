@@ -2,7 +2,7 @@ package com.mk.intrigue.system;
 
 import com.badlogic.gdx.utils.Array;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Gobject;
+import com.mk.intrigue.entity.Entity;
 
 public class IntrigueLevelSystem extends GameSys {
 	private final Array<Integer> internal = new Array<Integer>();
@@ -13,7 +13,7 @@ public class IntrigueLevelSystem extends GameSys {
 	@Override
 	public void register(int guid) {
 		super.register(guid);
-		Gobject g = Intrigue.mamaDukes.get(guid);
+		Entity g = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(g.getLevelComponent(), this, g);
 		internal.add(guid);
 	}
@@ -22,7 +22,7 @@ public class IntrigueLevelSystem extends GameSys {
 	public void update(float delta) {
 		super.update(delta);
 		for(Integer i : internal) {
-			Gobject g = Intrigue.mamaDukes.get(i);
+			Entity g = Intrigue.mamaDukes.get(i);
 			if(!g.getLevelComponent().getLevelSoundEffect().isPlaying()) {
 				g.getLevelComponent().getLevelSoundEffect().play();
 			}

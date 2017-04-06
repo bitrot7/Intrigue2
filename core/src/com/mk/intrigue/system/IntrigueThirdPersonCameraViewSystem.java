@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.math.Matrix4;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Gobject;
+import com.mk.intrigue.entity.Entity;
 
 //follows root Physical Object 
 
@@ -34,7 +34,7 @@ public class IntrigueThirdPersonCameraViewSystem extends GameSys {
 	}
 	public void register(int guid) {
 		super.register(guid);
-		Gobject q = Intrigue.mamaDukes.get(guid);
+		Entity q = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(q.getPhysicalComponent(), this, q);
 		internal.add(guid);
 	}
@@ -45,7 +45,7 @@ public class IntrigueThirdPersonCameraViewSystem extends GameSys {
 	public void update(float delta) {
 		super.update(delta);
 		for(Integer i : internal) {
-			Gobject q = Intrigue.mamaDukes.get(i);
+			Entity q = Intrigue.mamaDukes.get(i);
 			q.getPhysicalComponent().getPhysicsBody().getMotionState().getWorldTransform(xxx);
 			xxx.getTranslation(this.tmp);
 			//this.tmp3.set(this.tmp);

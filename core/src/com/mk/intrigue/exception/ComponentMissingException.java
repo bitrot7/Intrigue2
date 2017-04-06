@@ -1,6 +1,6 @@
 package com.mk.intrigue.exception;
 
-import com.mk.intrigue.entity.Gobject;
+import com.mk.intrigue.entity.Entity;
 
 public class ComponentMissingException extends RuntimeException {
 	public ComponentMissingException(String classname, String systemname, int guid) {

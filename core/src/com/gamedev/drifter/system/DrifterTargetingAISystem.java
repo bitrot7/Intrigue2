@@ -3,7 +3,7 @@ package com.gamedev.drifter.system;
 
 
 import com.badlogic.gdx.utils.Array;
-import com.gamedev.drifter.entity.DrifterObject;
+import com.gamedev.drifter.entity.DrifterEntity;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.GameSys;
 import com.mk.intrigue.system.ISystem;
@@ -18,7 +18,7 @@ public class DrifterTargetingAISystem extends GameSys {
 	public void register(int guid) {
 		super.register(guid);
 		internal.add(guid);
-		DrifterObject d = Intrigue.mamaDukes.get(guid);
+		DrifterEntity d = Intrigue.mamaDukes.get(guid);
 		//this.requireComponent(d.getAIComponent(), this, d);
 		this.requireComponent(d.getTargetingComponent(), this, d);
 		if(d.getTargetingComponent().getTeamNumber() == 1) {
@@ -37,7 +37,7 @@ public class DrifterTargetingAISystem extends GameSys {
 	public void update(float delta) {
 		super.update(delta);
 		for(Integer i : internal) {
-			DrifterObject d = Intrigue.mamaDukes.get(i);
+			DrifterEntity d = Intrigue.mamaDukes.get(i);
 			if(d.getAIComponent() != null) {
 				if(d.getTargetingComponent().getTeamNumber() == 1) {
 					int i2 = team2.get(0);

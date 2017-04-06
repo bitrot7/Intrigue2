@@ -1,7 +1,7 @@
 package com.gamedev.drifter.system;
 
 import com.badlogic.gdx.utils.Array;
-import com.gamedev.drifter.entity.DrifterObject;
+import com.gamedev.drifter.entity.DrifterEntity;
 import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.GameSys;
@@ -18,7 +18,7 @@ public class DrifterCharacterSoundSystem extends GameSys {
 	@Override
 	public void register(int guid) {
 		super.register(guid);
-		DrifterObject d = Intrigue.mamaDukes.get(guid);
+		DrifterEntity d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		this.requireComponent(d.getCharacterSoundComponent(), this, d);
 		internal.add(guid);
@@ -28,7 +28,7 @@ public class DrifterCharacterSoundSystem extends GameSys {
 	public void update(float delta) {
 		super.update(delta);
 		for(Integer i : internal) {
-			DrifterObject d = Intrigue.mamaDukes.get(i);
+			DrifterEntity d = Intrigue.mamaDukes.get(i);
 			if(d.getCharacterActionsComponent().isFiring()) {
 				if(this.stagger(this.shortest_time_between_shots)) {
 					d.getCharacterSoundComponent().getShootingSound().play();

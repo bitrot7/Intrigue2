@@ -1,7 +1,7 @@
 package com.gamedev.drifter.system;
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.utils.Array;
-import com.gamedev.drifter.entity.DrifterObject;
+import com.gamedev.drifter.entity.DrifterEntity;
 import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.GameSys;
@@ -19,7 +19,7 @@ public class DrifterControllerSystem extends GameSys {
 	}
 	public void register(int guid) {
 		super.register(guid);
-		DrifterObject d = Intrigue.mamaDukes.get(guid);
+		DrifterEntity d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getControllerComponent(), this, d);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		internal.add(guid);
@@ -33,7 +33,7 @@ public class DrifterControllerSystem extends GameSys {
 	public void update(float delta) {
 		super.update(delta);
 		for(Integer i : internal) {
-			DrifterObject g = Intrigue.mamaDukes.get(i);
+			DrifterEntity g = Intrigue.mamaDukes.get(i);
 			Controller c = g.getControllerComponent().getController();
 			if(c == null) {
 				System.out.println("Failure: Gobject has no controller, yet it is registered with the controller subsystem.");

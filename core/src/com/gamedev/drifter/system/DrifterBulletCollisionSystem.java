@@ -3,7 +3,7 @@ package com.gamedev.drifter.system;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.bullet.collision.ClosestRayResultCallback;
-import com.gamedev.drifter.entity.DrifterObject;
+import com.gamedev.drifter.entity.DrifterEntity;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.IntrigueGraphicalDebugger;
 import com.mk.intrigue.system.GameSys;
@@ -29,7 +29,7 @@ public class DrifterBulletCollisionSystem extends GameSys {
 	}
 	public void register(int guid) {
 		super.register(guid);
-		DrifterObject d = Intrigue.mamaDukes.get(guid);
+		DrifterEntity d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getFiringComponent(),this, d);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		internal.add(guid);
@@ -42,7 +42,7 @@ public class DrifterBulletCollisionSystem extends GameSys {
 		super.update(delta);
 		//here we go
 		for(Integer i : internal) {
-			DrifterObject d = Intrigue.mamaDukes.get(i);
+			DrifterEntity d = Intrigue.mamaDukes.get(i);
 			rayFrom.set(d.getFiringComponent().getBulletStartPoint());
 			rayTo.set(d.getFiringComponent().getBulletEndPoint());
 			// define how far bullet can travel

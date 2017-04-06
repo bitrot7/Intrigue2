@@ -4,7 +4,7 @@ package com.gamedev.drifter.system;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Matrix4;
-import com.gamedev.drifter.entity.DrifterObject;
+import com.gamedev.drifter.entity.DrifterEntity;
 import com.gamedev.drifter.entity.component.DrifterCharacterActionsComponent;
 import com.gamedev.drifter.entity.component.DrifterTargetingComponent;
 import com.mk.intrigue.AtomicPhysicalObject;
@@ -30,7 +30,7 @@ public class DrifterAiSys extends GameSys {
 	 */
 	public void register(int guid) {
 		super.register(guid);
-		DrifterObject d = Intrigue.mamaDukes.get(guid);
+		DrifterEntity d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getCharacterActionsComponent(), this, d);
 		this.requireComponent(d.getTargetingComponent(), this, d);
 		this.requireComponent(d.getPhysicalComponent(), this, d);
@@ -45,12 +45,12 @@ public class DrifterAiSys extends GameSys {
 		for(Integer i : internal) {
 		
 			tmp.set(1,0,0);
-			DrifterObject g = Intrigue.mamaDukes.get(i);
+			DrifterEntity g = Intrigue.mamaDukes.get(i);
 			DrifterCharacterActionsComponent states = g.getCharacterActionsComponent();
 			states.reset();
 			
 			DrifterTargetingComponent tc = g.getTargetingComponent();
-			DrifterObject adversary = Intrigue.mamaDukes.get(tc.getTarget());
+			DrifterEntity adversary = Intrigue.mamaDukes.get(tc.getTarget());
 			//this.requireComponent(adversary.getCharacterActionsComponent(), s, g);
 			DrifterCharacterActionsComponent states2 =  adversary.getCharacterActionsComponent();
 			AtomicPhysicalObject a = adversary.getPhysicalComponent().getPhysicsBody();
