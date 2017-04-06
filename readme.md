@@ -20,3 +20,5 @@ an Entity.
 Go look at the `system` package to start getting a better idea of ECS in the Intrigue API.  [Link to System Doc](core/src/com/mk/intrigue/system/)
 
 Hopefully looking at this code gives you good ideas of your own.
+
+All code is released under Apache 2 License [license](https://www.apache.org/licenses/LICENSE-2.0.html)
