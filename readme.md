@@ -21,4 +21,6 @@ Go look at the `system` package to start getting a better idea of ECS in the Int
 
 Hopefully looking at this code gives you good ideas of your own.
 
+[Contact Author](AUTHOR.md)
+
 All code is released under Apache 2 License [license](https://www.apache.org/licenses/LICENSE-2.0.html)
