@@ -16,7 +16,7 @@ public class IntrigueLevelFactory<T extends DrifterEntity> {
 		int guid = Intrigue.mamaDukes.size;
 		
 		ParticleObject p = new ParticleObject("dummy", path_to_weather_fx, m_trans);
-		//p.getParticleEffect().scale(1000f, 1000f, 1000f);
+		p.getParticleEffect().scale(1000f, 1000f, 1000f);
 		return type.cast(new T.DrifterObjectBuilder(guid)
 		.BaseObject(new Entity.Builder(guid)
 			.IntrigueModelComponent(path_to_model)
@@ -35,7 +35,7 @@ public class IntrigueLevelFactory<T extends DrifterEntity> {
 	}
 	public T createLevel(String path_to_model, String path_to_weather_fx, Matrix4 m_trans, Class<T> type) {
 		ParticleObject p = new ParticleObject("dummy", path_to_weather_fx, m_trans);
-		//p.getParticleEffect().scale(1000f, 1000f, 1000f);
+		p.getParticleEffect().scale(1000f, 1000f, 1000f);
 		int guid = Intrigue.mamaDukes.size;
 		
 		return type.cast(new T.DrifterObjectBuilder(guid)

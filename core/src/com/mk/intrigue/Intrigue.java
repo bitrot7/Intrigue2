@@ -99,7 +99,7 @@ public class Intrigue extends ApplicationAdapter {
 		textStyle.font = font;
 
 		text = new Label("Intrigue",textStyle);
-		Label text2 = new Label("@author: Matt K", textStyle);
+		Label text2 = new Label("@author: Matt", textStyle);
 		Label text3 = new Label("OPERATION 1", textStyle);
 		
 		text.setFontScale(1f,1f);
