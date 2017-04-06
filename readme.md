@@ -1,4 +1,4 @@
-# Intrigue2 Entity Component Based API for functional 3D games with LibGDX
+# Intrigue2 Entity Component Based API for 3D games with LibGDX
 
 
 [Entity](core/src/com/mk/intrigue/entity/) [Component](core/src/com/mk/intrigue/entity/component/) [Systems](core/src/com/mk/intrigue/system/): 
