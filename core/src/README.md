@@ -19,7 +19,7 @@ Entities.
 
 Go look at the `system` package to start getting a better idea of ECS in the Intrigue API.  [Link to System Doc](core/src/com/mk/intrigue/system/)
 
-![Alt text](intrigue_shot2.png?raw=true "Default Test App for Intrigue2")
+![Alt text](../../intrigue_shot2.png?raw=true "Default Test App for Intrigue2")
 
 You can play around with this test interactive world by running 
 
