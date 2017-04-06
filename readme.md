@@ -1,9 +1,7 @@
-# Intrigue2
-Entity Component 3D game written with LibGDX and bullet
-Intrigue2 
+# Intrigue2 Entity Component Based API for functional 3D games with LibGDX
 
-Entity Component Systems.  A more data oriented approach to games.  You will find a strategy like this under the hood of 
-most modern game engines.  
+
+Entity Component Systems: A data oriented approach to games and the strategy  under the hood of most modern game engines.  
 
 Remove the traditional OOP idea of objects and think of a general game object -- an entity.  A game object (entity )that performs 
 no calculations (has no non getter setter methods) it simply holds data to be mutated. This data is partitioned into components.
@@ -58,6 +56,6 @@ to all Systems?
 Goo--Bad Question, no they are not an object that is only meant to be seen should not be operated on by a sound
 system.
 
-Go look at the either system package to start getting a better idea of ECS.  com.mk.*.system
+Go look at the either `system` package to start getting a better idea of ECS in the Intrigue API.  ./core/src/com/mk/intrigue/system
 
 Hopefully looking at this code gives you good ideas of your own.

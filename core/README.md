@@ -1,9 +1,9 @@
-Intrigue2 an API for building real 3D games with LibGDX
+Intrigue2 
 
 Entity Component Systems.  A more data oriented approach to games.  You will find a strategy like this under the hood of 
 most modern game engines.  
 
-In short, Remove the traditional OOP idea of objects and think of a general game object -- an entity.  A game object (entity )that performs 
+Remove the traditional OOP idea of objects and think of a general game object -- an entity.  A game object (entity )that performs 
 no calculations (has no non getter setter methods) it simply holds data to be mutated. This data is partitioned into components.
 
 In normal OOP game programming you might have:
@@ -53,7 +53,10 @@ Each Intrigue*System has an internal array of integer index's that can be used t
 database is a dead simple array of Game Objects (Gobject.java).  What is a relevant object you say?  arent all objects relevant
 to all Systems?  
 
-Go look at the either `system` package to start getting a better idea of ECS in Intrigue API.  `com.mk.*.system`
+Goo--Bad Question, no they are not an object that is only meant to be seen should not be operated on by a sound
+system.
+
+Go look at the either system package to start getting a better idea of ECS.  com.mk.*.system
 
 Hopefully looking at this code gives you good ideas of your own.
 
