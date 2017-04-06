@@ -11,7 +11,6 @@ import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.bullet.collision.Collision;
-import com.badlogic.gdx.physics.bullet.collision.btBoxShape;
 import com.badlogic.gdx.physics.bullet.collision.btCapsuleShape;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Matrix4;
@@ -30,9 +29,9 @@ import com.gamedev.drifter.system.DrifterControllerSystem;
 import com.gamedev.drifter.system.DrifterMotionSystem;
 import com.gamedev.drifter.system.DrifterTargetingAISystem;
 import com.mk.intrigue.entity.Gobject;
-import com.mk.intrigue.factory.AbstractFactory;
 import com.mk.intrigue.factory.IntrigueLevelFactory;
 import com.mk.intrigue.system.BaseSystem;
+import com.mk.intrigue.system.ISystem;
 import com.mk.intrigue.system.IntrigueParticleSystem;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 import com.mk.intrigue.system.IntrigueLevelSystem;
@@ -53,6 +52,7 @@ public class Intrigue extends ApplicationAdapter {
 	private DrifterAimingSystem IntrigueAimingSystem;
 	private DrifterBulletCollisionSystem IntrigueBulletCollisionSystem;
 	private DrifterTargetingAISystem IntrigueTargetingAISystem;
+	private ISystem composedSystem;
 	private DrifterCharacterSoundSystem DrifterCharacterSoundSys;
 	private final IntrigueLevelFactory<DrifterObject> level_factory = new IntrigueLevelFactory<DrifterObject>();
 	private Stage stage;
@@ -83,7 +83,6 @@ public class Intrigue extends ApplicationAdapter {
 		IntrigueTargetingAISystem = new DrifterTargetingAISystem(base);
 		DrifterCharacterSoundSys = new DrifterCharacterSoundSystem(base);
 		IntrigueLevelSys = new IntrigueLevelSystem(base);
-		
 		final int team1 = 1;
 		final int team2 = 2;
 		
@@ -264,6 +263,7 @@ public class Intrigue extends ApplicationAdapter {
 		
 		//register objects to respective systems
 		IntrigueCamSys.register(player_guid);
+		composedSystem.register(player_guid);
 		IntrigueGraphicSys.register(player_guid);
 		IntrigueAnimSys.register(player_guid);
 		IntrigueControllerSys.register(player_guid);	
@@ -314,6 +314,7 @@ public class Intrigue extends ApplicationAdapter {
 	public void render () {		
 		float deltaTime = Gdx.graphics.getDeltaTime();
 		//graphics system {
+		
 		IntrigueParticleSys.update(deltaTime);
 		IntrigueMotionSys.update(deltaTime);//motionsys.update(deltaTime);
 		IntrigueGraphicSys.update(deltaTime);
