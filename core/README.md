@@ -29,6 +29,6 @@ in the root dir of your clone of this repo.  **You will need a wired xbox360 con
 
 Hopefully looking at this code gives you good ideas of your own.
 
-[Contact Author](AUTHOR.md)
+[Contact Author](../AUTHOR.md)
 
 All code is released under Apache 2 License [license](https://www.apache.org/licenses/LICENSE-2.0.html)
