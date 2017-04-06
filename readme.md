@@ -19,6 +19,14 @@ an Entity.
 
 Go look at the `system` package to start getting a better idea of ECS in the Intrigue API.  [Link to System Doc](core/src/com/mk/intrigue/system/)
 
+![Alt text](intrigue_shot2.png?raw=true "Default Test App for Intrigue2")
+
+You can play around with this test interactive world by running 
+
+         ./gradlew desktop:run
+
+in the root dir of your clone of this repo.  **You will need a wired xbox360 controller plugged in to a usb port to move the character**
+
 Hopefully looking at this code gives you good ideas of your own.
 
 [Contact Author](AUTHOR.md)
