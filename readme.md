@@ -9,7 +9,7 @@ It also has a few other benefits that make it a good candidate for the choice of
 
 
 First,Entities in ECS are objects but they are essentially container objects 
-they perform no calculations (only getter-setter methods) it simply holds data to be mutated [Entity](core/src/com/mk/intrigue/entity/Gobject.java) . 
+they perform no calculations (only getter-setter methods) it simply holds data to be mutated [Entity](core/src/com/mk/intrigue/entity/Entity.java) . 
 
 Second, Systems store relatively little information (have a small amount of fields)
 They simply manipulate the data stored in the entites they have access to.  
