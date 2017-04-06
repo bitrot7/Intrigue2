@@ -56,6 +56,6 @@ to all Systems?
 Goo--Bad Question, no they are not an object that is only meant to be seen should not be operated on by a sound
 system.
 
-Go look at the either `system` package to start getting a better idea of ECS in the Intrigue API.  /core/src/com/mk/intrigue/system/readme.md
+Go look at the either `system` package to start getting a better idea of ECS in the Intrigue API.  [Link to System Doc](core/src/com/mk/intrigue/system/)
 
 Hopefully looking at this code gives you good ideas of your own.
