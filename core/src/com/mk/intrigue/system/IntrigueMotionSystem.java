@@ -16,8 +16,8 @@ public class IntrigueMotionSystem extends SystemDecorator {
 	
 	private Array<Integer> internal = new Array<Integer>();
 	
-	protected static float universal_push = 4100f; //naruto copout
-	protected static float universal_rotate = 8500f;
+	protected static float universal_push = 500f; //naruto copout
+	protected static float universal_rotate = .8f;
 	protected Vector3 impulse = new Vector3();
 	protected Vector3 angularImpulse = new Vector3();
 	protected Vector3 tmp = new Vector3();
@@ -36,21 +36,25 @@ public class IntrigueMotionSystem extends SystemDecorator {
 		super.deregister(guid);
 		internal.removeValue(guid,true);
 	}
-	
+	private void resetUtilVectors() {
+		impulse.set(0,0,0);
+		angularImpulse.set(0,0,0);
+		tmp.set(0,0,0);
+	}
 	@Override
 	public void update(float delta) {
 		super.update(delta);
 		for(Integer i : internal) {
+			this.resetUtilVectors();
 			Entity2 g = Intrigue.mamaDukes.get(i);
 			IntrigueActionsComponent s = g.getActionsComponent();
-			impulse.set(0,0,0);
-			angularImpulse.set(0,0,0);
+			
 			AtomicPhysicalObject a = g.getPhysicalComponent().getPhysicsBody();
 			Vector3 v1 = a.getRigidBody().getLinearVelocity();
 			//Vector3 v2 = a.getRigidBody().getAngularVelocity();
 			
 			
-			a.getRigidBody().setDamping(.7f, .8f);
+			a.getRigidBody().setDamping(0f, 0f);
 			if(s.isLeft()) {
 				impulse.x = 1;
 			}
@@ -66,15 +70,6 @@ public class IntrigueMotionSystem extends SystemDecorator {
 			if(s.isJump()) {
 				impulse.y = 1;
 			}
-			if(Math.abs(v1.x) > 500) {
-				a.getRigidBody().setDamping(.9f, .8f);
-			}
-			if(Math.abs(v1.z) > 500) {
-				a.getRigidBody().setDamping(.9f, .8f);
-			}
-			if(Math.abs(v1.y) > 400) {
-				a.getRigidBody().setDamping(.9f, .8f);
-			}
 			if(s.isIdle() && v1.y > -9f) {
 				a.getRigidBody().setAngularVelocity(tmp);
 			}
@@ -85,7 +80,7 @@ public class IntrigueMotionSystem extends SystemDecorator {
 			if(s.isSprint() && s.isForward()) {
 				impulse.scl(1.5f);
 			}
-			a.getRigidBody().applyCentralImpulse(impulse);
+			a.getRigidBody().setLinearVelocity(impulse);
 			
 			if(s.isTurningLeft()) {
 				angularImpulse.y = 1;
@@ -100,14 +95,12 @@ public class IntrigueMotionSystem extends SystemDecorator {
 			}
 			else {
 				angularImpulse.scl(universal_rotate);
-			
 			}
-			a.getRigidBody().applyTorqueImpulse(angularImpulse);
-			tmp.set(0,0,0);
+			a.getRigidBody().setAngularVelocity(angularImpulse);
 			a.getRigidBody().setAngularFactor(tmp);
 			
 			a.getMotionState().getWorldTransform(g.getModelComponent().getModel().transform);
-			g.getModelComponent().getModel().transform.translate(0,-90,0);
+			g.getModelComponent().getModel().transform.translate(0,0,0);
 		}
 		
 	}

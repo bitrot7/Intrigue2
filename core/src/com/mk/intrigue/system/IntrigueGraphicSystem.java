@@ -36,7 +36,7 @@ public class IntrigueGraphicSystem extends SystemDecorator{
 		super(upstream);
 		cam = new PerspectiveCamera(67, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		cam.near = .1f;
-		cam.far = 5000;
+		cam.far = 7500;
         cam.update();
 		
 		modelBatch = new ModelBatch();
@@ -100,7 +100,7 @@ public class IntrigueGraphicSystem extends SystemDecorator{
 						modelBatch.render(m, environment);
 					}
 		}
-		if(this.stagger(0.03f)) {
+		if(this.stagger(0.1f)) {
 			modelBatch.flush();
 		}
 		modelBatch.end();

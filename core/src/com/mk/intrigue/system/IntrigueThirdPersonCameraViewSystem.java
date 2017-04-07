@@ -41,9 +41,14 @@ public class IntrigueThirdPersonCameraViewSystem extends SystemDecorator {
 		super.deregister(guid);
 		internal.removeValue(guid, false);
 	}
+	private void resetUtilVectors() {
+		this.tmp.scl(0f);
+		this.tmp2.scl(0);
+	}
 	public void update(float delta) {
 		super.update(delta);
 		for(Integer i : internal) {
+			this.resetUtilVectors();
 			Entity q = Intrigue.mamaDukes.get(i);
 			q.getPhysicalComponent().getPhysicsBody().getMotionState().getWorldTransform(xxx);
 			xxx.getTranslation(this.tmp);
@@ -52,10 +57,14 @@ public class IntrigueThirdPersonCameraViewSystem extends SystemDecorator {
 			this.tmp2.set(0,350,-500);
 			q.getPhysicalComponent().getPhysicsBody().getRigidBody().getOrientation().transform(this.tmp2);
 			this.tmp2.add(this.tmp);
+			
 			cam.position.set(this.tmp2);
+			
 			cam.up.set(0,1,0);
+		
 			//this.tmp3.add(0,100,0);
 			cam.update();
+			
 		}
 	}
 }

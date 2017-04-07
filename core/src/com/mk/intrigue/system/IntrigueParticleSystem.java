@@ -57,6 +57,8 @@ public class IntrigueParticleSystem extends SystemDecorator {
 		
 		pointSpriteBatch.end();
 		//particleSystem.removeAll();
-		modelBatch.render(particleSystem);
+		if(this.stagger(0.003f)) {
+			modelBatch.render(particleSystem);
+		}
 	}
 }
