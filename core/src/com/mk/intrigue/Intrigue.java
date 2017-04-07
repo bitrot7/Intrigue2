@@ -141,11 +141,6 @@ public class Intrigue extends ApplicationAdapter {
 		Entity2 d = mamaDukes.get(player_guid);
 		System.out.println(json_test.prettyPrint(d));
 		
-		mamaDukes.get(player_guid).getPhysicalComponent()
-					.getPhysicsBody().getRigidBody()
-					.setAngularFactor(new Vector3(0,0,0));
-		mamaDukes.get(player_guid).getPhysicalComponent()
-					.getPhysicsBody().getRigidBody().applyGravity();
 		
 		mamaDukes.get(player_guid).getPhysicalComponent()
 					.getPhysicsBody().getRigidBody()
