@@ -1,7 +1,7 @@
 package com.mk.intrigue.entity.component;
 
 
-public class IntrigueAIComponent implements IComponent {
+public class IntrigueAIComponent extends BaseComponent {
 	private IntriguePhysicalComponent m_adversary_positional_info;
 	private IntrigueFiringComponent m_adversary_aiming_info;
 	private IntrigueCharacterActionsComponent adversary_actions;

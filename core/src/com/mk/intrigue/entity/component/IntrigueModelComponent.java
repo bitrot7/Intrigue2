@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.assets.AssetManager;
 
-public class IntrigueModelComponent implements IComponent {
+public class IntrigueModelComponent extends BaseComponent {
 	private Model asset;
 	private ModelInstance model;
 	public static final AssetManager assetLoader = new AssetManager();

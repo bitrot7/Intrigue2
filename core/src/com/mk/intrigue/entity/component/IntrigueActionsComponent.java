@@ -1,7 +1,7 @@
 package com.mk.intrigue.entity.component;
 
 
-public class IntrigueCharacterActionsComponent implements IComponent {
+public class IntrigueActionsComponent extends BaseComponent {
 	private boolean idle = true;
 	private boolean forward = false;
 	private boolean backward = false;

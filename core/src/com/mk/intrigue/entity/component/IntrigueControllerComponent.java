@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.Controller;
 
-public class IntrigueControllerComponent implements IComponent {
+public class IntrigueControllerComponent extends BaseComponent {
 	private Controller controls;
 	
 	public IntrigueControllerComponent(int player_number) {

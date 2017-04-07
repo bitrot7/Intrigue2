@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.Gdx;
 
-public class IntrigueFiringComponent implements IComponent {
+public class IntrigueFiringComponent extends BaseComponent {
 	private Decal crosshairGraphic;
 	private final Vector3 bullet_start = new Vector3();
 	private final Vector3 bullet_end = new Vector3();

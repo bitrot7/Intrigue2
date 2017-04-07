@@ -11,7 +11,7 @@ import com.badlogic.gdx.audio.Sound;
  *
  */
 
-public class IntrigueSoundEffectComponent implements IComponent {
+public class IntrigueSoundEffectComponent extends BaseComponent {
 	private Sound shooting_sound;
 	private Sound walking_sound;
 	public IntrigueSoundEffectComponent(String walking_sound, String shooting_sound) {

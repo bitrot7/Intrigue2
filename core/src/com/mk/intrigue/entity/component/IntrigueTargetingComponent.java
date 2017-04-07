@@ -1,7 +1,7 @@
 package com.mk.intrigue.entity.component;
 
 
-public class IntrigueTargetingComponent implements IComponent {
+public class IntrigueTargetingComponent extends BaseComponent {
 	int team_number = 0;
 	int target_id = 0;
 	public IntrigueTargetingComponent(int team_number) {

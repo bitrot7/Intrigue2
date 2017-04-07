@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.physics.bullet.collision.btCollisionShape;
 import com.badlogic.gdx.physics.bullet.collision.btBvhTriangleMeshShape;
 
-public class IntriguePhysicalComponent implements IComponent {
+public class IntriguePhysicalComponent extends BaseComponent {
 	private AtomicPhysicalObject atomic;
 	private DefaultKinematicRagdoll ragdoll;
 	

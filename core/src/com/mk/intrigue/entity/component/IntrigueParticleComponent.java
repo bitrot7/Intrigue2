@@ -8,7 +8,7 @@ import com.mk.intrigue.object.ParticleObject;
 /*
 *	Utilizes map.
 */
-public class IntrigueParticleComponent implements IComponent {
+public class IntrigueParticleComponent extends BaseComponent {
 	private ObjectMap<String, ParticleObject> map = new ObjectMap<String, ParticleObject>();
 	private Array<ParticleObject> pobjs = new Array<ParticleObject>();
 	public IntrigueParticleComponent(String name, String path, Vector3 pos, Vector3 scale) {
