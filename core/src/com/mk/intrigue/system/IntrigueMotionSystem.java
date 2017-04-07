@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
 import com.mk.intrigue.entity.component.IntrigueActionsComponent;
+import com.mk.intrigue.entity.component.IntrigueModelComponent;
 import com.mk.intrigue.object.AtomicPhysicalObject;
 /*
 *	System requirements for entity:'
@@ -73,31 +74,38 @@ public class IntrigueMotionSystem extends SystemDecorator {
 			angularImpulse.scl(universal_rotate);
 		}
 	}
+	private void setVelocities(AtomicPhysicalObject a) {
+		Vector3 v1 = a.getRigidBody().getLinearVelocity();
+		impulse.scl(universal_push);
+		impulse = a.getRigidBody().getOrientation().transform(impulse);
+		a.getRigidBody().setLinearVelocity(new Vector3(impulse.x, v1.y, impulse.z));
+		tmp.set(0,1,0);
+		a.getRigidBody().setAngularFactor(tmp);
+		a.getRigidBody().setAngularVelocity(angularImpulse);
+		a.getRigidBody().setAngularFactor(tmp);
+		
+		
+	}
+	/**
+	 * very important method.
+	 * @param a
+	 * @param g
+	 */
+	private void linkPhysicalandGraphicalModels(AtomicPhysicalObject a, IntrigueModelComponent g) {
+		a.getMotionState().getWorldTransform(g.getModel().transform);
+		//a hack for making the players touch the ground.
+		g.getModel().transform.translate(0,-80f,0);
+	}
 	@Override
 	public void update(float delta) {
 		super.update(delta);
 		for(Integer i : internal) {
 			this.resetUtilVectors();
 			Entity2 g = Intrigue.mamaDukes.get(i);
-			AtomicPhysicalObject a = g.getPhysicalComponent().getPhysicsBody();
-			Vector3 v1 = a.getRigidBody().getLinearVelocity();
-			
 			this.setMovementDirection(g.getActionsComponent());
-			//changed my method for getting orientation.  thank you bt and ockham
-			impulse.scl(universal_push);
-			impulse = a.getRigidBody().getOrientation().transform(impulse);
+			this.setVelocities(g.getPhysicalComponent().getPhysicsBody());
+			this.linkPhysicalandGraphicalModels(g.getPhysicalComponent().getPhysicsBody(), g.getModelComponent());
 			
-			
-			a.getRigidBody().setLinearVelocity(impulse);
-			
-			
-			tmp.set(0,1,0);
-			a.getRigidBody().setAngularFactor(tmp);
-			a.getRigidBody().setAngularVelocity(angularImpulse);
-			a.getRigidBody().setAngularFactor(tmp);
-			
-			a.getMotionState().getWorldTransform(g.getModelComponent().getModel().transform);
-			g.getModelComponent().getModel().transform.translate(0,0,0);
 		}
 		
 	}
