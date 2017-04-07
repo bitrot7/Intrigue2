@@ -39,11 +39,19 @@ public class IntrigueAimingSystem extends SystemDecorator {
 	private Vector3 m_crosshair_pos = new Vector3();
 	private Vector3 m_furthest_target_pos = new Vector3();
 	private Vector3 m_camera_pos = new Vector3();
-	
+	private Vector3 temp = new Vector3();
+	private Vector3 temp2 = new Vector3();
 	public IntrigueAimingSystem(ISystem upstream) {
 		super(upstream);
 		Gdx.gl.glDepthRangef(0f, 1.0f); //0 beeing the near plane and 1 being the far plane
 		decalBatch = new DecalBatch(new CameraGroupStrategy(IntrigueGraphicSystem.cam));
+	}
+	private void resetUtilVectors() {
+		this.m_camera_pos.set(0, 0, 0);
+		this.m_crosshair_pos.set(0,0,0);
+		this.m_furthest_target_pos.set(0,0,0);
+		this.temp.set(0,0,0);
+		this.temp2.set(0,0,0);
 	}
 	public void register(int guid) {
 		super.register(guid);
@@ -63,6 +71,7 @@ public class IntrigueAimingSystem extends SystemDecorator {
 			
 			Entity2 d = Intrigue.mamaDukes.get(i);
 			IntrigueActionsComponent s = d.getActionsComponent();
+			this.resetUtilVectors();
 			
 			
 			
@@ -99,8 +108,6 @@ public class IntrigueAimingSystem extends SystemDecorator {
 			m_crosshair_pos.mul(trans);
 			
 			m_camera_pos.set(IntrigueGraphicSystem.cam.position);
-			Vector3 temp = new Vector3();
-			Vector3 temp2 = new Vector3();
 			temp.set(m_camera_pos);
 			temp2.set(m_crosshair_pos);
 			temp2.sub(temp);
