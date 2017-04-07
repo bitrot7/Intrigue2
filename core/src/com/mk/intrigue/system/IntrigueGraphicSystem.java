@@ -100,7 +100,9 @@ public class IntrigueGraphicSystem extends SystemDecorator{
 						modelBatch.render(m, environment);
 					}
 		}
-		modelBatch.flush();
+		if(this.stagger(0.03f)) {
+			modelBatch.flush();
+		}
 		modelBatch.end();
 	}
 	

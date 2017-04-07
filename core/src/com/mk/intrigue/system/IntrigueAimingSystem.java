@@ -132,6 +132,8 @@ public class IntrigueAimingSystem extends SystemDecorator {
 				decalBatch.add(cross);
 			}
 		}
-		decalBatch.flush();
+		if(this.stagger(0.005f)) {
+			decalBatch.flush();
+		}
 	}
 }
