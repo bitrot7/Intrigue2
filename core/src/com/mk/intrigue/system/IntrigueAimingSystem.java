@@ -32,6 +32,14 @@ public class IntrigueAimingSystem extends SystemDecorator {
 	private int dy = -100;
 	private int dz = 100;
 	private int dx = 0;
+	/**
+	 * 
+	 * util vectors for aiming.  used for efficiency
+	 */
+	private Vector3 m_crosshair_pos = new Vector3();
+	private Vector3 m_furthest_target_pos = new Vector3();
+	private Vector3 m_camera_pos = new Vector3();
+	
 	public IntrigueAimingSystem(ISystem upstream) {
 		super(upstream);
 		Gdx.gl.glDepthRangef(0f, 1.0f); //0 beeing the near plane and 1 being the far plane
@@ -56,9 +64,7 @@ public class IntrigueAimingSystem extends SystemDecorator {
 			Entity2 d = Intrigue.mamaDukes.get(i);
 			IntrigueActionsComponent s = d.getActionsComponent();
 			
-			Vector3 m_crosshair_pos = new Vector3();
-			Vector3 m_furthest_target_pos = new Vector3();
-			Vector3 m_camera_pos = new Vector3();
+			
 			
 			
 			if(this.dy> 400) {
