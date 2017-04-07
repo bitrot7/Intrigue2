@@ -10,6 +10,8 @@ import com.badlogic.gdx.Gdx;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
 import com.mk.intrigue.entity.component.IntrigueActionsComponent;
+import com.mk.intrigue.entity.component.IntrigueFiringComponent;
+import com.mk.intrigue.object.AtomicPhysicalObject;
 
 /*
 *	System requirments for entity:
@@ -39,8 +41,13 @@ public class IntrigueAimingSystem extends SystemDecorator {
 	private Vector3 m_crosshair_pos = new Vector3();
 	private Vector3 m_furthest_target_pos = new Vector3();
 	private Vector3 m_camera_pos = new Vector3();
+	/**
+	 * util math objects
+	 */
 	private Vector3 temp = new Vector3();
 	private Vector3 temp2 = new Vector3();
+	private Matrix4 trans = new Matrix4();
+	
 	public IntrigueAimingSystem(ISystem upstream) {
 		super(upstream);
 		Gdx.gl.glDepthRangef(0f, 1.0f); //0 beeing the near plane and 1 being the far plane
@@ -52,6 +59,7 @@ public class IntrigueAimingSystem extends SystemDecorator {
 		this.m_furthest_target_pos.set(0,0,0);
 		this.temp.set(0,0,0);
 		this.temp2.set(0,0,0);
+		this.trans.idt();
 	}
 	public void register(int guid) {
 		super.register(guid);
@@ -65,72 +73,82 @@ public class IntrigueAimingSystem extends SystemDecorator {
 		super.deregister(guid);
 		internal.removeValue(guid,true);
 	}
+	/**
+	 * this is am method for aiming up and down based on Action input s.
+	 * @param s : actions taken by user.
+	 */
+	private void moveCrosshairPos(IntrigueActionsComponent s) {
+		if(this.dy> 400) {
+			this.dy = 399;
+		}
+		else if(this.dy < -400) {
+			this.dy = -399;
+		}
+		if(s.isAiming()) {
+			if(s.isTurningUp()) {
+				this.dy += 2;
+			}
+			else if(s.isTurningDown()) {
+				this.dy -= 2;
+			}
+		}
+		else {
+			if(s.isTurningUp()) {
+				this.dy += 7;
+			}
+			else if(s.isTurningDown()) {
+				this.dy -= 7;
+			}
+		}
+	}
+	private void calculateBulletRay(AtomicPhysicalObject a ) {
+	
+		a.getMotionState().getWorldTransform(this.trans); //coordinate system of player
+		
+		
+		this.m_crosshair_pos.add(this.dx,this.dy, this.dz);
+		
+		this.m_crosshair_pos.mul(this.trans);
+		
+		this.m_camera_pos.set(IntrigueGraphicSystem.cam.position);
+		this.temp.set(this.m_camera_pos);
+		this.temp2.set(this.m_crosshair_pos);
+		this.temp2.sub(temp);
+		float t = 1000f;
+		float x = this.temp.x + t*this.temp2.x;
+		float y = this.temp.y + t*this.temp2.y;
+		float z = this.temp.z + t*this.temp2.z;
+		this.m_furthest_target_pos.add(x, y, z);
+		
+	}
+	private void setBulletTrajectory(IntrigueFiringComponent f) {
+		f.setBulletEndPoint(this.m_furthest_target_pos);
+		f.setBulletStartPoint(this.m_camera_pos);
+		f.setCrosshairPos(this.m_crosshair_pos);
+		
+	}
+	private void drawCrosshair(IntrigueFiringComponent f) {
+		IntrigueGraphicSystem.cam.lookAt(f.getCrosshairPos());
+		Decal cross = f.getCrosshairGraphic();
+		if(cross != null) {
+			cross.setPosition(f.getCrosshairPos());
+			cross.lookAt(IntrigueGraphicSystem.cam.position, IntrigueGraphicSystem.cam.up);
+			decalBatch.add(cross);
+		}
+	}
 	public void update(float delta) {
 		super.update(delta);
 		for(Integer i : internal) {
 			
 			Entity2 d = Intrigue.mamaDukes.get(i);
-			IntrigueActionsComponent s = d.getActionsComponent();
+			
 			this.resetUtilVectors();
+			this.moveCrosshairPos(d.getActionsComponent());
+			this.calculateBulletRay(d.getPhysicalComponent().getPhysicsBody());
+			this.setBulletTrajectory(d.getFiringComponent());
+			this.drawCrosshair(d.getFiringComponent());
 			
 			
-			
-			
-			if(this.dy> 400) {
-				this.dy = 399;
-			}
-			else if(this.dy < -400) {
-				this.dy = -399;
-			}
-			
-			
-			if(s.isAiming()) {
-				if(s.isTurningUp()) {
-					this.dy += 2;
-				}
-				else if(s.isTurningDown()) {
-					this.dy -= 2;
-				}
-			}
-			else {
-				if(s.isTurningUp()) {
-					this.dy += 7;
-				}
-				else if(s.isTurningDown()) {
-					this.dy -= 7;
-				}
-			}
-			Matrix4 trans = new Matrix4();
-			d.getPhysicalComponent().getPhysicsBody().getMotionState().getWorldTransform(trans); //coordinate system of player
-			
-			m_crosshair_pos.add(this.dx,this.dy, this.dz);
-			
-			m_crosshair_pos.mul(trans);
-			
-			m_camera_pos.set(IntrigueGraphicSystem.cam.position);
-			temp.set(m_camera_pos);
-			temp2.set(m_crosshair_pos);
-			temp2.sub(temp);
-			float t = 1000f;
-			float x = temp.x + t*temp2.x;
-			float y = temp.y + t*temp2.y;
-			float z = temp.z + t*temp2.z;
-			m_furthest_target_pos.add(x, y, z);
-			
-			
-			
-			
-			d.getFiringComponent().setBulletEndPoint(m_furthest_target_pos);
-			d.getFiringComponent().setBulletStartPoint(m_camera_pos);
-			d.getFiringComponent().setCrosshairPos(m_crosshair_pos);
-			
-			IntrigueGraphicSystem.cam.lookAt(d.getFiringComponent().getCrosshairPos());
-			Decal cross = d.getFiringComponent().getCrosshairGraphic();
-			if(cross != null) {
-				cross.setPosition(d.getFiringComponent().getCrosshairPos());
-				cross.lookAt(IntrigueGraphicSystem.cam.position, IntrigueGraphicSystem.cam.up);
-				decalBatch.add(cross);
-			}
 		}
 		if(this.stagger(0.005f)) {
 			decalBatch.flush();
