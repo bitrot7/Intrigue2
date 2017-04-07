@@ -22,7 +22,6 @@ import com.mk.intrigue.entity.Entity;
 */
 public class IntrigueThirdPersonCameraViewSystem extends SystemDecorator {
 	protected final Array<Integer> internal = new Array<Integer>();
-	private final Vector3 tmp3 = new Vector3();
 	private final Vector3 tmp2 = new Vector3();
 	private final Vector3 tmp = new Vector3();
 	private final Matrix4 xxx = new Matrix4();

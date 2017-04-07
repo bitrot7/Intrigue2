@@ -7,7 +7,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.mk.intrigue.entity.component.IntrigueAIComponent;
-import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
+import com.mk.intrigue.entity.component.IntrigueActionsComponent;
 import com.mk.intrigue.entity.component.IntrigueSoundEffectComponent;
 import com.mk.intrigue.entity.component.IntrigueFiringComponent;
 import com.mk.intrigue.entity.component.IntrigueTargetingComponent;
@@ -18,7 +18,7 @@ public class Entity2 extends Entity {
 	 */
 	transient private AnimationController animation3d;
 	private IntrigueFiringComponent firingComponent;
-	private IntrigueCharacterActionsComponent characterActionsComponent;
+	private IntrigueActionsComponent actionsComponent;
 	private IntrigueAIComponent aiComponent;
 	private IntrigueTargetingComponent targetingComponent;
 	private IntrigueSoundEffectComponent characterSoundComponent;
@@ -28,7 +28,7 @@ public class Entity2 extends Entity {
 		super(dob);
 		this.animation3d = dob.animation3d;
 		this.firingComponent = dob.firingComponent;
-		this.characterActionsComponent = dob.characterActionsComponent;
+		this.actionsComponent = dob.actionsComponent;
 		this.aiComponent = dob.aiComponent;
 		this.targetingComponent = dob.targetingComponent;
 		this.characterSoundComponent = dob.characterSoundComponent;
@@ -43,8 +43,8 @@ public class Entity2 extends Entity {
 	public IntrigueFiringComponent getFiringComponent() {
 		return firingComponent;
 	}
-	public IntrigueCharacterActionsComponent getCharacterActionsComponent() {
-		return this.characterActionsComponent;
+	public IntrigueActionsComponent getActionsComponent() {
+		return this.actionsComponent;
 	}
 	public IntrigueAIComponent getAIComponent() {
 		return this.aiComponent;
@@ -61,7 +61,7 @@ public class Entity2 extends Entity {
 	public static class DrifterObjectBuilder extends Entity.Builder {
 		private AnimationController animation3d;
 		private IntrigueFiringComponent firingComponent;
-		private IntrigueCharacterActionsComponent characterActionsComponent;
+		private IntrigueActionsComponent actionsComponent;
 		private IntrigueAIComponent aiComponent;
 		private IntrigueTargetingComponent targetingComponent;
 		private IntrigueSoundEffectComponent characterSoundComponent;
@@ -81,8 +81,8 @@ public class Entity2 extends Entity {
 			return firingComponent;
 		}
 
-		public IntrigueCharacterActionsComponent getCharacterActionsComponent() {
-			return characterActionsComponent;
+		public IntrigueActionsComponent getCharacterActionsComponent() {
+			return actionsComponent;
 		}
 
 		public IntrigueAIComponent getAiComponent() {
@@ -121,7 +121,7 @@ public class Entity2 extends Entity {
 			return this;
 		}
 		public DrifterObjectBuilder CharacterActionsComponent() {
-			characterActionsComponent = new IntrigueCharacterActionsComponent();
+			actionsComponent = new IntrigueActionsComponent();
 			return this;
 		}
 	

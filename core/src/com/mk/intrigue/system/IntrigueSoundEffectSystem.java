@@ -3,7 +3,7 @@ package com.mk.intrigue.system;
 import com.badlogic.gdx.utils.Array;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
-import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
+import com.mk.intrigue.entity.component.IntrigueActionsComponent;
 
 public class IntrigueSoundEffectSystem extends SystemDecorator {
 	private final Array<Integer> internal = new Array<Integer>();
@@ -17,7 +17,7 @@ public class IntrigueSoundEffectSystem extends SystemDecorator {
 	public void register(int guid) {
 		super.register(guid);
 		Entity2 d = Intrigue.mamaDukes.get(guid);
-		this.requireComponent(d.getCharacterActionsComponent(), this, d);
+		this.requireComponent(d.getActionsComponent(), this, d);
 		this.requireComponent(d.getCharacterSoundComponent(), this, d);
 		internal.add(guid);
 	}
@@ -27,13 +27,13 @@ public class IntrigueSoundEffectSystem extends SystemDecorator {
 		super.update(delta);
 		for(Integer i : internal) {
 			Entity2 d = Intrigue.mamaDukes.get(i);
-			if(d.getCharacterActionsComponent().isFiring()) {
+			if(d.getActionsComponent().isFiring()) {
 				if(this.stagger(this.shortest_time_between_shots)) {
 					d.getCharacterSoundComponent().getShootingSound().play();
 				}
 				
 			}
-			IntrigueCharacterActionsComponent dca = d.getCharacterActionsComponent();
+			IntrigueActionsComponent dca = d.getActionsComponent();
 			if(dca.isForward() || dca.isBackward()) {
 				if(this.stagger(this.shortest_time_between_steps)) {
 					d.getCharacterSoundComponent().getWalkingSound().play(.5f);

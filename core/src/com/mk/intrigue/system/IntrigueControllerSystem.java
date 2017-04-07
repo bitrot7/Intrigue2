@@ -3,7 +3,7 @@ import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.utils.Array;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
-import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
+import com.mk.intrigue.entity.component.IntrigueActionsComponent;
 /*
 *	System requirements for entity:
 *		-DrifterObject
@@ -19,7 +19,7 @@ public class IntrigueControllerSystem extends SystemDecorator {
 		super.register(guid);
 		Entity2 d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getControllerComponent(), this, d);
-		this.requireComponent(d.getCharacterActionsComponent(), this, d);
+		this.requireComponent(d.getActionsComponent(), this, d);
 		internal.add(guid);
 	}
 	public void deregister(int guid) {
@@ -37,7 +37,7 @@ public class IntrigueControllerSystem extends SystemDecorator {
 				System.out.println("Failure: Gobject has no controller, yet it is registered with the controller subsystem.");
 				return;
 			}
-			IntrigueCharacterActionsComponent s =  g.getCharacterActionsComponent();
+			IntrigueActionsComponent s =  g.getActionsComponent();
 			s.reset();
 			float val1 = c.getAxis(0);
 			float val2 = c.getAxis(1);

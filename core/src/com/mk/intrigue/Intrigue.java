@@ -31,7 +31,6 @@ import com.mk.intrigue.system.IntrigueSoundEffectSystem;
 import com.mk.intrigue.system.IntrigueControllerSystem;
 import com.mk.intrigue.system.IntrigueMotionSystem;
 import com.mk.intrigue.system.IntrigueTargetingAISystem;
-import com.mk.intrigue.system.ISystem;
 import com.mk.intrigue.system.IntrigueParticleSystem;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 import com.mk.intrigue.system.IntrigueMusicSystem;
@@ -124,10 +123,8 @@ public class Intrigue extends ApplicationAdapter {
 		Matrix4 trans2 = new Matrix4();
 		Matrix4 trans3 = new Matrix4();
 	
-		float iceMass = 0f;
-		//btCollisionShape iceShape = null;
 		trans.translate(0,1000,-2500);
-		Vector3 halfExtents = new Vector3(30f,90f,25f);
+		//Vector3 halfExtents = new Vector3(30f,90f,25f);
 		btCapsuleShape person_shape = new btCapsuleShape(30f, 90f);
 		
 		mamaDukes.add(new Entity2.DrifterObjectBuilder(player_guid)

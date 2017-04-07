@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g3d.decals.CameraGroupStrategy;
 import com.badlogic.gdx.Gdx;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
-import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
+import com.mk.intrigue.entity.component.IntrigueActionsComponent;
 
 /*
 *	System requirments for entity:
@@ -41,7 +41,7 @@ public class IntrigueAimingSystem extends SystemDecorator {
 		super.register(guid);
 		Entity2 d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getPhysicalComponent(), this, d);
-		this.requireComponent(d.getCharacterActionsComponent(), this, d);
+		this.requireComponent(d.getActionsComponent(), this, d);
 		this.requireComponent(d.getFiringComponent(), this, d);
 		internal.add(guid);
 	}
@@ -54,7 +54,7 @@ public class IntrigueAimingSystem extends SystemDecorator {
 		for(Integer i : internal) {
 			
 			Entity2 d = Intrigue.mamaDukes.get(i);
-			IntrigueCharacterActionsComponent s = d.getCharacterActionsComponent();
+			IntrigueActionsComponent s = d.getActionsComponent();
 			
 			Vector3 m_crosshair_pos = new Vector3();
 			Vector3 m_furthest_target_pos = new Vector3();

@@ -4,7 +4,7 @@ package com.mk.intrigue.entity.component;
 public class IntrigueAIComponent extends BaseComponent {
 	private IntriguePhysicalComponent m_adversary_positional_info;
 	private IntrigueFiringComponent m_adversary_aiming_info;
-	private IntrigueCharacterActionsComponent adversary_actions;
+	private IntrigueActionsComponent adversary_actions;
 	
 	public IntrigueAIComponent() {
 		
@@ -12,7 +12,7 @@ public class IntrigueAIComponent extends BaseComponent {
 	public void setAdversaryFiringComponent(IntrigueFiringComponent dfc) {
 		this.m_adversary_aiming_info = dfc;
 	}
-	public void setAdversaryCharacterActionsComponent(IntrigueCharacterActionsComponent dcac) {
+	public void setAdversaryCharacterActionsComponent(IntrigueActionsComponent dcac) {
 		this.adversary_actions = dcac;
 	}
 	public void setAdversaryPhysicalComponent(IntriguePhysicalComponent ipc) {
@@ -21,7 +21,7 @@ public class IntrigueAIComponent extends BaseComponent {
 	public IntrigueFiringComponent getAdversaryFiringComponent() {
 		return this.m_adversary_aiming_info;
 	}
-	public IntrigueCharacterActionsComponent getAdversaryCharacterActionsComponent() {
+	public IntrigueActionsComponent getAdversaryCharacterActionsComponent() {
 		return this.adversary_actions;
 	}
 	public IntriguePhysicalComponent getAdversaryPhysicalComponent() {

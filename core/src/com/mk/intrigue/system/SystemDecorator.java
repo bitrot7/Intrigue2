@@ -29,7 +29,7 @@ public abstract class SystemDecorator implements ISystem {
 	/**
 	 * @throws ComponentMissingException if Component not Found
 	 */
-	public void requireComponent(IComponent c, SystemDecorator s, Entity g) {
+	public void requireComponent(IComponent c, ISystem s, Entity g) {
 		if(c == null) {
 			throw new ComponentMissingException("Component",s.getClass().getName(), g.getGUID());
 		}

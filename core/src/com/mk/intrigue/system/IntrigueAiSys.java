@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Matrix4;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
-import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
+import com.mk.intrigue.entity.component.IntrigueActionsComponent;
 import com.mk.intrigue.entity.component.IntrigueTargetingComponent;
 import com.mk.intrigue.object.AtomicPhysicalObject;
 public class IntrigueAiSys extends SystemDecorator {
@@ -29,7 +29,7 @@ public class IntrigueAiSys extends SystemDecorator {
 	public void register(int guid) {
 		super.register(guid);
 		Entity2 d = Intrigue.mamaDukes.get(guid);
-		this.requireComponent(d.getCharacterActionsComponent(), this, d);
+		this.requireComponent(d.getActionsComponent(), this, d);
 		this.requireComponent(d.getTargetingComponent(), this, d);
 		this.requireComponent(d.getPhysicalComponent(), this, d);
 		internal.add(guid);
@@ -44,13 +44,13 @@ public class IntrigueAiSys extends SystemDecorator {
 		
 			tmp.set(1,0,0);
 			Entity2 g = Intrigue.mamaDukes.get(i);
-			IntrigueCharacterActionsComponent states = g.getCharacterActionsComponent();
+			IntrigueActionsComponent states = g.getActionsComponent();
 			states.reset();
 			
 			IntrigueTargetingComponent tc = g.getTargetingComponent();
 			Entity2 adversary = Intrigue.mamaDukes.get(tc.getTarget());
 			//this.requireComponent(adversary.getCharacterActionsComponent(), s, g);
-			IntrigueCharacterActionsComponent states2 =  adversary.getCharacterActionsComponent();
+			IntrigueActionsComponent states2 =  adversary.getActionsComponent();
 			AtomicPhysicalObject a = adversary.getPhysicalComponent().getPhysicsBody();
 			AtomicPhysicalObject b = g.getPhysicalComponent().getPhysicsBody();
 			

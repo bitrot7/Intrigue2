@@ -4,7 +4,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.entity.Entity2;
-import com.mk.intrigue.entity.component.IntrigueCharacterActionsComponent;
+import com.mk.intrigue.entity.component.IntrigueActionsComponent;
 import com.mk.intrigue.object.MyAnimationListener;
 /*
 	*	Animation names:
@@ -44,7 +44,7 @@ public class IntrigueAnimationSystem extends SystemDecorator {
 	public void register(int guid) {
 		super.register(guid);
 		Entity2 d = Intrigue.mamaDukes.get(guid);
-		this.requireComponent(d.getCharacterActionsComponent(), this, d);
+		this.requireComponent(d.getActionsComponent(), this, d);
 		this.requireComponent(d.getModelComponent(), this, d);
 		internal.add(guid);
 	}
@@ -57,7 +57,7 @@ public class IntrigueAnimationSystem extends SystemDecorator {
 		super.update(delta);
 		for(Integer i : internal) {
 			Entity2 g = Intrigue.mamaDukes.get(i);
-			IntrigueCharacterActionsComponent s = g.getCharacterActionsComponent();
+			IntrigueActionsComponent s = g.getActionsComponent();
 			AnimationController c = g.getAnimationController();
 			if(s.isFiring()) {
 				

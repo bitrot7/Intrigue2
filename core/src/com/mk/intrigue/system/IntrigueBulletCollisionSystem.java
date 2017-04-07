@@ -28,7 +28,7 @@ public class IntrigueBulletCollisionSystem extends SystemDecorator {
 		super.register(guid);
 		Entity2 d = Intrigue.mamaDukes.get(guid);
 		this.requireComponent(d.getFiringComponent(),this, d);
-		this.requireComponent(d.getCharacterActionsComponent(), this, d);
+		this.requireComponent(d.getActionsComponent(), this, d);
 		internal.add(guid);
 	}
 	public void deregister(int guid) {
@@ -50,7 +50,7 @@ public class IntrigueBulletCollisionSystem extends SystemDecorator {
 			callback.setRayToWorld(rayTo);
 			IntrigueGraphicalDebugger.drawDebugRay(rayFrom, rayTo);
 			IntrigueTotalPhysicsSystem.dynamicsWorld.rayTest(rayFrom, rayTo, callback);
-			if(callback.hasHit() && d.getCharacterActionsComponent().isFiring() &&
+			if(callback.hasHit() && d.getActionsComponent().isFiring() &&
 					this.stagger(this.shortest_time_between_shots)) {
 				int index = callback.getCollisionObject().getUserIndex();
 				//System.out.println("index == " + index);
