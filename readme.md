@@ -4,7 +4,7 @@
 [Entity](core/src/com/mk/intrigue/entity/) [Component](core/src/com/mk/intrigue/entity/component/) [Systems](core/src/com/mk/intrigue/system/): 
 A *data oriented* approach to games and the strategy  under the hood of most modern game engines.  
 
-ECS is a poplar architecture for Game Development because of the ease in which new features can be added to games.
+ECS is a popular architecture for Game Development because of the ease in which new features can be added to games.
 It also has a few other benefits that make it a good candidate for the choice of any game developer.
 
 
