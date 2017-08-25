@@ -7,26 +7,13 @@
 ~~Systems have an update and a register method from the ISystem interface: ~~
 
 
-       ~~public void update(float delta);~~
-       ~~public void register(int guid);~~
-
 
 ~~The register method adds an integer called guid or *Globally Unique Identifier* to an array called internal:~~
 
 
-      ~~Array<Integer> internal = new Array<Integer>();~~
-      ~~public void register(guid) {~~
-      		~~this.internal.add(guid);~~
-      ~~}~~
-
 
 ~~In the update method these integers in internal are used as indexes in a global array of *Entities*:~~
 
-
-		~~for(Integer i : this.internal) {~~
-			~~Entity e = Intrigue.mamaDukes.get(i); // global array of entities is static and publicly~~ ~~accessible to all systems.~~
-			~~/*Manipulation of entity goes here*/~~
-		~~}~~
 
 
 ~~Typical Systems Classes have a small amount of fields because all the information they operate on comes from the global array ~~
