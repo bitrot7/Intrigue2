@@ -1,7 +1,7 @@
 **Systems ~~are~~ were everything.**
 
 
-~~All logic happens in the systems.  ~~
+~~All logic happens in the systems.~~
 
 
 ~~Systems have an update and a register method from the ISystem interface: ~~
@@ -39,21 +39,7 @@
 ~~in depth in the components readme).  Consider the following:~~
 
 
-       ~~ //GraphicSystem.java~~
-	   ~~ update() {~~
-         ~~ for(Integer i : this.internal) {~~
-			~~Entity e = Intrigue.mamaDukes.get(i); // global array of entities is static and publicly~~ ~~accessible to all systems.~~
-			~~modelBatch.draw(e.getGraphicComponent());~~
-			~~/*continued manipulation*/~~
-		 ~~ }~~
-
-
 ~~Now the Entity e we pulled might have many more populated Components:~~
-
-
-		~~e.getPhysicalComponent(); //not null~~
-		~~e.getSoundComponent();    //not null~~
-		~~e.getAIComponent();       //not null~~
 		
 		
 ~~**But our GraphicSystems doesnt care about those components**~~
@@ -66,8 +52,6 @@
 ~~Systems should at least extend GameSys as it provides functionality for creating delays in systems (without blocking the game).~~
 ~~GameSys also provides an implemented method:~~
 
-
-      ~~requireComponent(IComponent c, GameSys s, Gobject g) ~~
       
 ~~This method throws an exception if Component c is missing from the System s.  After all what would happen if a user of our API~~
 ~~registered an Entitys with no graphic component to our GraphicSystem.java, nothing good.  RequireComponent can quickly help~~
