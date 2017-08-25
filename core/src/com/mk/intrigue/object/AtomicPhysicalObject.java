@@ -29,7 +29,9 @@ public class AtomicPhysicalObject {
 	public AtomicPhysicalObject( btCollisionShape s, float mass, Vector3 inertia, Matrix4 initialTransform) {
 		rshape = s;
 		ms = new MyMotionState();
-		ms.transform = initialTransform;
+		ms.transform = new Matrix4();
+		ms.setWorldTransform(initialTransform);
+		
 		if(mass == 0) {
 			inertia.set(0,0,0);
 		}

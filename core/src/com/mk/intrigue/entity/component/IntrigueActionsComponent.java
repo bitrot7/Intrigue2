@@ -127,4 +127,9 @@ public class IntrigueActionsComponent extends BaseComponent {
 		jump = false;
 		bleeding = false;
 	}
+	@Override
+	public void HandleUpdate(float delT) {
+		// TODO Auto-generated method stub
+		// do nothing .. holds state info.
+	}
 }

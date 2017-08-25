@@ -1,5 +1,8 @@
 package com.mk.intrigue.entity.component;
 
+import com.mk.intrigue.Intrigue;
+import com.mk.intrigue.entity.Entity2;
+
 
 public class IntrigueTargetingComponent extends BaseComponent {
 	int team_number = 0;
@@ -15,5 +18,21 @@ public class IntrigueTargetingComponent extends BaseComponent {
 	}
 	public int getTarget() {
 		return target_id;
+	}
+	@Override
+	public void HandleUpdate(float delT) {
+		// TODO Auto-generated method stub
+		//Entity2 d = GetParentEntity();
+		//if(d.getAIComponent() != null) 
+		//{
+		//	if(d.getTargetingComponent().getTeamNumber() == 1) {
+		//		int i2 = team2.get(0);
+		//		d.getTargetingComponent().setTarget(i2);
+		//	}
+		//	else {
+		//		int i2 = team1.get(0);
+		//		d.getTargetingComponent().setTarget(i2);
+		//	}
+		//}
 	}
 }

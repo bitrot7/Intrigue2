@@ -7,9 +7,9 @@ public class ComponentMissingException extends RuntimeException {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ComponentMissingException(String classname, String systemname, int guid) {
-        super("Error Game Object guid =  " + guid + ", has no " + classname 
-        		+ " required by " + systemname );
+	public ComponentMissingException(String compname1, String compname2, int EntityId) {
+        super("Component " + compname1 +  ", attempted operation on Component " + 
+        		compname2 + " but it did not exist in entity: " + EntityId);
     }
 
 }
