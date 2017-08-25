@@ -1,7 +1,7 @@
-**Systems are everything.**
+**Systems ~~are~~ were everything.**
 
 
-All logic happens in the systems.  
+~~All logic happens in the systems.  
 
 
 Systems have an update and a register method from the ISystem interface: 
@@ -77,5 +77,5 @@ you kick this common error.
 A keen observer might have noticed that the Systems that come with Intrigue by default adhere to a decorator pattern but dont 
 make use of it.  This is because the project is still in active development and they will be useful for an overhaul in the
 near future.   Systems may soon have the ability to be recursively composed and updated.   If you wish to add a system it may be
- wise to construct it according to the decorator pattern.
+ wise to construct it according to the decorator pattern.~~
 
