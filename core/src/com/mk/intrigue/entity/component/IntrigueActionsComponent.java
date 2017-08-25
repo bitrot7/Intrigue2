@@ -1,6 +1,10 @@
 package com.mk.intrigue.entity.component;
 
-
+/**
+ * A non general state machine that contains a solid set of states for a third person shooter
+ * character.  Atomic Component (no extras required.)
+ * @author wind2
+ */
 public class IntrigueActionsComponent extends BaseComponent {
 	private boolean idle = true;
 	private boolean forward = false;

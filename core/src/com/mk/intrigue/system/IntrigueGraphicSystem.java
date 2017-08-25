@@ -24,11 +24,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.collision.BoundingBox;
 
-/*
-*	System requirements for entity:
-*		-Gobject
-*		-IntrigueModelComponent
-*/
+/**
+ *  This class holds singletons of cross component needed graphical objects  
+ */
 public class IntrigueGraphicSystem {
 	public static ModelBatch modelBatch;
 	public static PerspectiveCamera cam;

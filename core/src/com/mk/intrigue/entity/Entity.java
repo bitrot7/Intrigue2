@@ -27,13 +27,20 @@ import com.mk.intrigue.entity.component.ThirdPersonCameraComponent;
 import com.mk.intrigue.object.ParticleObject;
 
 /**
- * This is the extended entity class it contains 
- * more components than the @class Entity
+ * Entity contains all Components.  It controls the execution order of 
+ * its Components Handler methods.  Checks and exceptions are in place to make
+ * sure the base components interdependencies are met.
+ * 
+ * TODO: use generic component layout and interface to generalize the notion
+ * of an entity.  Implement template based getters and such to remove the 
+ * concrete references to components.  When this requirement is met the
+ * software will have generalized the system to the point where almost all client
+ * code can simply be in components.
  * 
  * @author wind2
  *
  */
-public class Entity2 implements IEntity {
+public class Entity implements IEntity {
 	
 	// TODO messy refactored from Entity merge
 	protected int guid;
@@ -94,7 +101,7 @@ public class Entity2 implements IEntity {
 	
 	
 	
-	private Entity2(Builder builder) {
+	private Entity(Builder builder) {
 		this.guid = builder.guid;
 		this.modelComponent = builder.modelComponent;
 		this.physicalComponent = builder.physicalComponent;
@@ -442,8 +449,8 @@ public class Entity2 implements IEntity {
 			this.characterSoundComponent.setEid(guid);
 			return this;
 		}
-		public Entity2 Build() {
-			return new Entity2(this);
+		public Entity Build() {
+			return new Entity(this);
 		}
 	}
 }

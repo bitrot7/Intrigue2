@@ -4,10 +4,10 @@ package com.mk.intrigue.factory;
 import com.badlogic.gdx.math.Matrix4;
 //import com.badlogic.gdx.utils.Json;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.object.ParticleObject;
 
-public class IntrigueLevelFactory<T extends Entity2> {
+public class IntrigueLevelFactory<T extends Entity> {
 	//private final Json serializer = new Json();
 	public T createLevel(String path_to_model,String path_to_music,
 			String path_to_weather_fx, Matrix4 m_trans, Class<T> type) {

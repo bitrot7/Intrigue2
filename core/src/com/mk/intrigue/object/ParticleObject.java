@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g3d.particles.ParticleEffect;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleEffectLoader;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.entity.component.IntrigueParticleComponent;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 
@@ -19,17 +19,17 @@ public class ParticleObject {
 	
 	public ParticleObject(String name, String path) {
 		this.name = name;
-		if(!Entity2.assetManager.isLoaded(path)) 
+		if(!Entity.assetManager.isLoaded(path)) 
 		{
 			ParticleEffectLoader.ParticleEffectLoadParameter loadParam = 
 					new ParticleEffectLoader.ParticleEffectLoadParameter(
 							IntrigueGraphicSystem.particleSystem.getBatches());
 			
-			Entity2.assetManager.load(path, ParticleEffect.class, loadParam);
-			Entity2.assetManager.finishLoadingAsset(path);
+			Entity.assetManager.load(path, ParticleEffect.class, loadParam);
+			Entity.assetManager.finishLoadingAsset(path);
 		}
 		ParticleEffect originalEffect = 
-				Entity2.assetManager.get(path, ParticleEffect.class);
+				Entity.assetManager.get(path, ParticleEffect.class);
 		
 		this.pfx = originalEffect.copy();
 		this.pfx.init();

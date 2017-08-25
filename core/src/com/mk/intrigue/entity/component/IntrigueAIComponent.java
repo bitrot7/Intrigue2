@@ -3,10 +3,20 @@ package com.mk.intrigue.entity.component;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.object.AtomicPhysicalObject;
 
-
+/**
+ * Currently no longer implemented (but soon to be reimplemented)
+ * Used to just do chase AI.
+ * 
+ * 
+ * TODO need to rework AI system.  Need to come up with a model for 
+ * having a component potentially interact with other entities.
+ * 
+ * @author wind2
+ *
+ */
 public class IntrigueAIComponent extends BaseComponent {
 	private IntriguePhysicalComponent m_adversary_positional_info;
 	private IntrigueFiringComponent m_adversary_aiming_info;

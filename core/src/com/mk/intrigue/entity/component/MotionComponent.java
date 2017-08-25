@@ -1,10 +1,20 @@
 package com.mk.intrigue.entity.component;
 
 import com.badlogic.gdx.math.Vector3;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.exception.ComponentMissingException;
 import com.mk.intrigue.object.AtomicPhysicalObject;
 
+/**
+ * Controls the motion of the entity.  Based on the state of the actions component
+ * it updates the physical component.
+ * 
+ * Requires {@link IntrigueActionsComponent} {@link IntriguePhysicalComponent} to be defined 
+ * in the parent entity.
+ * 
+ * @author wind2
+ *
+ */
 public class MotionComponent extends BaseComponent {
 
 	protected static float sm_universal_push = 100f; //naruto copout
@@ -94,7 +104,7 @@ public class MotionComponent extends BaseComponent {
 	public void HandleUpdate(float delT) {
 		// TODO Auto-generated method stub
 		this.resetUtilVectors();
-		Entity2 leEntity = GetParentEntity();
+		Entity leEntity = GetParentEntity();
 		
 		if(leEntity.getActionsComponent() == null)
 		{

@@ -1,6 +1,6 @@
 package com.mk.intrigue.entity.component;
 
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.*;
 import com.mk.intrigue.exception.*;
 public abstract class BaseComponent implements IComponent {
@@ -43,7 +43,7 @@ public abstract class BaseComponent implements IComponent {
 	@Override
 	public abstract void HandleUpdate(float delT);
 	
-	public Entity2 GetParentEntity()
+	public Entity GetParentEntity()
 	{
 		if(eid == -1)
 		{

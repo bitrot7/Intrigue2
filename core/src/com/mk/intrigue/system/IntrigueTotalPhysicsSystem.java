@@ -11,11 +11,10 @@ import com.badlogic.gdx.physics.bullet.collision.btCollisionDispatcher;
 import com.badlogic.gdx.physics.bullet.dynamics.btSequentialImpulseConstraintSolver;
 import com.mk.intrigue.Intrigue;
 
-//Default CollisionSYs
-/*
-*	System requirments for entity:
-*		-IntriguePhysicalComponent
-*/
+/**
+ *  This class holds singletons of cross component needed physics objects  
+ *  Graphics is the only other cross component constraint in the current model.
+ */
 public class IntrigueTotalPhysicsSystem {
 	
 	private btBroadphaseInterface broadphase;

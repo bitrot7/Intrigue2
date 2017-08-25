@@ -2,9 +2,20 @@ package com.mk.intrigue.entity.component;
 
 import com.badlogic.gdx.graphics.g3d.utils.AnimationController;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.exception.ComponentMissingException;
 import com.mk.intrigue.object.MyAnimationListener;
+
+/**
+ * Component for animating 3D models.  Requires {@link IntrigueModelComponent} 
+ * Somewhat odd in that it needs IntrigueModelComponent before setting entity ID.
+ * So technically it does not require it in the parent entity.
+ * 
+ * Requires {@link IntrigueActionsComponent} in parent entity
+ * 
+ * @author wind2
+ *
+ */
 
 public class AnimationComponent extends BaseComponent {
 	
@@ -28,7 +39,7 @@ public class AnimationComponent extends BaseComponent {
 	
 	private void Animate()
 	{
-		Entity2 entity = GetParentEntity();
+		Entity entity = GetParentEntity();
 		IntrigueActionsComponent s = entity.getActionsComponent();
 		if(s != null)
 		{

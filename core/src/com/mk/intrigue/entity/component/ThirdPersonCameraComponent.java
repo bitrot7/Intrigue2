@@ -5,10 +5,21 @@ import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.exception.ComponentMissingException;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 
+/**
+ * Controls the following of a character as a third person camera
+ * 
+ * TODO need camera/world collision logic.
+ * 
+ * Requires {@link IntriguePhysicalComponent} to be defined in the parent
+ * entity.
+ * 
+ * @author wind2
+ *
+ */
 public class ThirdPersonCameraComponent extends BaseComponent {
 	
 	protected final Array<Integer> internal = new Array<Integer>();
@@ -33,7 +44,7 @@ public class ThirdPersonCameraComponent extends BaseComponent {
 	{
 		// TODO Auto-generated method stub
 		this.resetUtilVectors();
-		Entity2 q = GetParentEntity();
+		Entity q = GetParentEntity();
 		if(q.getPhysicalComponent() == null)
 		{
 			throw new ComponentMissingException(ThirdPersonCameraComponent.class.getName(), 

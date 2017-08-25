@@ -9,10 +9,17 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.Gdx;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.IntrigueGraphicalDebugger;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.exception.ComponentMissingException;
 import com.mk.intrigue.system.IntrigueTotalPhysicsSystem;
 
+/**
+ * Creates Bullet ray and ray traces to find collisions in the physics world.
+ * 
+ * Requires {@link IntrigueActionsComponent} 
+ * @author wind2
+ *
+ */
 public class IntrigueFiringComponent extends BaseComponent {
 	private Decal crosshairGraphic;
 	private final Vector3 bullet_start = new Vector3();
@@ -70,7 +77,7 @@ public class IntrigueFiringComponent extends BaseComponent {
 	@Override
 	public void HandleUpdate(float delT) {
 		
-		Entity2 d = GetParentEntity();
+		Entity d = GetParentEntity();
 		if(d.getActionsComponent() == null)
 		{
 			throw new ComponentMissingException(IntrigueFiringComponent.class.getName(), 

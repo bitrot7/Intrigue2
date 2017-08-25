@@ -19,6 +19,13 @@ import com.badlogic.gdx.physics.bullet.dynamics.btDiscreteDynamicsWorld;
 import com.badlogic.gdx.physics.bullet.dynamics.btSequentialImpulseConstraintSolver;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * Physical Component controls simulation stepping. Each component steps the world.
+ * 
+ * This component is atomic.
+ * @author wind2
+ *
+ */
 public class IntriguePhysicalComponent extends BaseComponent {
 	// TODO: Refactored from old system notion
 	

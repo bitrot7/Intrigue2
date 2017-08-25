@@ -20,7 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.factory.IntrigueLevelFactory;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 import com.mk.intrigue.system.IntrigueTotalPhysicsSystem;
@@ -34,12 +34,12 @@ import com.mk.intrigue.system.IntrigueTotalPhysicsSystem;
  *
  */
 public class Intrigue extends ApplicationAdapter {
-	public static Array<Entity2> mamaDukes = new Array<Entity2>(100);
+	public static Array<Entity> mamaDukes = new Array<Entity>(100);
 	
 	private IntrigueGraphicSystem IntrigueGraphicSys;
 	private IntrigueTotalPhysicsSystem IntrigueTotalPhysicsSys;
 
-	private final IntrigueLevelFactory<Entity2> level_factory = new IntrigueLevelFactory<Entity2>();
+	private final IntrigueLevelFactory<Entity> level_factory = new IntrigueLevelFactory<Entity>();
 	private Stage stage;
 	private Table table;
 	private Label text;
@@ -103,7 +103,7 @@ public class Intrigue extends ApplicationAdapter {
 		//Vector3 halfExtents = new Vector3(30f,90f,25f);
 		btCapsuleShape person_shape = new btCapsuleShape(30f, 90f);
 		
-		mamaDukes.add(new Entity2.Builder(player_guid)
+		mamaDukes.add(new Entity.Builder(player_guid)
 					.IntrigueModelComponent(path_to_char).IntrigueControllerComponent(1)
 					.IntriguePhysicalComponent(person_shape, 200f, trans)
 					.MotionComponent()
@@ -117,7 +117,7 @@ public class Intrigue extends ApplicationAdapter {
 					//.CharacterSoundComponent("SoundEffects/Character/walking/step-spur.mp3", "SoundEffects/guns/M4A1.mp3")
 					.Build());
 		Json json_test = new Json(); 
-		Entity2 d = mamaDukes.get(player_guid);
+		Entity d = mamaDukes.get(player_guid);
 		//System.out.println(json_test.prettyPrint(d));
 		
 		
@@ -126,7 +126,7 @@ public class Intrigue extends ApplicationAdapter {
 					.setActivationState(Collision.DISABLE_DEACTIVATION);
 
 		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
-				"3DParticles/blizzard.pfx", iceTrans, Entity2.class));
+				"3DParticles/blizzard.pfx", iceTrans, Entity.class));
 				/*
 				new DrifterObject.DrifterObjectBuilder(1)
 					.BaseObject(new Gobject.Builder(1)
@@ -139,7 +139,7 @@ public class Intrigue extends ApplicationAdapter {
 					.Build());*/
 		trans2.translate(-1000,1000,1500);
 		
-		mamaDukes.add(new Entity2.Builder(2)
+		mamaDukes.add(new Entity.Builder(2)
 					.IntrigueModelComponent(path_to_char)
 					.IntriguePhysicalComponent(person_shape, 200f, trans2)
 					.ParticleComponent("Blood", "3DParticles/Character/Blood.pfx", 
@@ -168,7 +168,7 @@ public class Intrigue extends ApplicationAdapter {
 		
 		trans3.translate(-1000, 1000, 2000);
 		
-		mamaDukes.add(new Entity2.Builder(3)
+		mamaDukes.add(new Entity.Builder(3)
 					.IntrigueModelComponent(path_to_char)
 					.IntriguePhysicalComponent(person_shape, 200f, trans3)
 					.MotionComponent()
@@ -196,7 +196,7 @@ public class Intrigue extends ApplicationAdapter {
 		
 		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
 				"SoundEffects/stages/snow stage/wind1.mp3",
-				"3DParticles/blizzard.pfx", iceTrans2, Entity2.class));
+				"3DParticles/blizzard.pfx", iceTrans2, Entity.class));
 		
 					/*new DrifterObject.DrifterObjectBuilder(4)
 					.BaseObject(new Gobject.Builder(4)
@@ -213,7 +213,7 @@ public class Intrigue extends ApplicationAdapter {
 		iceTrans3.translate(-6149.6568f, 0, 6185.332f);
 		
 		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
-				"3DParticles/blizzard.pfx" , iceTrans3, Entity2.class));
+				"3DParticles/blizzard.pfx" , iceTrans3, Entity.class));
 		/**
 		 * btStaticMeshShapes do not update their motionStates.  The model Translation must be set manually in these cases.
 		 */
@@ -221,7 +221,7 @@ public class Intrigue extends ApplicationAdapter {
 		
 		iceTrans4.translate(-6149.6568f, 0, 0);
 		mamaDukes.add(level_factory.createLevel(path_to_snow_terrain,
-				"3DParticles/blizzard.pfx" , iceTrans4, Entity2.class));
+				"3DParticles/blizzard.pfx" , iceTrans4, Entity.class));
 					/**new DrifterObject.DrifterObjectBuilder(6)
 					.BaseObject(new Gobject.Builder(6)
 					.IntrigueModelComponent(path_to_snow_terrain)
@@ -256,7 +256,7 @@ public class Intrigue extends ApplicationAdapter {
 		// TODO make a world component and consider design implications
         
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
-		for(Entity2 operableEntity : mamaDukes)
+		for(Entity operableEntity : mamaDukes)
 		{
 			operableEntity.Update(deltaTime);
 		}

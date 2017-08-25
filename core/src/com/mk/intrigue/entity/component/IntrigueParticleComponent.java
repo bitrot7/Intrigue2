@@ -8,13 +8,17 @@ import com.badlogic.gdx.graphics.g3d.particles.ParticleSystem;
 import com.badlogic.gdx.graphics.g3d.particles.batches.PointSpriteParticleBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.exception.ComponentMissingException;
 import com.mk.intrigue.object.ParticleObject;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
-/*
-*	Utilizes map.
-*/
+
+/**
+ *  Component class is responsible for the creation and rendering of
+ *  point sprite batch particles.
+ * 
+ *	Requires {@link IntriguePhysicalComponent} to be defined in parent entity
+ */
 public class IntrigueParticleComponent extends BaseComponent {
 	private ObjectMap<String, ParticleObject> map = new ObjectMap<String, ParticleObject>();
 	private Array<ParticleObject> pobjs = new Array<ParticleObject>();
@@ -58,7 +62,7 @@ public class IntrigueParticleComponent extends BaseComponent {
 	public void HandleUpdate(float delT) {
 		
 		//System.out.println(Intrigue.mamaDukes.get(i).getParticleComponent());
-		Entity2 entity = GetParentEntity();
+		Entity entity = GetParentEntity();
 		
 		if(entity.getPhysicalComponent() == null)
 		{

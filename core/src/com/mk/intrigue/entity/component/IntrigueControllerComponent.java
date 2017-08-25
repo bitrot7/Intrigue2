@@ -8,9 +8,19 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.controllers.Controller;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.exception.ComponentMissingException;
 
+/**
+ * Controller component takes input from 360 controller.
+ * TODO Refactor this to be a child of a more broad controller class
+ * that way multiple different input sources can be easily handled.
+ * 
+ * Requires {@link IntrigueActionsComponent}
+ * 
+ * @author wind2
+ *
+ */
 public class IntrigueControllerComponent extends BaseComponent {
 	private Controller controls;
 	
@@ -146,7 +156,7 @@ public class IntrigueControllerComponent extends BaseComponent {
 	@Override
 	public void HandleUpdate(float delT) {
 	
-		Entity2 g = GetParentEntity();
+		Entity g = GetParentEntity();
 		if(controls == null) {
 			throw new RuntimeException("Failure: Gobject has no controller, "
 					+ "yet it is registered with the controller subsystem.");

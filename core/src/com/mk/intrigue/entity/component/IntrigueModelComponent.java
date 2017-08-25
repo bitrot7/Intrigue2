@@ -17,6 +17,15 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.mk.intrigue.Intrigue;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 
+/**
+ * Contains all necessary elements for rendering pure 3D models.
+ * Note: supports .fbx mostly because fbxconv.
+ * 
+ * No requirements component is atomic
+ * 
+ * @author wind2
+ *
+ */
 public class IntrigueModelComponent extends BaseComponent 
 {
 	// TODO: Refactored from deprecated system notion.

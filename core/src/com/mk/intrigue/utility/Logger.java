@@ -2,6 +2,12 @@ package com.mk.intrigue.utility;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+
+/**
+ * Quick util class for logging data to files.
+ * @author wind2
+ *
+ */
 public class Logger {
 
 	private static FileHandle handle = Gdx.files.absolute("~/IntrigueLogs/velocities.log");

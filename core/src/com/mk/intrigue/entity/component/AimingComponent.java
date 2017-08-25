@@ -2,11 +2,17 @@ package com.mk.intrigue.entity.component;
 
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector3;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.exception.ComponentMissingException;
 import com.mk.intrigue.object.AtomicPhysicalObject;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
-
+/**
+ * Component for aiming projectiles, requires {@link IntrigueActionsComponent}
+ * {@link IntriguePhysicalComponent} and {@link IntrigueFiringComponent} in 
+ * its parent entity.
+ * @author wind2
+ *
+ */
 public class AimingComponent extends BaseComponent {
 
 	
@@ -99,7 +105,7 @@ public class AimingComponent extends BaseComponent {
 	@Override
 	public void HandleUpdate(float delT) {
 		
-		Entity2 d = GetParentEntity();
+		Entity d = GetParentEntity();
 		this.resetUtilVectors();
 		
 		if(d.getActionsComponent() != null)

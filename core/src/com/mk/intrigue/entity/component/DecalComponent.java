@@ -4,10 +4,22 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g3d.decals.CameraGroupStrategy;
 import com.badlogic.gdx.graphics.g3d.decals.Decal;
 import com.badlogic.gdx.graphics.g3d.decals.DecalBatch;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.exception.ComponentMissingException;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 
+
+/**
+ * Component that handles 2D graphics creation in 3D space.
+ * 
+ * Requires {@link IntrigueFiringComponent} but this is an extraneous condition.
+ * 
+ * TODO make a crosshairDecalComponent that extends DecalComponent this way DecalComponent
+ * can become atomic (no extraneous components required).
+ * 
+ * @author wind2
+ *
+ */
 public class DecalComponent extends BaseComponent {
 
 	
@@ -31,7 +43,7 @@ public class DecalComponent extends BaseComponent {
 	@Override
 	public void HandleUpdate(float delT) 
 	{
-		Entity2 entity = GetParentEntity();
+		Entity entity = GetParentEntity();
 		if(entity.getFiringComponent() != null)
 		{
 			this.drawCrosshair(entity.getFiringComponent());

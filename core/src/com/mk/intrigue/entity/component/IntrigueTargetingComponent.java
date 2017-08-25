@@ -1,9 +1,13 @@
 package com.mk.intrigue.entity.component;
 
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 
-
+/**
+ * TODO needs to be reimplemented against new model
+ * @author wind2
+ *
+ */
 public class IntrigueTargetingComponent extends BaseComponent {
 	int team_number = 0;
 	int target_id = 0;

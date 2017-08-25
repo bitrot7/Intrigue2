@@ -3,17 +3,16 @@ package com.mk.intrigue.entity.component;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.mk.intrigue.Intrigue;
-import com.mk.intrigue.entity.Entity2;
+import com.mk.intrigue.entity.Entity;
 import com.mk.intrigue.exception.ComponentMissingException;
 
 /**
+ * Plays sound effects based on actions.
  * 
- * @author Matt Keating
- * 
- * 
+ * Requires {@link IntrigueActionsComponent} to be defined in parent entity
+ * @author Matt (wind 2)
  *
  */
-
 public class IntrigueSoundEffectComponent extends BaseComponent {
 	
 	private Sound shooting_sound;
@@ -34,7 +33,7 @@ public class IntrigueSoundEffectComponent extends BaseComponent {
 	
 	@Override
 	public void HandleUpdate(float delT) {
-		Entity2 d = GetParentEntity();
+		Entity d = GetParentEntity();
 		if(d.getActionsComponent() == null)
 		{
 			throw new ComponentMissingException(IntrigueSoundEffectComponent.class.getName(), 
