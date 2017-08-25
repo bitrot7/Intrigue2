@@ -25,6 +25,14 @@ import com.mk.intrigue.factory.IntrigueLevelFactory;
 import com.mk.intrigue.system.IntrigueGraphicSystem;
 import com.mk.intrigue.system.IntrigueTotalPhysicsSystem;
 
+/**
+ * {@link Intrigue} The main class that holds the data structure containing all
+ * world entities, it controls the creation of all latter objects and the rendering
+ * of all things.
+ * 
+ * @author wind2
+ *
+ */
 public class Intrigue extends ApplicationAdapter {
 	public static Array<Entity2> mamaDukes = new Array<Entity2>(100);
 	
@@ -39,10 +47,9 @@ public class Intrigue extends ApplicationAdapter {
 	public static float person_radius = 50;
 	public static final int player_guid = 0;
 	
-	/*
-	*	people have access to IntrigueGraphicSystem.camera, IntrigueGraphicSystem.modelBatch
-	*		IntrigueTotalPhysicsSystem.dynamicsWorld
-	*/
+	/**
+	 * Creates all data structures and objects needed for rendering.
+	 */
 	@Override
 	public void create () {
 		//IntrigueGraphicalDebugger.enable();
@@ -227,12 +234,18 @@ public class Intrigue extends ApplicationAdapter {
 		
 	}
 	
+	/**
+	 * Garbage cleanup
+	 */
 	@Override
     public void dispose () 
 	{
-     
+       //TODO c++ guys are angry already.
     }
 	
+	/**
+	 * Renders everything that was created.
+	 */
 	@Override
 	public void render () 
 	{		

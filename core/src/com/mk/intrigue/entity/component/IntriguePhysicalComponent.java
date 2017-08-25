@@ -4,6 +4,7 @@ package com.mk.intrigue.entity.component;
 import com.mk.intrigue.object.AtomicPhysicalObject;
 import com.mk.intrigue.object.DefaultKinematicRagdoll;
 import com.mk.intrigue.system.IntrigueTotalPhysicsSystem;
+import com.mk.intrigue.utility.Logger;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.math.Matrix4;
@@ -24,7 +25,6 @@ public class IntriguePhysicalComponent extends BaseComponent {
 	
 	private AtomicPhysicalObject atomic;
 	private DefaultKinematicRagdoll ragdoll;
-	
 	
 	// TODO: Refactored from old system notion.
 	public IntriguePhysicalComponent(btCollisionShape shape, float mass, Matrix4 transform) 
@@ -78,8 +78,7 @@ public class IntriguePhysicalComponent extends BaseComponent {
 		update.getTranslation(position);
 		
 		// Debug for dumping all positions in the world
-		//System.out.println("guid = " + GetParentEntity().getGUID() + " pos = " + 
-		//		position);
+		//Logger.WriteToPositionLogs("guid = " + GetParentEntity().getGUID() + " pos = " + position + "\n");
 		
 		final float sdelta = Math.min(1f / 30f, delT);
 		IntrigueTotalPhysicsSystem.dynamicsWorld.stepSimulation(sdelta, 10, 1f/60f);
